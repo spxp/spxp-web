@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Social Profile Exchange Protocol</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<!--<link rel="stylesheet" href="styles/debug.css">-->
+	<style>
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar is-fixed-top">
+		<div class=container>
+			<div class=navbar-brand>
+				<a class=navbar-item href= />
+				<img src=/img/logos/spxp-icon-color.png alt="Logo">
+				&nbsp;
+				<span>SPXP</span>
+				</a>
+				<a role=button class=navbar-burger data-target=navbar-menu aria-label=menu aria-expanded=false>
+					<span aria-hidden=true></span>
+					<span aria-hidden=true></span>
+					<span aria-hidden=true></span>
+				</a>
+			</div>
+			<div class=navbar-menu id=navbar-menu>
+				<div class=navbar-end>
+					<a class=navbar-item href=https://github.com/spxp/spxp-specs target=_blank>
+						Specification
+						&nbsp;
+						<sup>
+							<span class="icon is-small has-text-primary">
+								<i class="fas fa-xs fa-external-link-alt"></i>
+							</span>
+						</sup>
+					</a>
+					<a class=navbar-item href=https://github.com/spxp/spxp-specs/blob/master/Overview.md target=_blank>
+						Primer
+						&nbsp;
+						<sup>
+							<span class="icon is-small has-text-primary">
+								<i class="fas fa-xs fa-external-link-alt"></i>
+							</span>
+						</sup>
+					</a>
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class=navbar-link>Project</a>
+						<div class="navbar-dropdown is-right">
+							<a class=navbar-item href=https://github.com/cncf/foundation/blob/master/code-of-conduct.md target=_blank>
+								Code of conduct
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+							<a class=navbar-item href=https://github.com/spxp/spxp-specs target=_blank>
+								Governance
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+							<a class=navbar-item href=https://github.com/spxp/spxp-specs/network/dependencies target=_blank>
+								Contributors
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+						</div>
+					</div>
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class=navbar-link>SDKs</a>
+						<div class="navbar-dropdown is-right">
+							<a class=navbar-item href=https://github.com/spxp/sdk-go target=_blank>
+								Go
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+							<a class=navbar-item href=https://github.com/spxp/sdk-javascript target=_blank>
+								JavaScript
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+							<a class=navbar-item href=https://github.com/spxp/sdk-java target=_blank>
+								Java
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+							<a class=navbar-item href=https://github.com/spxp/sdk-csharp target=_blank>
+								C#
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+							<a class=navbar-item href=https://github.com/spxp/sdk-ruby target=_blank>
+								Ruby
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+							<a class=navbar-item href=https://github.com/spxp/sdk-python target=_blank>
+								Python
+								&nbsp;
+								<sup>
+									<span class="icon is-small has-text-primary">
+										<i class="fas fa-xs fa-external-link-alt"></i>
+									</span>
+								</sup>
+							</a>
+						</div>
+					</div>
+					<div class=navbar-item>
+						<div class=buttons>
+							<a class="button is-white is-radiusless" href=https://github.com/spxp target=_blank>
+								<span class=icon>
+									<i class="fab fa-github"></i>
+								</span>
+								<span>GitHub</span>
+							</a>
+							<a class="button is-twitter-blue is-radiusless" href=https://twitter.com/SPXP5 target=_blank>
+								<span class=icon>
+									<i class="fab fa-twitter"></i>
+								</span>
+								<span>Twitter</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- hero: https://bulma.io/documentation/layout/hero/ -->
+	<section class="hero">
+		<div class="hero-body">
+			<section class="section">
+				<div class="container">
+					<h1 class="title is-size-1">
+						SPXP
+					</h1>
+					<p class="subtitle is-size-4">
+						Social Profile Exchange Protocol
+					</p>
+				</div>
+			</section>
+		</div>
+	</section>
+
+
+	<!-- section: https://bulma.io/documentation/layout/section/ -->
+	<!-- 3 top columns section -->
+	<section class="section has-background-light">
+		<div class="container">
+			<div class="columns">
+				<div class="column">
+					<article class="media notification is-info">
+						<figure class="media-left">
+							<span class="icon is-medium">
+								<i class="fab fa-2x fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<div class="content">
+								<h1 class="title is-size-4">SPXP</h1>
+								<p>Social Profile Exchange Protocol</p>
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="column">
+					<article class="media notification is-primary">
+						<figure class="media-left">
+							<span class="icon is-medium">
+								<i class="fab fa-2x fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<div class="content">
+								<h1 class="title is-size-4">SPXP</h1>
+								<p>Social Profile Exchange Protocol</p>
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="column">
+					<article class="media notification is-warning">
+						<figure class="media-left">
+							<span class="icon is-medium">
+								<i class="fab fa-2x fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<div class="content">
+								<h1 class="title is-size-4">SPXP</h1>
+								<p>Social Profile Exchange Protocol</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- section: https://bulma.io/documentation/layout/section/ -->
+	<!-- 6 columns section -->
+	<section class="section">
+		<div class="container">
+			<div class="columns is-multiline">
+				<div class="column is-one-third">
+					<article class="media notification has-background-white">
+						<figure class="media-left">
+							<span class="icon has-text-warning">
+								<i class="fab fa-lg fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<h1 class="title is-size-4">SPXP</h1>
+							<p class="subtitle">Social Profile Exchange Protocol</p>
+						</div>
+					</article>
+				</div>
+				<div class="column is-one-third">
+					<article class="media notification has-background-white">
+						<figure class="media-left">
+							<span class="icon has-text-info">
+								<i class="fab fa-lg fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<h1 class="title is-size-4">SPXP</h1>
+							<p class="subtitle">Social Profile Exchange Protocol</p>
+						</div>
+					</article>
+				</div>
+				<div class="column is-one-third">
+					<article class="media notification has-background-white">
+						<figure class="media-left">
+							<span class="icon has-text-primary">
+								<i class="fab fa-lg fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<h1 class="title is-size-4">SPXP</h1>
+							<p class="subtitle">Social Profile Exchange Protocol</p>
+						</div>
+					</article>
+				</div>
+				<div class="column is-one-third">
+					<article class="media notification has-background-white">
+						<figure class="media-left">
+							<span class="icon has-text-grey">
+								<i class="fab fa-lg fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<h1 class="title is-size-4">SPXP</h1>
+							<p class="subtitle">Social Profile Exchange Protocol</p>
+						</div>
+					</article>
+				</div>
+				<div class="column is-one-third">
+					<article class="media notification has-background-white">
+						<figure class="media-left">
+							<span class="icon has-text-danger">
+								<i class="fab fa-lg fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<h1 class="title is-size-4">SPXP</h1>
+							<p class="subtitle">Social Profile Exchange Protocol</p>
+						</div>
+					</article>
+				</div>
+				<div class="column is-one-third">
+					<article class="media notification has-background-white">
+						<figure class="media-left">
+							<span class="icon has-text-warning">
+								<i class="fab fa-lg fa-grav"></i>
+							</span>
+						</figure>
+						<div class="media-content">
+							<h1 class="title is-size-4">SPXP</h1>
+							<p class="subtitle">Social Profile Exchange Protocol</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<footer class=footer>
+		<div class=container>
+			<div class=columns>
+				<div class="column is-one-quarter">
+					<img class=footer-logo src=/img/logos/spxp-icon-color.png> </div> <div class=column>
+					<p class="title has-text-weight-bold">SPXP</p>
+					<hr class=thick>
+					<p class="subtitle is-size-5 is-size-6-mobile has-text-weight-light">A specification for describing event data in a common way</p>
+					<div class=columns>
+						<div class="column is-one-third">
+							<ul>
+								<li>
+									<a href=https://github.com/spxp/spxp-specs target=_blank>Specification</a>
+								</li>
+								<li>
+									<a href=https://github.com/spxp/spxp-specs/blob/master/Overview.md target=_blank>Primer</a>
+								</li>
+								<li>
+									<a href>Project</a>
+								</li>
+							</ul>
+						</div>
+						<div class="column is-one-third">
+							<p class=has-text-weight-bold>SDKs</p>
+							<ul>
+								<li>
+									<a href=https://github.com/spxp/sdk-go target=_blank>Go</a>
+								</li>
+								<li>
+									<a href=https://github.com/spxp/sdk-javascript target=_blank>JavaScript</a>
+								</li>
+								<li>
+									<a href=https://github.com/spxp/sdk-java target=_blank>Java</a>
+								</li>
+								<li>
+									<a href=https://github.com/spxp/sdk-csharp target=_blank>C#</a>
+								</li>
+								<li>
+									<a href=https://github.com/spxp/sdk-ruby target=_blank>Ruby</a>
+								</li>
+								<li>
+									<a href=https://github.com/spxp/sdk-python target=_blank>Python</a>
+								</li>
+							</ul>
+						</div>
+						<div class="column is-one-third">
+							<p class=has-text-weight-bold>Integrations</p>
+							<ul>
+								<li>
+									<a href=https://azure.microsoft.com/en-us/services/event-grid target=_blank>Azure Event Grid</a>
+								</li>
+								<li>
+									<a href=https://github.com/serverless/event-gateway target=_blank>Serverless.com Event Gateway</a>
+								</li>
+								<li>
+									<a href=https://knative.dev/docs/eventing/ target=_blank>Knative Eventing</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="buttons is-radiusless">
+						<a class="button is-small is-black is-radiusless" href=https://github.com/spxp target=_blank>
+							<span class=icon><i class="fab fa-github"></i></span>
+						</a>
+						<a class="button is-small is-twitter-blue is-radiusless" href=https://twitter.com/SPXP5 target=_blank>
+							<span class=icon><i class="fab fa-twitter"></i></span>
+						</a>
+					</div>
+					<hr class=has-background-grey-light>
+					<div class="has-text-weight-light copyright">
+						<p>&copy; 2020 The SPXP foundtation | Documentation Distributed under CC-BY-4.0</p>
+						<p>
+							&copy; 2020 The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our
+							<a href=https://www.linuxfoundation.org/trademark-usage/>Trademark Usage</a> page.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Get all "navbar-burger" elements
+			const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+			// Check if there are any navbar burgers
+			if ($navbarBurgers.length > 0) {
+				// Add a click event on each of them
+				$navbarBurgers.forEach( el => {
+					el.addEventListener('click', () => {
+						// Get the target from the "data-target" attribute
+						const target = el.dataset.target;
+						const $target = document.getElementById(target);
+						// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+						el.classList.toggle('is-active');
+						$target.classList.toggle('is-active');
+					});
+				});
+			}
+		});
+	</script>
+
+</body>
+
+</html>
