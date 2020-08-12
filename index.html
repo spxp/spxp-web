@@ -7,17 +7,17 @@
 	<title>Social Profile Exchange Protocol</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
 	<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-	<!--<link rel="stylesheet" href="styles/debug.css">-->
+	<!-- <link rel="stylesheet" href="styles/debug.css"> -->
 </head>
 
-<body>
+<body class="has-navbar-fixed-top">
 
 	<!-- nav bar: https://bulma.io/documentation/ -->
 	<nav class="navbar is-fixed-top">
 		<div class=container>
 			<div class=navbar-brand>
 				<a class=navbar-item href="">
-					<img src="assets/img/spxp-logo.png" alt="Logo" width="60">
+					<img src="assets/img/spxp-logo.png" alt="Logo">
 				</a>
 				<a role=button class=navbar-burger data-target=navbar-menu aria-label=menu aria-expanded=false>
 					<span aria-hidden=true></span>
@@ -81,7 +81,7 @@
 						<a class=navbar-link>SDKs</a>
 						<div class="navbar-dropdown is-right">
 							<a class=navbar-item href=https://github.com/spxp/sdk-go target=_blank>
-								Go
+								Java
 								&nbsp;
 								<sup>
 									<span class="icon is-small has-text-primary">
@@ -99,34 +99,7 @@
 								</sup>
 							</a>
 							<a class=navbar-item href=https://github.com/spxp/sdk-java target=_blank>
-								Java
-								&nbsp;
-								<sup>
-									<span class="icon is-small has-text-primary">
-										<i class="fas fa-xs fa-external-link-alt"></i>
-									</span>
-								</sup>
-							</a>
-							<a class=navbar-item href=https://github.com/spxp/sdk-csharp target=_blank>
-								C#
-								&nbsp;
-								<sup>
-									<span class="icon is-small has-text-primary">
-										<i class="fas fa-xs fa-external-link-alt"></i>
-									</span>
-								</sup>
-							</a>
-							<a class=navbar-item href=https://github.com/spxp/sdk-ruby target=_blank>
-								Ruby
-								&nbsp;
-								<sup>
-									<span class="icon is-small has-text-primary">
-										<i class="fas fa-xs fa-external-link-alt"></i>
-									</span>
-								</sup>
-							</a>
-							<a class=navbar-item href=https://github.com/spxp/sdk-python target=_blank>
-								Python
+								Go
 								&nbsp;
 								<sup>
 									<span class="icon is-small has-text-primary">
@@ -144,12 +117,12 @@
 								</span>
 								<span>GitHub</span>
 							</a>
-							<a class="button is-twitter-blue is-radiusless" href=https://twitter.com/SPXP5 target=_blank>
+							<!-- <a class="button is-twitter-blue is-radiusless" href=https://twitter.com/SPXP5 target=_blank>
 								<span class=icon>
 									<i class="fab fa-twitter"></i>
 								</span>
 								<span>Twitter</span>
-							</a>
+							</a> -->
 						</div>
 					</div>
 				</div>
@@ -174,30 +147,26 @@
 	</section> -->
 
 	<!-- hero: https://bulma.io/documentation/layout/hero/ -->
-	<section class="hero is-medium">
-	  <div class="container">
-	    <div class="hero-body">
-	      <div class="container">
-	        <div class="columns is-vcentered">
-	          <div class="column is-one-third">
-	            <img class="hero-logo" src="assets/img/spxp-logo.png" alt="SPXP hero logo">
-	          </div>
+	<section class="hero">
+		<div class="hero-body">
+			<div class="container">
+				<div class="columns is-vcentered">
+					<div class="column is-2 is-offset-2">
+						<img class="hero-logo" src="assets/img/spxp-logo.svg" alt="SPXP hero logo">
+					</div>
 
-	          <div class="column">
-	            <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
-	              Social Profile Exchange Protocol
-	            </p>
-
-	            <hr class="has-background-info" />
-
-	            <p class="title is-size-1 is-size-2-mobile has-text-weight-bold is-spaced">
-	              Social Network. Liberated.
-	            </p>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
+					<div class="column is-6">
+						<p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
+							Social Profile Exchange Protocol
+						</p>
+						<hr class="has-background-info" />
+						<p class="title is-size-1 is-size-2-mobile has-text-weight-bold is-spaced">
+							Social Network. Liberated.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
 
@@ -206,18 +175,10 @@
 	<section class="section has-background-light">
 		<div class="container">
 			<p class="subtitle is-size-4 is-size-5-mobile has-text-weight-light">
-				Not a Social Network itself.
-				<br />
-				An agreement on how independent actors can conjointly form a social network.
+				SPXP is not a Social Network itself. It's an agreement on how independent actors can conjointly form a social network.
 			</p>
 			<br />
 		</div>
-	</section>
-
-
-	<!-- section: https://bulma.io/documentation/layout/section/ -->
-	<!-- 3 top columns section -->
-	<section class="section has-background-light">
 		<div class="container">
 			<div class="columns">
 				<div class="column">
@@ -372,14 +333,16 @@
 	</section>
 
 
+
+
 	<footer class=footer>
 		<div class=container>
 			<div class=columns>
-				<div class="column is-one-quarter">
-					<img class=footer-logo src=/img/logos/spxp-icon-color.png> </div> <div class=column>
-					<p class="title has-text-weight-bold">SPXP</p>
-					<hr class=thick>
-					<p class="subtitle is-size-5 is-size-6-mobile has-text-weight-light">A specification for describing event data in a common way</p>
+				<div class="column is-one-fifth">
+					<img class="footer-logo" src="assets/img/spxp-logo.svg" alt="SPXP footer logo">
+				</div>
+				<div class=column>
+					<p class="subtitle is-size-5 is-size-6-mobile has-text-weight-light">Social Network. Liberated.</p>
 					<div class=columns>
 						<div class="column is-one-third">
 							<ul>
@@ -398,36 +361,27 @@
 							<p class=has-text-weight-bold>SDKs</p>
 							<ul>
 								<li>
-									<a href=https://github.com/spxp/sdk-go target=_blank>Go</a>
+									<a href=https://github.com/spxp/sdk-go target=_blank>Java</a>
 								</li>
 								<li>
 									<a href=https://github.com/spxp/sdk-javascript target=_blank>JavaScript</a>
 								</li>
 								<li>
-									<a href=https://github.com/spxp/sdk-java target=_blank>Java</a>
-								</li>
-								<li>
-									<a href=https://github.com/spxp/sdk-csharp target=_blank>C#</a>
-								</li>
-								<li>
-									<a href=https://github.com/spxp/sdk-ruby target=_blank>Ruby</a>
-								</li>
-								<li>
-									<a href=https://github.com/spxp/sdk-python target=_blank>Python</a>
+									<a href=https://github.com/spxp/sdk-java target=_blank>Go</a>
 								</li>
 							</ul>
 						</div>
 						<div class="column is-one-third">
-							<p class=has-text-weight-bold>Integrations</p>
+							<p class=has-text-weight-bold>Something else</p>
 							<ul>
 								<li>
-									<a href=https://azure.microsoft.com/en-us/services/event-grid target=_blank>Azure Event Grid</a>
+									<a href=https://azure.microsoft.com/en-us/services/event-grid target=_blank>Thing one</a>
 								</li>
 								<li>
-									<a href=https://github.com/serverless/event-gateway target=_blank>Serverless.com Event Gateway</a>
+									<a href=https://github.com/serverless/event-gateway target=_blank>Thing two</a>
 								</li>
 								<li>
-									<a href=https://knative.dev/docs/eventing/ target=_blank>Knative Eventing</a>
+									<a href=https://knative.dev/docs/eventing/ target=_blank>Thing three</a>
 								</li>
 							</ul>
 						</div>
@@ -436,17 +390,17 @@
 						<a class="button is-small is-black is-radiusless" href=https://github.com/spxp target=_blank>
 							<span class=icon><i class="fab fa-github"></i></span>
 						</a>
-						<a class="button is-small is-twitter-blue is-radiusless" href=https://twitter.com/SPXP5 target=_blank>
+						<!-- <a class="button is-small is-twitter-blue is-radiusless" href=https://twitter.com/SPXP5 target=_blank>
 							<span class=icon><i class="fab fa-twitter"></i></span>
-						</a>
+						</a> -->
 					</div>
 					<hr class=has-background-grey-light>
 					<div class="has-text-weight-light copyright">
 						<p>&copy; 2020 The SPXP foundtation | Documentation Distributed under CC-BY-4.0</p>
-						<p>
+						<!-- <p>
 							&copy; 2020 The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our
 							<a href=https://www.linuxfoundation.org/trademark-usage/>Trademark Usage</a> page.
-						</p>
+						</p> -->
 					</div>
 				</div>
 			</div>
