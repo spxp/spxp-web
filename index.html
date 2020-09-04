@@ -7,6 +7,8 @@
 	<title>Social Profile Exchange Protocol</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
 	<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+	<script src="assets/js/swipe.js"></script>
+	<link rel="stylesheet" href="styles/swipe.css">
 	<!-- <link rel="stylesheet" href="styles/debug.css"> -->
 </head>
 
@@ -156,11 +158,11 @@
 					</div>
 
 					<div class="column is-6">
-						<p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
+						<p class="subtitle is-size-3 is-size-4-touch has-text-weight-light">
 							Social Profile Exchange Protocol
 						</p>
 						<hr class="has-background-info" />
-						<p class="title is-size-1 is-size-2-mobile has-text-weight-bold">
+						<p class="title is-size-1 is-size-2-touch has-text-weight-bold">
 							Social Network. Liberated.
 						</p>
 					</div>
@@ -174,6 +176,12 @@
 	<!-- 3 top columns section -->
 	<section class="section has-background-light">
 		<div class="container">
+			<p class="subtitle is-size-4 is-size-5-mobile has-text-weight-light">
+				SPXP is not a Social Network itself. It's an agreement on how independent actors can conjointly form a social network. It provides:
+			</p>
+			<br />
+		</div>
+		<div class="container">
 			<div class="columns">
 				<div class="column">
 					<article class="media notification is-info">
@@ -186,10 +194,10 @@
 							<div class="content">
 								<h1 class="title is-size-4">&nbsp;Freedom</h1>
 								<p><ul>
-									<li>Freedom of hosting (no monopolists)</li>
+									<li>Any webserver can host profiles</li>
 									<li>Freed timeline (no algorithm or bubble)</li>
-									<li>Free of charge, free of ads</li>
-									<li>Choose your favourite app</li>
+									<li>Encourages implementation ecosystem</li>
+									<li>Choose your app to see profiles</li>
 								</ul></p>
 							</div>
 						</div>
@@ -206,10 +214,10 @@
 							<div class="content">
 								<h1 class="title is-size-4">&nbsp;Privacy</h1>
 								<p><ul>
-									<li>Public and private posts</li>
-									<li>Private posts: Full e2e encryption</li>
+									<li>Define who sees what</li>
+									<li>Own your content & data</li>
+									<li>Private posts end-to-end encrypted</li>
 									<li>Proven internet security standards</li>
-									<li>Own your content and data</li>
 								</ul></p>
 							</div>
 						</div>
@@ -224,11 +232,11 @@
 						</figure>
 						<div class="media-content">
 							<div class="content">
-								<h1 class="title is-size-4">&nbsp;Open Source</h1>
+								<h1 class="title is-size-4">&nbsp;Transparency</h1>
 								<p><ul>
-									<li>Welcomes participation</li>
-									<li>Embraces implementation ecosystem</li>
+									<li>Open source</li>
 									<li>Human readable</li>
+									<li>Welcomes participation</li>
 									<li>Easy to learn and get started</li>
 								</ul></p>
 							</div>
@@ -244,7 +252,7 @@
 	<section class="section">
 		<div class="container">
 			<p class="subtitle is-size-4 is-size-5-mobile has-text-weight-light">
-				SPXP is not a Social Network itself. It's an agreement on how independent actors can conjointly form a social network.
+				SPXP is not a Social <code>Network</code> itself. It's an agreement on how independent actors can conjointly form a social network.
 			</p>
 			<br />
 		</div>
@@ -333,12 +341,62 @@
 	</section>
 
 
+	<!-- section: https://bulma.io/documentation/layout/section/ -->
+	<!-- 3 top columns section -->
+	<section class="section has-background-white">
+		<div class="container">
+			<p class="subtitle is-size-4 is-size-5-mobile has-text-weight-light">
+				Here are some examples:
+			</p>
+			<br />
+		</div>
+		<div class="container">
+			<div class="columns">
+				<div class="column is-8 is-offset-2">
+					<div class="content">
+						<h1 class="title is-size-5">Privacy</h1>
+						<pre><code>
+							for (i=0; i&nbsp; n; i++) {
+								let's do something here
+							}
+						</code></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="columns">
+				<div class="column is-8 is-offset-2">
+					<div class="content">
+          <div id="mySwipe" class="swipe">
+            <div class="swipe-wrap">
+              <div><pre><code><b>0</b></code></pre></div>
+              <div><pre><code><b>1</b></code></pre></div>
+              <div><pre><code><b>2</b></code></pre></div>
+              <div><pre><code><b>3</b></code></pre></div>
+              <div><pre><code><b>4</b></code></pre></div>
+              <div><pre><code><b>5</b></code></pre></div>
+            </div>
+          </div>
+
+          <div>
+            <a id="prev">Prev</a>
+            <a id="next">Next</a>
+          </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</section>
 
 
 	<footer class=footer>
 		<div class=container>
 			<div class=columns>
-				<div class="column is-one-fifth">
+				<div class="column is-one-fifth pr-6">
 					<img class="footer-logo is-hidden-mobile" src="assets/img/spxp-logo.png" alt="SPXP footer logo">
 				</div>
 				<div class=column>
@@ -427,6 +485,26 @@
 			}
 		});
 	</script>
+	<script>
+		var element = document.getElementById('mySwipe'),
+			prevBtn = document.getElementById('prev'),
+			nextBtn = document.getElementById('next');
+		window.mySwipe = new Swipe(element, {
+			startSlide: 0,
+			auto: 3000,
+			draggable: true,
+			autoRestart: false,
+			continuous: true,
+			disableScroll: true,
+			stopPropagation: true,
+			callback: function(index, element) {},
+			transitionEnd: function(index, element) {}
+		});
+		prevBtn.onclick = mySwipe.prev;
+		nextBtn.onclick = mySwipe.next;
+	</script>
+
+
 
 </body>
 
