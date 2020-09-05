@@ -343,47 +343,104 @@
 
 	<!-- section: https://bulma.io/documentation/layout/section/ -->
 	<!-- 3 top columns section -->
-	<section class="section has-background-white">
-		<div class="container">
-			<p class="subtitle is-size-4 is-size-5-mobile has-text-weight-light">
-				Here are some examples:
-			</p>
-			<br />
-		</div>
+	<section class="section">
 		<div class="container">
 			<div class="columns">
-				<div class="column is-8 is-offset-2">
+				<div class="column is-6 is-offset-3">
 					<div class="content">
-						<h1 class="title is-size-5">Privacy</h1>
-						<pre><code>
-							for (i=0; i&nbsp; n; i++) {
-								let's do something here
-							}
-						</code></pre>
+							<a class="button" id="prev">Prev</a>
+							<a class="button" id="next">Next</a>
 					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="columns">
-				<div class="column is-8 is-offset-2">
 					<div class="content">
-          <div id="mySwipe" class="swipe">
-            <div class="swipe-wrap">
-              <div><pre><code><b>0</b></code></pre></div>
-              <div><pre><code><b>1</b></code></pre></div>
-              <div><pre><code><b>2</b></code></pre></div>
-              <div><pre><code><b>3</b></code></pre></div>
-              <div><pre><code><b>4</b></code></pre></div>
-              <div><pre><code><b>5</b></code></pre></div>
-            </div>
-          </div>
 
-          <div>
-            <a id="prev">Prev</a>
-            <a id="next">Next</a>
-          </div>
+
+					<div id="mySwipe" class="swipe">
+						<div class="swipe-wrap">
+							<div>
+								<h1 class="title is-size-5">Example 1</h1>
+<pre><code>{
+    "kty": "OKP",
+    "d": "cimnMK-C7_RERO2c9IyY9Ch4lGkvROPz7ohAbQVR7W8",
+    "crv": "Ed25519",
+    "kid": "-MUelyMS_IJ6Lc5b",
+    "x": "F1MQVHdxYR62bmvepQXKbNOUxfy0wCynqaCraXPzMGs"
+}</code></pre>
+							</div>
+							<div>
+								<h1 class="title is-size-5">Example 2</h1>
+<pre><code>{
+    "ver": "0.3",
+    "name":  "John Doe",
+    "about":  "Hey, look, I have a SPXP profile!",
+    "website":  "https://example.com",
+    "publicKey"  : {
+        "kid": "-MUelyMS_IJ6Lc5b",
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "F1MQVHdxYR62bmvepQXKbNOUxfy0wCynqaCraXPzMGs"
+    }
+}</code></pre>
+							</div>
+							<div>
+								<h1 class="title is-size-5">Example 3</h1>
+<pre><code>{
+    "ver": "0.3",
+    "name": "John Doe",
+    "about": "Hey, look, I have a SPXP profile!",
+    "website": "https://example.com",
+    "publicKey": {
+        "kid": "-MUelyMS_IJ6Lc5b",
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "F1MQVHdxYR62bmvepQXKbNOUxfy0wCynqaCraXPzMGs"
+    },
+    "signature": {
+        "key": "-MUelyMS_IJ6Lc5b",
+        "sig": "jzRBoJvSD4s9nA8MK3WQAyqna5acLug1TAVxtWtleSO7pAWBz4XCIQkoz2Wcl1fJ3XYuooEg3D7f9IX7Uck7DQ"
+    }
+}</code></pre>
+							</div>
+							<div>
+								<h1 class="title is-size-5">Example 4</h1>
+<pre><code>{
+    "data": [
+        "https://spxp.org/profile",
+        "https://spxp.org/wuerzburg"
+    ]
+}</code></pre>
+							</div>
+							<div>
+								<h1 class="title is-size-5">Example 5</h1>
+<pre><code>{
+    "data": [
+        "https://spxp.org/profile",
+        "https://spxp.org/wuerzburg"
+    ],
+    "signature": {
+        "key": "-MUelyMS_IJ6Lc5b",
+        "sig": "QTVABvo5jgrIUgslt43V_js-Dskf9pjsN4CTGT0_6KyQorKe4irpndGc3vmyQbYdrc5PAYKtRzSCGSmFEC49Bg"
+    }
+}</code></pre>
+							</div>
+							<div>
+								<h1 class="title is-size-5">Example 6</h1>
+<pre><code>{
+    "ver": "0.3",
+    "name": "John Doe",
+    "about": "Hey, look, I have a SPXP profile!",
+    "website": "https://example.com",
+    "friendsEndpoint": "john-doe-friends",
+    "publicKey": {
+        "kid": "-MUelyMS_IJ6Lc5b",
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "F1MQVHdxYR62bmvepQXKbNOUxfy0wCynqaCraXPzMGs"
+    }
+}</code></pre>
+							</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
