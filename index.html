@@ -346,18 +346,9 @@
 	<section class="section">
 		<div class="container">
 			<div class="columns">
-				<div class="column is-6 is-offset-3">
+				<div class="column is-8 is-offset-2">
 					<div class="content">
-							<a class="button" id="prev">Prev</a>
-							<a class="button" id="next">Next</a>
-					</div>
-					<div class="content">
-
-
-					<div id="mySwipe" class="swipe">
-						<div class="swipe-wrap">
-							<div>
-								<h1 class="title is-size-5">Example 1</h1>
+							<h1 class="title is-size-5">Example 1</h1>
 <pre><code>{
     "kty": "OKP",
     "d": "cimnMK-C7_RERO2c9IyY9Ch4lGkvROPz7ohAbQVR7W8",
@@ -365,9 +356,7 @@
     "kid": "-MUelyMS_IJ6Lc5b",
     "x": "F1MQVHdxYR62bmvepQXKbNOUxfy0wCynqaCraXPzMGs"
 }</code></pre>
-							</div>
-							<div>
-								<h1 class="title is-size-5">Example 2</h1>
+							<h1 class="title is-size-5">Example 2</h1>
 <pre><code>{
     "ver": "0.3",
     "name":  "John Doe",
@@ -380,9 +369,7 @@
         "x": "F1MQVHdxYR62bmvepQXKbNOUxfy0wCynqaCraXPzMGs"
     }
 }</code></pre>
-							</div>
-							<div>
-								<h1 class="title is-size-5">Example 3</h1>
+							<h1 class="title is-size-5">Example 3</h1>
 <pre><code>{
     "ver": "0.3",
     "name": "John Doe",
@@ -399,18 +386,14 @@
         "sig": "jzRBoJvSD4s9nA8MK3WQAyqna5acLug1TAVxtWtleSO7pAWBz4XCIQkoz2Wcl1fJ3XYuooEg3D7f9IX7Uck7DQ"
     }
 }</code></pre>
-							</div>
-							<div>
-								<h1 class="title is-size-5">Example 4</h1>
+							<h1 class="title is-size-5">Example 4</h1>
 <pre><code>{
     "data": [
         "https://spxp.org/profile",
         "https://spxp.org/wuerzburg"
     ]
 }</code></pre>
-							</div>
-							<div>
-								<h1 class="title is-size-5">Example 5</h1>
+							<h1 class="title is-size-5">Example 5</h1>
 <pre><code>{
     "data": [
         "https://spxp.org/profile",
@@ -421,9 +404,7 @@
         "sig": "QTVABvo5jgrIUgslt43V_js-Dskf9pjsN4CTGT0_6KyQorKe4irpndGc3vmyQbYdrc5PAYKtRzSCGSmFEC49Bg"
     }
 }</code></pre>
-							</div>
-							<div>
-								<h1 class="title is-size-5">Example 6</h1>
+							<h1 class="title is-size-5">Example 6</h1>
 <pre><code>{
     "ver": "0.3",
     "name": "John Doe",
@@ -437,10 +418,6 @@
         "x": "F1MQVHdxYR62bmvepQXKbNOUxfy0wCynqaCraXPzMGs"
     }
 }</code></pre>
-							</div>
-							</div>
-						</div>
-
 					</div>
 				</div>
 			</div>
@@ -542,26 +519,6 @@
 			}
 		});
 	</script>
-	<script>
-		var element = document.getElementById('mySwipe'),
-			prevBtn = document.getElementById('prev'),
-			nextBtn = document.getElementById('next');
-		window.mySwipe = new Swipe(element, {
-			startSlide: 0,
-			auto: 3000,
-			draggable: true,
-			autoRestart: false,
-			continuous: true,
-			disableScroll: true,
-			stopPropagation: true,
-			callback: function(index, element) {},
-			transitionEnd: function(index, element) {}
-		});
-		prevBtn.onclick = mySwipe.prev;
-		nextBtn.onclick = mySwipe.next;
-	</script>
-
-
 
 </body>
 
