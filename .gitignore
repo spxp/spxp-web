@@ -1,1 +1,16 @@
+### general
 .DS_Store
+.Spotlight-V100
+.Trashes
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+### project specific
+.sass-cache/
+*.css.map
+*.js.map
+node_modules/
+dist/
+accessibility-reports/

@@ -1,0 +1,457 @@
+---
+layout: start
+title: Home
+---
+
+<div class="dark-wrapper">
+    <!-- Landing page Hero -->
+    <section class="hero is-fullheight is-transparent">
+        <div class="hero-head">
+
+            <!-- Cloned navbar -->
+            {{> navbar-clone}}
+
+            <!-- Static navbar -->
+            {{> navbar}}
+
+        </div>
+
+        <!-- Animated particles -->
+        <div id="particles-js"></div>
+
+        <!-- Hero Image and Title -->
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-vcentered">
+
+                    <!-- Landing page Title -->
+                    <div class="column is-5 landing-caption">
+                        <h1 class="title is-1 is-light is-semibold is-spaced main-title">Social Profile<br/>Exchange Protocol</h1>
+                        <h2 class="subtitle is-6 is-light is-thin">
+                            A Specification defining how independent clients and servers can exchange information about social profiles, focusing on privacy, security and individual sovereignty.
+                        </h2>
+                        <!-- CTA -->
+                        <p>
+                            <div class="container">
+                                <div class="columns is-vcentered">
+                                    <div class="column">
+                                        <a href="https://github.com/spxp/spxp-specs" target="_blank" class="button k-button k-primary raised is-fat is-bold">
+                                            <img src="assets/img/GitHub-Mark-32px.png" alt="">
+                                            <img src="assets/img/GitHub_Logo.png" alt="" style="width: 83px; height: 34px;">
+                                        </a>
+                                    </div>
+                                    <div class="column is-hidden-mobile" style="text-align: right; vertical-align: middle; font-size: 2em; color:#fff;">
+                                        HOW&nbsp;&nbsp;<i class="fas fa-1x fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </p>
+
+                    </div>
+                    <!-- Hero image -->
+                    <div class="column is-7">
+                        <!-- presentation size: 700px,448px at 14px font size = 50em,32.1429em-->
+                        <div class="reveal-viewport" style="width: 100%; padding-top: 60%; box-sizing: border-box;">
+                        <!--<div class="reveal-viewport">-->
+                            <div class="reveal" style="position: absolute; top: 0; left: 0;">
+                                <div class="slides">
+                <section data-auto-animate>
+                    <p>Simple JSON files, referenced by a <em>Profile URI</em>:</p>
+                    <pre style="background-color: #272822; margin-bottom: 0px">curl https://example.com/spxp/alice</pre>
+                    <pre data-id="code-animation" style="margin-top: 0px"><code class="hljs" data-trim data-line-numbers>
+                        {
+                          "ver" : "0.3",
+                          "name" : "Crypto Alice",
+                          "shortInfo" : "I love cryptography.",
+                          "gender" : "female",
+                          "email" : "cryptoalice@example.com"
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <p>Profiles are identified by a unique <em>Profile Key</em>:</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="7-12">
+                        {
+                          "ver" : "0.3",
+                          "name" : "Crypto Alice",
+                          "shortInfo" : "I love cryptography.",
+                          "gender" : "female",
+                          "email" : "cryptoalice@example.com",
+                          "publicKey" : {
+                            "kid" : "C8xSIBPKRTcXxFix",
+                            "kty" : "OKP",
+                            "crv" : "Ed25519",
+                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
+                          }
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <p>Authenticated by <em>Digital Signatures</em>:</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="13-16">
+                        {
+                          "ver" : "0.3",
+                          "name" : "Crypto Alice",
+                          "shortInfo" : "I love cryptography.",
+                          "gender" : "female",
+                          "email" : "cryptoalice@example.com",
+                          "publicKey" : {
+                            "kid" : "C8xSIBPKRTcXxFix",
+                            "kty" : "OKP",
+                            "crv" : "Ed25519",
+                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
+                          },
+                          "signature" : {
+                            "key" : "C8xSIBPKRTcXxFix",
+                            "sig" : "WnRIWY8eoU5qPzWlgYjaT_j5x1MnQKpS2vD-8sC2ScnqEldHcLDnIEwRz1fOkGklq1ojNB4D2tRJVbEBrFB3AA"
+                          }
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <p>Can <em>verifyably</em> reference other profiles:</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="7-15">
+                        {
+                          "ver" : "0.3",
+                          "name" : "Crypto Alice",
+                          "shortInfo" : "I love cryptography.",
+                          "gender" : "female",
+                          "email" : "cryptoalice@example.com",
+                          "hometown" : {
+                            "uri" : "https://example.com/spxp/emerald.city",
+                            "publicKey" : {
+                              "kid" : "DJlPdI5nMAYjDevc",
+                              "kty" : "OKP",
+                              "crv" : "Ed25519",
+                              "x" : "1B7B4OpoRBA6UvtewqF9cb_P1PiXVpc4f1THHfkzLmY"
+                            }
+                          },
+                          "publicKey" : {
+                            "kid" : "C8xSIBPKRTcXxFix",
+                            "kty" : "OKP",
+                            "crv" : "Ed25519",
+                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
+                          },
+                          "signature" : {
+                            "key" : "C8xSIBPKRTcXxFix",
+                            "sig" : "WnRIWY8eoU5qPzWlgYjaT_j5x1MnQKpS2vD-8sC2ScnqEldHcLDnIEwRz1fOkGklq1ojNB4D2tRJVbEBrFB3AA"
+                          }
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <p>Privacy by <em>JWE based encryption</em>:</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="22-24">
+                        {
+                          "ver" : "0.3",
+                          "name" : "Crypto Alice",
+                          "shortInfo" : "I love cryptography.",
+                          "gender" : "female",
+                          "email" : "cryptoalice@example.com",
+                          "hometown" : {
+                            "uri" : "https://example.com/spxp/emerald.city",
+                            "publicKey" : {
+                              "kid" : "DJlPdI5nMAYjDevc",
+                              "kty" : "OKP",
+                              "crv" : "Ed25519",
+                              "x" : "1B7B4OpoRBA6UvtewqF9cb_P1PiXVpc4f1THHfkzLmY"
+                            }
+                          },
+                          "publicKey" : {
+                            "kid" : "C8xSIBPKRTcXxFix",
+                            "kty" : "OKP",
+                            "crv" : "Ed25519",
+                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
+                          },
+                          "private" : [
+                              "eyJraWQiOiJBQkNELjEyMzQiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..SfT0skkIjzru5ylj.eDnedk0RIWIk6m6YQwwwzeZg7q1GH87HW5wUqKJcWRCNZHgI5hCUmDATDzW_eeUsQp8mkkQ4fpqlrBmX5lwv3vsdmgL4r-18GVhxGhbq6GxtbR8YE2MPTxJUZ3D56QHld8ZkOV5pOu7h5BhO9f2zKNEB2j0xbNEqgr259_T983VEoqqp0Rrze1qgmshMQLkZsUrbHsnDaPsp28bhRb_zMInvhBNfa6M.zYtiVMmo-TC_BhJDGPwoHA"
+                          ],
+                          "signature" : {
+                            "key" : "C8xSIBPKRTcXxFix",
+                            "sig" : "WnRIWY8eoU5qPzWlgYjaT_j5x1MnQKpS2vD-8sC2ScnqEldHcLDnIEwRz1fOkGklq1ojNB4D2tRJVbEBrFB3AA"
+                          }
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <p>Extra data provided by <em>additional endpoints</em>:</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="25-26">
+                        {
+                          "ver" : "0.3",
+                          "name" : "Crypto Alice",
+                          "shortInfo" : "I love cryptography.",
+                          "gender" : "female",
+                          "email" : "cryptoalice@example.com",
+                          "hometown" : {
+                            "uri" : "https://example.com/spxp/emerald.city",
+                            "publicKey" : {
+                              "kid" : "DJlPdI5nMAYjDevc",
+                              "kty" : "OKP",
+                              "crv" : "Ed25519",
+                              "x" : "1B7B4OpoRBA6UvtewqF9cb_P1PiXVpc4f1THHfkzLmY"
+                            }
+                          },
+                          "publicKey" : {
+                            "kid" : "C8xSIBPKRTcXxFix",
+                            "kty" : "OKP",
+                            "crv" : "Ed25519",
+                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
+                          },
+                          "private" : [
+                              "eyJraWQiOiJBQkNELjEyMzQiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..SfT0skkIjzru5ylj.eDnedk0RIWIk6m6YQwwwzeZg7q1GH87HW5wUqKJcWRCNZHgI5hCUmDATDzW_eeUsQp8mkkQ4fpqlrBmX5lwv3vsdmgL4r-18GVhxGhbq6GxtbR8YE2MPTxJUZ3D56QHld8ZkOV5pOu7h5BhO9f2zKNEB2j0xbNEqgr259_T983VEoqqp0Rrze1qgmshMQLkZsUrbHsnDaPsp28bhRb_zMInvhBNfa6M.zYtiVMmo-TC_BhJDGPwoHA"
+                          ],
+                          "friendsEndpoint" : "friends/alice",
+                          "postsEndpoint" : "posts?profile=alice",
+                          "signature" : {
+                            "key" : "C8xSIBPKRTcXxFix",
+                            "sig" : "WnRIWY8eoU5qPzWlgYjaT_j5x1MnQKpS2vD-8sC2ScnqEldHcLDnIEwRz1fOkGklq1ojNB4D2tRJVbEBrFB3AA"
+                          }
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <p>Time series of posts:</p>
+                    <pre style="background-color: #272822; margin-bottom: 0px">curl https://example.com/spxp/posts?profile=alice</pre>
+                    <pre data-id="code-animation" style="margin-top: 0px"><code class="hljs" data-trim data-line-numbers>
+                        {
+                          "data" : [
+                              {
+                                "seqts" : "2018-09-17T14:04:27.373",
+                                "createts" : "2018-09-16T12:23:18.751",
+                                "type" : "text",
+                                "message" : "Hello, world!",
+                                "signature" : {
+                                  "key" : "C8xSIBPKRTcXxFix",
+                                  "sig" : "bDOgcT4uxTKYMTuOJXDbAPc1UA2p-aGdxwplUWNStzyDRIRPu9UxaTU1IoZ1ELjBY5iRf4FEBPV09Uw9TOYuCA"
+                                }
+                              }, {
+                                "seqts" : "2018-09-15T12:35:47.735",
+                                "type" : "web",
+                                "message" : "Interesting read...",
+                                "link" : "https://example.com",
+                                "signature" : {
+                                  "key" : "C8xSIBPKRTcXxFix",
+                                  "sig" : "skQBzttDURV-N4kqK9fgyWw4Ddixsmld4nnilC_XUqSZhXfeNfw_4PrIlLwaFdHDTO-au4iaZM64oSWLP-z0BA"
+                                }
+                              }
+                            ],
+                            "more" : true
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <p>Clients follow profiles and present data based on user preferences:</p>
+                    <img src="assets/img/illustrations/client-follow-profile.svg" >
+                </section>
+                <section data-auto-animate>
+                    <p>Based on rock-solid standards:</p>
+                    <ul>
+                        <li>HTTP (RFC7230 family)</li>
+                        <li>JSON (RFC7519)</li>
+                        <li>JWE (RFC7516)</li>
+                        <li>JWK (RFC7517)</li>
+                        <li>Curve 25519 (RFC7748, RFC8032, RFC8037)</li>
+                    </ul>
+                </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero footer -->
+        <div class="hero-foot">
+            <div class="container">
+                <div class="is-centered" style="text-align: center; vertical-align: middle; font-size: 2em; color:#fff; margin-bottom: 40px;">
+                    <i class="fas fa-1x fa-arrow-down"></i>
+                    &nbsp;&nbsp;WHY&nbsp;&nbsp;
+                    <i class="fas fa-1x fa-arrow-down"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Landing page Hero -->
+
+    <!-- Icon Features section -->
+    <section id="start" class="section is-transparent is-relative">
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper is-medium">
+                <div class="columns">
+                    <!-- Feature -->
+                    <div class="column is-4">
+                        <div class="feature" style="font-size: 3em; color:#fff;">
+                            <div data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <i class="fas fa-2x fa-dove"></i>
+                            </div>
+                            <h4 class="title is-6 is-tight is-light" style="font-size: 1em;">Freedom</h4>
+                            <p><ul style="font-size: 1.3rem; list-style-type: disc; list-style-position: inside; text-align: left;">
+                                <li>Any webserver can host profiles</li>
+                                <li>Freed timeline (no algorithm or bubble)</li>
+                                <li>Fosters diverse ecosystem</li>
+                                <li>Choose your app to see profiles</li>
+                            </ul></p>
+                        </div>
+                    </div>
+                    <!-- Feature -->
+                    <div class="column is-4">
+                        <div class="feature" style="font-size: 3em; color:#fff;">
+                            <div data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <i class="fas fa-2x fa-eye-slash"></i>
+                            </div>
+                            <h4 class="title is-6 is-tight is-light" style="font-size: 1em;">Privacy</h4>
+                            <p><ul style="font-size: 1.3rem; list-style-type: disc; list-style-position: inside; text-align: left;">
+                                <li>Define who sees what</li>
+                                <li>Own your content &amp; data</li>
+                                <li>Private posts end-to-end encrypted</li>
+                                <li>Proven internet security standards</li>
+                            </ul></p>
+                        </div>
+                    </div>
+                    <!-- Feature -->
+                    <div class="column is-4">
+                        <div class="feature" style="font-size: 3em; color:#fff;">
+                            <div data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <i class="fas fa-2x fa-globe-europe"></i>
+                            </div>
+                            <h4 class="title is-6 is-tight is-light" style="font-size: 1em;">Transparency</h4>
+                            <p><ul style="font-size: 1.3rem; list-style-type: disc; list-style-position: inside; text-align: left;">
+                                <li>Open source (Apache license)</li>
+                                <li>Human readable</li>
+                                <li>Welcomes participation</li>
+                                <li>Easy to learn and get started</li>
+                            </ul></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Content wrapper -->
+        </div>
+        <!-- /Container -->
+    </section>
+    <!-- /Icon Features section -->
+
+    <!-- Side Features section -->
+    <section id="big-gradient" class="section is-transparent">
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper is-large">
+                <div class="columns is-vcentered">
+
+                    <!-- Feature content -->
+                    <div class="column is-5 is-offset-1">
+                        <div class="side-feature-content">
+
+                            <h3 class="title is-4 is-light"><span>Privacy</span></h3>
+                            <div class="divider is-long"></div>
+                            <p class="is-light" style="font-size: 1.3rem;">The makers of SPXP believe that privacy is a fundamental human right and the protocol was designed from the ground up to provide end-to-end encryption for all of its aspects. Consequently, if you choose to, every piece of information that's either on storage or in transition through an SPXP server remains completely unreadable for the server as well as third parties.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature image -->
+                    <div class="column is-7">
+                        <img class="side-feature" src="assets/img/illustrations/privacy-app.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                    </div>
+                </div>
+
+                <div class="columns is-vcentered">
+                    <!-- Feature image desktop -->
+                    <div class="column is-7 is-hidden-mobile">
+                        <img class="side-feature" src="assets/img/illustrations/e2e-encryption.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                    </div>
+
+                    <!-- Feature content -->
+                    <div class="column is-5">
+                        <div class="side-feature-content">
+
+                            <h3 class="title is-4 is-light"><span>Strong End-to-end cryptography</span></h3>
+                            <div class="divider is-long"></div>
+                            <p class="is-light" style="font-size: 1.3rem;">Under the hood, SPXP uses an asymmetric keypair to protect your profile. When you create a new profile on your mobile phone, the private key is automatically stored there. However, it is important to understand that your profile's integrity is bound to you (and noone else) posessing its private key. With this respect, an SPXP profile is very similar to a Bitcoin address. So make sure you store your private key in a secure place!</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature image only for mobile -->
+                    <div class="column is-7 is-hidden-desktop is-hidden-tablet">
+                        <img class="side-feature" src="assets/img/illustrations/e2e-encryption.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                    </div>
+                </div>
+
+                <div class="columns is-vcentered">
+                    <!-- Feature content -->
+                    <div class="column is-5 is-offset-1">
+                        <div class="side-feature-content">
+
+                            <h3 class="title is-4 is-light"><span>Open Source - Apache Licensed</span></h3>
+                            <div class="divider is-long"></div>
+                            <p class="is-light" style="font-size: 1.3rem;">SPXP is developed in the open on GitHub. Everybody can see its source code and we welcome participation very much. Do you like to tinker around and manually create your own profile or do you have an improvement suggestion? Head over to GitHub and check out our organization.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature image -->
+                    <div class="column is-7">
+                        <img class="side-feature" src="assets/img/illustrations/ApacheLicensed.png" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                    </div>
+                </div>
+
+                <div class="columns is-vcentered">
+                    <!-- Feature image desktop -->
+                    <div class="column is-7 is-hidden-mobile">
+                        <img class="side-feature" src="assets/img/illustrations/protocol-not-server.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                    </div>
+
+                    <!-- Feature content -->
+                    <div class="column is-5">
+                        <div class="side-feature-content">
+
+                            <h3 class="title is-4 is-light"><span>It's a protocol, not a server!</span></h3>
+                            <div class="divider is-long"></div>
+                            <p class="is-light" style="font-size: 1.3rem;">The network topology of the big social networks of our time typically looks like a star - one big service provider talks to many many clients (e.g. mobile phones). SPXP couldn't be more different. It's a protocol that defines how servers and clients can talk to each other in a way that the resulting communication depicts what we commonly know as a social network. With this regards, it's topoligy is much more similar to a mesh (like the WWW).</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature image only for mobile -->
+                    <div class="column is-7 is-hidden-desktop is-hidden-tablet">
+                        <img class="side-feature" src="assets/img/illustrations/protocol-not-server.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                    </div>
+                </div>
+
+                <div class="columns is-vcentered">
+                    <!-- Feature content -->
+                    <div class="column is-5 is-offset-1">
+                        <div class="side-feature-content">
+
+                            <h3 class="title is-4 is-light"><span>Choose your client (and host)!</span></h3>
+                            <div class="divider is-long"></div>
+                            <p class="is-light" style="font-size: 1.3rem;">Because it's a protocol, there's not the one internet address you need to go to or the one app you need to use. Instead, if you're interested and have some technical skills, you can host profiles yourself or write your own app to view them. This allows for a wide variety of offerings and business models.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature image -->
+                    <div class="column is-7">
+                        <img class="side-feature" src="assets/img/illustrations/chose-your-app.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Content wrapper -->
+
+            <!-- Divider -->
+            <div class="divider is-centered"></div>
+            <!-- Title & subtitle -->
+            <h2 class="title is-light is-semibold has-text-centered is-spaced">Own &quot;the algorithm&quot;</h2>
+            <h4 class="subtitle is-6 is-light has-text-centered is-compact" style="font-size: 1.3rem;">SPXP has the potential to make a real difference when it comes to &quot;the algorithm&quot;. It's the mechanism that suggests content to you and usually tries to make you stay inside a social network for as long as possible. The reasoning is simple: the longer you stay, the more ads you see. To achieve this goal today's &quot;algorithms&quot; tend to show you more and more content similar to what caught your attention in the past. The resulting effect is often that views and believes you already had are amplified as it's getting harder to view differing opinions. Many refer to this as a &quot;bubble&quot; that's surrounding you and distorting your perception of the outside world.</br>
+            The good news is, with SPXP, there is no &quot;one algorithm&quot;. Instead, we're convinced there's going to be a wide variety of clients (apps) that differ - amongst other things - in the way they suggest content to you. Imagine clients that allow you to adjust the parameters of content suggestion. Or if you cannot find a client that suits your needs, go ahead and write your own!</h4>
+
+        </div>
+        <!-- /Container -->
+    </section>
+    <!-- /Side Features section -->
+
+</div>
