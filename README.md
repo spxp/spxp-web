@@ -4,7 +4,7 @@ The website hosted on spxp.org
 This website is built with:
 - The [Krypton](https://github.com/cssninjaStudio/krypton) website template by [CSS Ninjas](https://cssninja.io/) licensed under [MIT](https://github.com/cssninjaStudio/krypton/blob/master/LICENSE)
 - Using [RevealJS](https://github.com/hakimel/reveal.js) licensed under [MIT](https://github.com/hakimel/reveal.js/blob/master/LICENSE)
-- Icons 089-mobile.svg, 101-database.svg and partially 187-list.svg from [IconMoon](https://icomoon.io/)licensed under [CC BY 4.0](https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt)
+- Icons 089-mobile.svg, 101-database.svg and partially 187-list.svg from [IconMoon](https://icomoon.io/) licensed under [CC BY 4.0](https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt)
 
 ### Building and Development
 You need node, npm and gulp. Then:
