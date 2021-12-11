@@ -1,0 +1,95 @@
+{
+    "data": [
+        {
+            "seqts": "2021-12-11T12:00:00.000",
+            "type": "text",
+            "message": "Running some last tests with the new protocol features. You will soon see PRs on GH for relocations, publishing, comments and reactions!"
+        },
+        {
+            "seqts": "2021-12-02T12:00:00.000",
+            "type": "text",
+            "message": "Now that we have a mechanism in place to contribute posts to peer profiles, we can build upon this process to allow comments and reactions. This is the most requested feature missing in SPXP."
+        },
+        {
+            "seqts": "2021-11-13T12:00:00.000",
+            "type": "text",
+            "message": "After we found a viable solution for profile relocations, we now started the work on the publishing endpoint. Version 0.3 of the protocol already specifies signing certificates and allows posts to be authored by a different profile. But this version of the spec did not define how these are exchanged during the connection process and howe the peer profile can contribute these posts to the profile server."
+        },
+        {
+            "seqts": "2021-10-16T12:00:00.000",
+            "type": "text",
+            "message": "We picked up work again on the features that did not make it in version 0.3. First candidate: Profile Relocations.\nAlthough users can pick any service provider of their choice, or even host profiles themselves, there is still the risk of a lock-in effect. You can observe this with email addresses for example. Once you started using a mail account, it is almost impossible to switch to a different provider. We started this protocol with full profile portability in mind. This is the reason why this protocol choses the profile key over the profile URI. We are now going to present a mechanism how profiles can seamlessly move from one profile URI to another without disruption."
+        },
+        {
+            "seqts": "2021-04-17T21:30:00.000",
+            "type": "text",
+            "message": "Today has been release day!\n\nWe officially release version 0.3 of the spxp-crypto libraries, including native builds of the commandline tools for Linux, Windows and Mac. This makes it a lot easier - and more performant - to create and manage SPXP profiles on the command line.\n\nAdditionally, we made the testbed generator available under the Apache license as well!"
+        },
+        {
+            "seqts": "2020-12-29T11:12:00.000",
+            "type": "text",
+            "message": "We continue to make all resources available by opening our GitHub repo containing the spxp.org website to the public"
+        },
+        {
+            "seqts": "2020-12-14T10:30:00.000",
+            "type": "text",
+            "message": "Our new website is finally live"
+        },
+        {
+            "seqts": "2020-12-11T17:00:00.000",
+            "type": "text",
+            "message": "One day after the official spec, we also make the Java reference implementation of the cryptographic operations in the protocol available under the Apache license as well. You can find the source in it's own repo in our GitHub org"
+        },
+        {
+            "seqts": "2020-12-10T19:00:00.000",
+            "type": "text",
+            "message": "Finally! We just made our GitHub repo public and revealed version 0.3 of SPXP to the world."
+        },
+        {
+            "seqts": "2020-12-08T21:30:00.000",
+            "type": "text",
+            "message": "Preparing the SPXP spec to go live soon. Proof reading, correcting typos, polishing, ..."
+        },
+        {
+            "seqts": "2020-12-01T20:12:00.000",
+            "type": "text",
+            "message": "Decided today to remove DNS bound profile keys from the first public version of the spec. This requires more thought and investigation."
+        },
+        {
+            "seqts": "2020-10-04T19:20:00.000",
+            "type": "text",
+            "message": "Started a new \"Service Provider Extension\" spec today."
+        },
+        {
+            "seqts": "2020-09-06T17:15:00.000",
+            "type": "text",
+            "message": "Started the work on the \"Profile Management Extension\" spec today."
+        },
+        {
+            "seqts": "2020-09-04T17:15:00.000",
+            "type": "text",
+            "message": "Continue to focus on the stable core parts of the protocol and removed the publishing endpoint as well. We will add it back in a later version of the protocol, probably in version 0.4"
+        },
+        {
+            "seqts": "2020-09-04T17:15:00.000",
+            "type": "text",
+            "message": "Continue to focus on the stable core parts of the protocol and removed the publishing endpoint as well. We will add it back in a later version of the protocol, probably in version 0.4"
+        },
+        {
+            "seqts": "2020-06-13T12:30:00.000",
+            "type": "text",
+            "message": "Decided to focus on a \"Minimum Viable Protocol\" and started to remove non-estential parts. This will enable as to release a stable version sooner. Removed comments from version 0.3 as this will require additional reserarch and work."
+        },
+        {
+            "seqts": "2020-03-29T18:30:00.000",
+            "type": "text",
+            "message": "Started the work on protocol version 0.3 now on GitHub to enable a better collaboration."
+        },
+        {
+            "seqts": "2020-02-20T20:10:00.000",
+            "type": "text",
+            "message": "After discussing this idea for a while and playing around with some concepts, we just registered a org on GitHub to work on this new protocol. In the spirit of SPXP, I will try to keep you updated on our work with a SPXP compliant profile."
+        }
+    ],
+    "more": false
+}

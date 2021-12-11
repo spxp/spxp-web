@@ -1,0 +1,9 @@
+{
+    "ver": "0.3",
+    "name": "SPXP.org",
+    "shortInfo": "Social Profile Exchange Protocol",
+    "about": "A Specification defining how independent clients and servers can exchange information about social profiles, focusing on privacy, security and individual sovereignty.",
+    "website": "https://spxp.org",
+    "profilePhoto": "spxp-profile-logo.png",
+    "postsEndpoint": "spxp-posts"
+}
