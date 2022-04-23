@@ -35,7 +35,8 @@ jobs:
       - name: Upload to webserver
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-          ftp-server: sftp://home11857449.1and1-data.host:22  
-          ftp-username: u6213940-spxporg
+          ftp-server: ${{ secrets.FTP_SERVER }}  
+          ftp-username: ${{ secrets.FTP_USERNAME }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
+          git-ftp-args: --insecure
