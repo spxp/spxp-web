@@ -33,13 +33,9 @@ jobs:
            github_token: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Upload from dist via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        uses: airvzxf/ftp-deployment-action@latest
         with:
-          server: sftp://home11857449.1and1-data.host:22  
-          username: u6213940-spxporg
+          server: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: "./dist/"
-          
-                   
-          
-    
+          local_dir: "./dist/"
