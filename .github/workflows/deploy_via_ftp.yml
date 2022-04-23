@@ -1,7 +1,7 @@
 name: Deploy on push to master
 on:
   push:
-    branches: master
+    branches: [ master ]
 jobs:
   web-deploy:
     name: Deploy
@@ -23,8 +23,8 @@ jobs:
       - name: Commit files
         id: commit
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@spxp.org"
+          git config --local user.name "spxp-org"
           git add --all
           if [-z "$(git status --porcelain)"]; then
              echo "::set-output name=push::false"
