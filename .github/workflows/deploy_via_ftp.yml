@@ -25,8 +25,10 @@ jobs:
         run: |
           git config --local user.email "github-actions@spxp.org"
           git config --local user.name "spxp-org"
-          git add --all
-          git commit -m "Add changes" -a
+          git status
+          git add .
+          git commit -m "Add changes"
+          git status
              
       - name: Push changes
         uses: ad-m/github-push-action@master
