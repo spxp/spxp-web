@@ -4,18 +4,18 @@ on:
     branches: [ master ]
 jobs:
   web-deploy:
-    name: Deploy
+    name: Deploy to webserver
     runs-on: ubuntu-latest
     steps:
       - name: Get latest code
         uses: actions/checkout@v3
 
-      - name: Use Node.js 14
+      - name: Setup Node.js 14
         uses: actions/setup-node@v3
         with:
           node-version: '14'
           
-      - name: Build Project
+      - name: Build project
         run: |
           npm install
           gulp build
@@ -32,10 +32,10 @@ jobs:
         with:
            github_token: ${{ secrets.GITHUB_TOKEN }}
         
-      - name: Upload from dist via FTP
-        uses: airvzxf/ftp-deployment-action@latest
+      - name: Upload to webserver
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
+          server: sftp://home11857449.1and1-data.host:22  
+          username: u6213940-spxporg
           password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "./dist/"
+          local-dir: "./dist/"
