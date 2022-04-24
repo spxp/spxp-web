@@ -19,24 +19,13 @@ jobs:
         run: |
           npm install
           gulp build
-
-      - name: Commit files
-        run: |
-          git config --local user.email "github-actions@spxp.org"
-          git config --local user.name "spxp-org"
-          git status
-          ls -la ./dist/
              
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
-        
       - name: Upload to webserver
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        uses: AbleLincoln/push-to-sftp@v1.0
         with:
-          ftp-server: ${{ secrets.FTP_SERVER }}  
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          host: ${{ secrets.FTP_SERVER }}
+          port: 22
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          git-ftp-args: --insecure
+          server-dir: ./
