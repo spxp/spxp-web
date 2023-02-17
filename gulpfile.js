@@ -23,6 +23,7 @@ const newer = require('gulp-newer');
 const autoprefixer = require('gulp-autoprefixer');
 const accessibility = require('gulp-accessibility');
 const babel = require('gulp-babel');
+const sass = require('gulp-sass')(require('sass'));
 const nodepath = 'node_modules/';
 const assetspath = 'assets/';
 
