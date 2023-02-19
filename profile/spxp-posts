@@ -13,7 +13,7 @@
         {
             "seqts": "2022-05-06T12:00:00.000",
             "type": "text",
-            "message": "It's decided! We started working on an ActivityPub bridge for SPXP today! Goal is to create an SPXP profile for every ActivityPub profiles out there on the fly. Ths allows clients like the HeyFolk App to instantly view Mastodon profiles for example! We're excited!"
+            "message": "It's decided! We started working on an ActivityPub bridge for SPXP today! Goal is to create an SPXP profile for every ActivityPub profile out there on the fly. This allows clients like the HeyFolk App to instantly view for example Mastodon profiles and their posts! We're excited!"
         },
         {
             "seqts": "2022-04-08T12:00:00.000",
