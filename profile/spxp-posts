@@ -13,7 +13,7 @@
         {
             "seqts": "2021-11-13T12:00:00.000",
             "type": "text",
-            "message": "After we found a viable solution for profile relocations, we now started the work on the publishing endpoint. Version 0.3 of the protocol already specifies signing certificates and allows posts to be authored by a different profile. But this version of the spec did not define how these are exchanged during the connection process and howe the peer profile can contribute these posts to the profile server."
+            "message": "After we found a viable solution for profile relocations, we now started the work on the publishing endpoint. Version 0.3 of the protocol already specifies signing certificates and allows posts to be authored by a different profile. But this version of the spec did not define how these are exchanged during the connection process and how the peer profile can contribute these posts to the profile server."
         },
         {
             "seqts": "2021-10-16T12:00:00.000",
@@ -23,27 +23,27 @@
         {
             "seqts": "2021-04-17T21:30:00.000",
             "type": "text",
-            "message": "Today has been release day!\n\nWe officially release version 0.3 of the spxp-crypto libraries, including native builds of the commandline tools for Linux, Windows and Mac. This makes it a lot easier - and more performant - to create and manage SPXP profiles on the command line.\n\nAdditionally, we made the testbed generator available under the Apache license as well!"
+            "message": "Today has been release day!\n\nWe officially release version 0.3 of the spxp-crypto libraries (https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk), including native builds of the commandline tools for Linux, Windows and Mac (https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-tools). This makes it a lot easier - and more performant - to create and manage SPXP profiles on the command line.\n\nAdditionally, we made the testbed generator available under the Apache license as well (https://github.com/spxp/spxp-crypto/blob/master/spxp-crypto-tools/ExploreTestbedProfiles.md)!"
         },
         {
             "seqts": "2020-12-29T11:12:00.000",
             "type": "text",
-            "message": "We continue to make all resources available by opening our GitHub repo containing the spxp.org website to the public"
+            "message": "We continue to make all resources available by opening up our GitHub repo containing the spxp.org website to the public."
         },
         {
             "seqts": "2020-12-14T10:30:00.000",
             "type": "text",
-            "message": "Our new website is finally live"
+            "message": "Our new website is finally live! https://spxp.org"
         },
         {
             "seqts": "2020-12-11T17:00:00.000",
             "type": "text",
-            "message": "One day after the official spec, we also make the Java reference implementation of the cryptographic operations in the protocol available under the Apache license as well. You can find the source in it's own repo in our GitHub org"
+            "message": "One day after the official spec, we also make the Java reference implementation of the cryptographic operations in the protocol available under the Apache license as well. You can find the source in it's own repo in our GitHub org: https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk-V02"
         },
         {
             "seqts": "2020-12-10T19:00:00.000",
             "type": "text",
-            "message": "Finally! We just made our GitHub repo public and revealed version 0.3 of SPXP to the world."
+            "message": "Finally! We just made our GitHub repo public and revealed version 0.3 of SPXP to the world! \o/"
         },
         {
             "seqts": "2020-12-08T21:30:00.000",
@@ -71,24 +71,19 @@
             "message": "Continue to focus on the stable core parts of the protocol and removed the publishing endpoint as well. We will add it back in a later version of the protocol, probably in version 0.4"
         },
         {
-            "seqts": "2020-09-04T17:15:00.000",
-            "type": "text",
-            "message": "Continue to focus on the stable core parts of the protocol and removed the publishing endpoint as well. We will add it back in a later version of the protocol, probably in version 0.4"
-        },
-        {
             "seqts": "2020-06-13T12:30:00.000",
             "type": "text",
-            "message": "Decided to focus on a \"Minimum Viable Protocol\" and started to remove non-estential parts. This will enable as to release a stable version sooner. Removed comments from version 0.3 as this will require additional reserarch and work."
+            "message": "Decided to focus on a \"Minimum Viable Protocol\" and started to remove non-essential parts. This will enable us to release a stable version sooner. Removed comments from version 0.3 as this will require additional research and work."
         },
         {
             "seqts": "2020-03-29T18:30:00.000",
             "type": "text",
-            "message": "Started the work on protocol version 0.3 now on GitHub to enable a better collaboration."
+            "message": "Started the work on protocol version 0.3 now on GitHub to allow for better collaboration."
         },
         {
             "seqts": "2020-02-20T20:10:00.000",
             "type": "text",
-            "message": "After discussing this idea for a while and playing around with some concepts, we just registered a org on GitHub to work on this new protocol. In the spirit of SPXP, I will try to keep you updated on our work with a SPXP compliant profile."
+            "message": "After discussing this idea for a while and playing around with some concepts, we just registered an org on GitHub to work on this new protocol. In the spirit of SPXP, we will try to keep you updated on our work with an SPXP compliant profile! ;-)"
         }
     ],
     "more": false
