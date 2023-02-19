@@ -1,6 +1,31 @@
 {
     "data": [
         {
+            "seqts": "2022-05-19T12:00:00.000",
+            "type": "text",
+            "message": "We're super proud to announce that v0.1 of the ActivityPub bridge got released today. It's available at https://bridge.spxp.org. To view the SPXP profile of - say - a Mastodon account, just add the following prefix to the Mastodon account: \"https://bridge.spxp.org/ap/\" and open the resulting URL in your browser or with the HeyFolks App."
+        },
+        {
+            "seqts": "2022-05-11T12:00:00.000",
+            "type": "text",
+            "message": "Happy to report that we're making progress with the ActivityPub bridge. We can read profiles so far and are currently working on adding profiles a profile is following to the \"friends\" endpoint in SPXP."
+        },
+        {
+            "seqts": "2022-05-06T12:00:00.000",
+            "type": "text",
+            "message": "It's decided! We started working on an ActivityPub bridge for SPXP today! Goal is to create an SPXP profile for every ActivityPub profiles out there on the fly. Ths allows clients like the HeyFolk App to instantly view Mastodon profiles for example! We're excited!"
+        },
+        {
+            "seqts": "2022-04-08T12:00:00.000",
+            "type": "text",
+            "message": "You can find an introduction to the HeyFolks App on YouTube now! Please have a look here: https://www.youtube.com/watch?v=kDv0rW8uEwA\nThe video shows how to follow others, setup a profile setup, publishing posts, connecting profiles, migrating profiles to another provider, and an example for a business case."
+        },
+        {
+            "seqts": "2022-04-07T12:00:00.000",
+            "type": "text",
+            "message": "We published a technical introduction to SPXP on YouTube! Please have a look: https://www.youtube.com/watch?v=C0S0Oa4G1M4\nAmongst others, it covers the following topics: e2e encryption, key wrapping, connecting profiles, signing certificates, libs & dev tools, the WordPress plugin, as well as the bash CLI."
+        },
+        {
             "seqts": "2021-12-11T12:00:00.000",
             "type": "text",
             "message": "Running some last tests with the new protocol features. You will soon see PRs on GH for relocations, publishing, comments and reactions!"
