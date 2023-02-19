@@ -211,6 +211,16 @@ function copyReveal() {
     .pipe(browserSync.stream());
 }
 
+// PLACES SPXP PROFILE FILES IN THE DIST FOLDER
+function copySPXPProfile() {
+  console.log('---------------COPYING SPXP PROFIlE INTO DIST FOLDER---------------');
+  return src([
+    'src/profile/**/*',
+  ])
+    .pipe(dest('dist'))
+    .pipe(browserSync.stream());
+}
+
 // CONCATENATE JS PLUGINS
 function concatPlugins() {
   console.log('---------------CONCATENATE JS PLUGINS---------------');
@@ -319,9 +329,9 @@ exports.accessibility = HTMLAccessibility;
 exports.setup = series(setupBulma);
 
 // DEV
-exports.dev = series(cleanDist, copyFont, copyData, copyReveal, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copyFont, copyData, copyReveal, copySPXPProfile, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
 
 // BUILD
-exports.build = series(cleanDist, copyFont, copyData, copyReveal, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS);
+exports.build = series(cleanDist, copyFont, copyData, copyReveal, copySPXPProfile, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS);
 
 
