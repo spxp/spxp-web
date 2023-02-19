@@ -213,9 +213,9 @@ function copyReveal() {
 
 // PLACES SPXP PROFILE FILES IN THE DIST FOLDER
 function copySPXPProfile() {
-  console.log('---------------COPYING SPXP PROFIlE INTO DIST FOLDER---------------');
+  console.log('---------------COPYING SPXP PROFILE INTO DIST FOLDER---------------');
   return src([
-    'src/profile/**/*',
+    'profile/**/*',
   ])
     .pipe(dest('dist'))
     .pipe(browserSync.stream());
