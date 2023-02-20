@@ -22,7 +22,8 @@
         },
         {
             "seqts": "2022-05-19T12:00:00.000",
-            "type": "text",
+            "link": "https://bridge.spxp.org",
+            "type": "web",
             "message": "We're super proud to announce that v0.1 of the ActivityPub bridge got released today. It's available at https://bridge.spxp.org. To view the SPXP profile of - say - a Mastodon account, just add the following prefix to the Mastodon account: \"https://bridge.spxp.org/ap/\" and open the resulting URL in your browser or with the HeyFolks App."
         },
         {
@@ -62,14 +63,14 @@
         },
         {
             "seqts": "2022-04-08T12:00:00.000",
-            "type": "web",
             "link": "https://www.youtube.com/watch?v=kDv0rW8uEwA",
+            "type": "web",
             "message": "You can find an introduction to the HeyFolks App on YouTube now!\nThe video shows how to follow others, setup a profile setup, publishing posts, connecting profiles, migrating profiles to another provider, and an example for a business case."
         },
         {
             "seqts": "2022-04-07T12:00:00.000",
-            "type": "web",
             "link": "https://www.youtube.com/watch?v=C0S0Oa4G1M4",
+            "type": "web",
             "message": "We published a technical introduction to SPXP on YouTube!\nAmongst others, it covers the following topics: e2e encryption, key wrapping, connecting profiles, signing certificates, libs & dev tools, the WordPress plugin, as well as the bash CLI."
         },
         {
@@ -94,8 +95,9 @@
         },
         {
             "seqts": "2021-04-17T21:30:00.000",
-            "type": "text",
-            "message": "Today has been release day!\n\nWe officially release version 0.3 of the spxp-crypto libraries (https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk), including native builds of the commandline tools for Linux, Windows and Mac (https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-tools). This makes it a lot easier - and more performant - to create and manage SPXP profiles on the command line.\n\nAdditionally, we made the testbed generator available under the Apache license as well (https://github.com/spxp/spxp-crypto/blob/master/spxp-crypto-tools/ExploreTestbedProfiles.md)!"
+            "link": "https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk",
+            "type": "web",
+            "message": "Today has been release day!\n\nWe officially release version 0.3 of the spxp-crypto libraries, including native builds of the commandline tools for Linux, Windows and Mac (/spxp-crypto-tools). This makes it a lot easier - and more performant - to create and manage SPXP profiles on the command line.\n\nAdditionally, we made the testbed generator available under the Apache license as well (/spxp-crypto-tools/ExploreTestbedProfiles.md)!"
         },
         {
             "seqts": "2020-12-29T11:12:00.000",
@@ -104,12 +106,14 @@
         },
         {
             "seqts": "2020-12-14T10:30:00.000",
-            "type": "text",
-            "message": "Our new website is finally live! https://spxp.org"
+            "link": "https://spxp.org",
+            "type": "web",
+            "message": "Our new website is finally live!"
         },
         {
             "seqts": "2020-12-11T17:00:00.000",
-            "type": "text",
+            "link": "https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk-V02",
+            "type": "web",
             "message": "One day after the official spec, we also make the Java reference implementation of the cryptographic operations in the protocol available under the Apache license as well. You can find the source in it's own repo in our GitHub org: https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk-V02"
         },
         {
