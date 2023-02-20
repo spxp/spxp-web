@@ -17,13 +17,15 @@
         },
         {
             "seqts": "2022-04-08T12:00:00.000",
-            "type": "text",
-            "message": "You can find an introduction to the HeyFolks App on YouTube now! Please have a look here: https://www.youtube.com/watch?v=kDv0rW8uEwA\nThe video shows how to follow others, setup a profile setup, publishing posts, connecting profiles, migrating profiles to another provider, and an example for a business case."
+            "type": "web",
+            "link": "https://www.youtube.com/watch?v=kDv0rW8uEwA",
+            "message": "You can find an introduction to the HeyFolks App on YouTube now!\nThe video shows how to follow others, setup a profile setup, publishing posts, connecting profiles, migrating profiles to another provider, and an example for a business case."
         },
         {
             "seqts": "2022-04-07T12:00:00.000",
-            "type": "text",
-            "message": "We published a technical introduction to SPXP on YouTube! Please have a look: https://www.youtube.com/watch?v=C0S0Oa4G1M4\nAmongst others, it covers the following topics: e2e encryption, key wrapping, connecting profiles, signing certificates, libs & dev tools, the WordPress plugin, as well as the bash CLI."
+            "type": "web",
+            "link": "https://www.youtube.com/watch?v=C0S0Oa4G1M4",
+            "message": "We published a technical introduction to SPXP on YouTube!\nAmongst others, it covers the following topics: e2e encryption, key wrapping, connecting profiles, signing certificates, libs & dev tools, the WordPress plugin, as well as the bash CLI."
         },
         {
             "seqts": "2021-12-11T12:00:00.000",
