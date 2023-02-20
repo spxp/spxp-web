@@ -1,6 +1,26 @@
 {
     "data": [
         {
+            "seqts": "2022-10-22T12:00:00.000",
+            "type": "text",
+            "message": "Turned out that supporting other ActivityPub software is a lot harder than we initially expected. There are suttle but signficant differences between these software projects requiring us to test and adopt the code for almost all projects."
+        },
+        {
+            "seqts": "2022-10-17T12:00:00.000",
+            "type": "text",
+            "message": "Making good progress on the definition of services. There is already a proof of concept implemented for iOS. We now need to counter check against Android as well to make sure we have a true cross platform approach."
+        },
+        {
+            "seqts": "2022-09-22T12:00:00.000",
+            "type": "text",
+            "message": "We started this protocol under the premise that there is much more potential in social networks than is harvested by todays advertisement driven business models.\nToday, we take our first step in exploring this potential with our work on services.\nIn a nutshell, a service will be a website running in an in-app browser which will have access to additional JavaScript APIs."
+        },
+        {
+            "seqts": "2022-07-23T12:00:00.000",
+            "type": "text",
+            "message": "The ActivityPub bridge is now able to fully handle Mastodon instances. It's time now to look at other AP software like Pleroma, Pixelfed or Misskey."
+        },
+        {
             "seqts": "2022-05-19T12:00:00.000",
             "type": "text",
             "message": "We're super proud to announce that v0.1 of the ActivityPub bridge got released today. It's available at https://bridge.spxp.org. To view the SPXP profile of - say - a Mastodon account, just add the following prefix to the Mastodon account: \"https://bridge.spxp.org/ap/\" and open the resulting URL in your browser or with the HeyFolks App."
@@ -8,12 +28,37 @@
         {
             "seqts": "2022-05-11T12:00:00.000",
             "type": "text",
-            "message": "Happy to report that we're making progress with the ActivityPub bridge. We can read profiles so far and are currently working on adding profiles a profile is following to the \"friends\" endpoint in SPXP."
+            "message": "Happy to report that we're making good progress with the ActivityPub bridge. We can read profiles so far and are currently working on adding profiles a profile is following to the \"friends\" endpoint in SPXP."
+        },
+        {
+            "seqts": "2022-05-09T12:00:00.000",
+            "type": "text",
+            "message": "The bridge to ActivityPub is now supporting Posts as well."
+        },
+        {
+            "seqts": "2022-05-08T12:00:00.000",
+            "type": "text",
+            "message": "We are constantly running into rate limits, even if the bridge is only used by a single client. Adding a cache to the bridge now to reduce the pressure this bridge puts on ActivityPub instances."
         },
         {
             "seqts": "2022-05-06T12:00:00.000",
             "type": "text",
-            "message": "It's decided! We started working on an ActivityPub bridge for SPXP today! Goal is to create an SPXP profile for every ActivityPub profile out there on the fly. This allows clients like the HeyFolk App to instantly view for example Mastodon profiles and their posts! We're excited!"
+            "message": "Just pushed the initial version of the Bridge to GitHub. Very basic yet, but it can already translate profiles."
+        },
+        {
+            "seqts": "2022-04-29T12:00:00.000",
+            "type": "text",
+            "message": "Turned out that ActivityPub is not really friendly to map to an object oriented language. But we made the basics work, and can already read Mastodon profiles."
+        },
+        {
+            "seqts": "2022-04-23T12:00:00.000",
+            "type": "text",
+            "message": "After playing with some ActivityPub libraries for Java, I realised that we will need to implement our own for this bridge."
+        },
+        {
+            "seqts": "2022-04-09T12:00:00.000",
+            "type": "text",
+            "message": "Since I first looked at ActivityPub, I was considering a bridge between both protocols. Will start looking at this in more detail now."
         },
         {
             "seqts": "2022-04-08T12:00:00.000",
