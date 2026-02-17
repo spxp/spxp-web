@@ -3,25 +3,21 @@ const {src, dest, watch, series, parallel } = require('gulp');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
 const browserSync = require('browser-sync').create();
-const sass = require('gulp-sass');
-const bourbon = require('node-bourbon').includePaths;
+const gulpSass = require('gulp-sass');
+const dartSass = require('sass');
+const sass = gulpSass(dartSass);
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const del = require('del');
 const panini = require('panini');
 const uglify = require('gulp-uglify-es').default;
 const sourcemaps = require('gulp-sourcemaps');
-const imagemin = require('gulp-imagemin');
-const removeCode = require('gulp-remove-code');
-const removeLog = require('gulp-remove-logging');
+// const removeCode = require('gulp-remove-code');
+// const removeLog = require('gulp-remove-logging');
 const prettyHtml = require('gulp-pretty-html');
-const sassLint = require('gulp-sass-lint');
-const htmllint = require('gulp-htmllint');
-const jshint = require('gulp-jshint');
 const htmlreplace = require('gulp-html-replace');
 const newer = require('gulp-newer');
 const autoprefixer = require('gulp-autoprefixer');
-const accessibility = require('gulp-accessibility');
 const babel = require('gulp-babel');
 const nodepath = 'node_modules/';
 const assetspath = 'assets/';
@@ -47,12 +43,9 @@ function compileSASS() {
   console.log('---------------COMPILING BULMA SASS---------------');
   return src(['src/assets/sass/bulma.sass'])
     .pipe(sass({
-      outputStyle: 'compressed',
-      sourceComments: 'map',
-      sourceMap: 'sass',
-      includePaths: bourbon
+      outputStyle: 'compressed'
     }).on('error', sass.logError))
-    .pipe(autoprefixer('last 2 versions'))
+    .pipe(autoprefixer())
     .pipe(dest('dist/assets/css'))
     .pipe(browserSync.stream());
 }
@@ -62,12 +55,9 @@ function compileSCSS() {
   console.log('---------------COMPILING SCSS---------------');
   return src(['src/assets/scss/core.scss'])
     .pipe(sass({
-      outputStyle: 'compressed',
-      sourceComments: 'map',
-      sourceMap: 'scss',
-      includePaths: bourbon
+      outputStyle: 'compressed'
     }).on('error', sass.logError))
-    .pipe(autoprefixer('last 2 versions'))
+    .pipe(autoprefixer())
     .pipe(dest('dist/assets/css'))
     .pipe(browserSync.stream());
 }
@@ -80,10 +70,6 @@ function compileHTML() {
     .pipe(panini({
       root: 'src/pages/',
       layouts: 'src/layouts/',
-          /*pageLayouts: {
-            //All pages inside src/pages/blog will use the blog.html layout
-            'blog': 'blog'
-          }*/
       partials: 'src/partials/',
       helpers: 'src/helpers/',
       data: 'src/data/'
@@ -114,42 +100,6 @@ function resetPages(done) {
   done();
 }
 
-// SASS LINT
-function scssLint() {
-  console.log('---------------SASS LINTING---------------');
-  return src('src/assets/scss/**/*.scss')
-    .pipe(sassLint({
-      configFile: '.scss-lint.yml'
-    }))
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError());
-}
-
-// HTML LINTER
-function htmlLint() {
-  console.log('---------------HTML LINTING---------------');
-  return src('dist/*.html')
-    .pipe(htmllint({}, htmllintReporter));
-}
-
-function htmllintReporter(filepath, issues) {
-  if (issues.length > 0) {
-    issues.forEach(function (issue) {
-      log(colors.cyan('[gulp-htmllint] ') + colors.white(filepath + ' [' + issue.line + ']: ') + colors.red('(' + issue.code + ') ' + issue.msg));
-    });
-    process.exitCode = 1;
-  } else {
-    console.log('---------------NO HTML LINT ERROR---------------');
-  }
-}
-
-// JS LINTER
-function jsLint() {
-  return src('src/assets/js/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-}
-
 // WATCH FILES
 function watchFiles() {
   watch('src/**/*.html', compileHTML);
@@ -175,7 +125,6 @@ function copyImages() {
   console.log('---------------OPTIMIZING IMAGES---------------');
   return src('src/assets/img/**/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(newer('dist/assets/img/'))
-    //.pipe(imagemin())
     .pipe(dest('dist/assets/img/'))
     .pipe(browserSync.stream());
 }
@@ -227,15 +176,6 @@ function concatPlugins() {
   return src([
     nodepath + 'jquery/dist/jquery.min.js',
     nodepath + 'feather-icons/dist/feather.min.js',
-    nodepath + 'slick-carousel/slick/slick.min.js',
-    nodepath + 'scrollreveal/dist/scrollreveal.min.js',
-    nodepath + 'waypoints/lib/jquery.waypoints.min.js',
-    nodepath + 'waypoints/lib/shortcuts/sticky.min.js',
-    nodepath + 'jquery.counterup/jquery.counterup.min.js',
-    nodepath + 'feather-icons/dist/feather.min.js',
-    nodepath + 'modal-video/js/modal-video.min.js',
-    nodepath + 'jquery.easing/jquery.easing.min.js',
-    nodepath + 'modal-video/js/jquery-modal-video.min.js',
     nodepath + 'aos/dist/aos.js',
     //Additional static js assets
     'src/assets/vendor/js/**/*.js',
@@ -252,7 +192,6 @@ function concatCssPlugins() {
   console.log('---------------CONCATENATE CSS PLUGINS---------------');
   return src([
     nodepath + 'aos/dist/aos.css',
-    nodepath + 'modal-video/css/modal-video.min.css',
     //Additional static css assets
     'src/assets/vendor/css/**/*.css',
   ])
@@ -303,28 +242,6 @@ function cleanDist(done) {
   return done();
 }
 
-// ACCESSIBILITY CHECK
-function HTMLAccessibility() {
-  return src('dist/*.html')
-    .pipe(accessibility({
-      force: true
-    }))
-    .on('error', console.log)
-    .pipe(accessibility.report({
-      reportType: 'txt'
-    }))
-    .pipe(rename({
-      extname: '.txt'
-    }))
-    .pipe(dest('accessibility-reports'));
-}
-
-// RUN ALL LINTERS
-exports.linters = series(htmlLint, scssLint, jsLint);
-
-// RUN ACCESSIILITY CHECK
-exports.accessibility = HTMLAccessibility;
-
 //SETUP
 exports.setup = series(setupBulma);
 
@@ -334,4 +251,5 @@ exports.dev = series(cleanDist, copyFont, copyData, copyReveal, copySPXPProfile,
 // BUILD
 exports.build = series(cleanDist, copyFont, copyData, copyReveal, copySPXPProfile, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS);
 
-
+// Default task
+exports.default = exports.dev;
