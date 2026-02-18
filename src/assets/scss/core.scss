@@ -30,8 +30,8 @@ TABLE OF CONTENTS
 @import 'layout/pageloader';
 @import 'layout/responsive';
 
-$slick-font-path: "/assets/fonts/";
-$slick-loader-path: "/assets/fonts/";
-
-@import "../../../node_modules/slick-carousel/slick/slick.scss";
-@import "../../../node_modules/slick-carousel/slick/slick-theme.scss";
+// Slick carousel removed - not needed for current design
+// $slick-font-path: "/assets/fonts/";
+// $slick-loader-path: "/assets/fonts/";
+// @import "../../../node_modules/slick-carousel/slick/slick.scss";
+// @import "../../../node_modules/slick-carousel/slick/slick-theme.scss";

@@ -8,17 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get latest code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js 14
-        uses: actions/setup-node@v3
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '20'
           
       - name: Build project
         run: |
           npm install
-          gulp build
+          npx gulp build
              
       - name: Upload to webserver
         uses: Creepios/sftp-action@v1.0.3
