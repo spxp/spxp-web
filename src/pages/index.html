@@ -1,547 +1,484 @@
 ---
-layout: start
+layout: modern
 title: Home
 ---
 
-<div class="dark-wrapper">
-    <!-- Landing page Hero -->
-    <section class="hero is-fullheight is-transparent">
-        <div class="hero-head">
-
-            <!-- Cloned navbar -->
-            {{> navbar-clone}}
-
-            <!-- Static navbar -->
-            {{> navbar}}
-
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 text-xl font-semibold">
+                <span class="text-2xl">🔐</span>
+                <span>SPXP</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#why" class="text-gray-400 hover:text-white transition">Why SPXP</a>
+                <a href="#how" class="text-gray-400 hover:text-white transition">How It Works</a>
+                <a href="#start" class="text-gray-400 hover:text-white transition">Get Started</a>
+                <a href="#ecosystem" class="text-gray-400 hover:text-white transition">Ecosystem</a>
+                <a href="https://github.com/spxp/spxp-specs" target="_blank" class="text-gray-400 hover:text-white transition flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
         </div>
+    </div>
+</nav>
 
-        <!-- Animated particles -->
-        <div id="particles-js"></div>
-
-        <!-- Hero Image and Title -->
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-vcentered">
-
-                    <!-- Landing page Title -->
-                    <div class="column is-5 landing-caption">
-                        <h1 class="title is-1 is-light is-semibold is-spaced main-title">Social Profile<br/>Exchange Protocol</h1>
-                        <h2 class="subtitle is-6 is-light is-thin">
-                            A Specification defining how independent clients and servers can exchange information about social profiles, focusing on privacy, security and individual sovereignty.
-                        </h2>
-                        <!-- CTA -->
-                        <p>
-                            <div class="container">
-                                <div class="columns is-vcentered">
-                                    <div class="column">
-                                        <a href="https://github.com/spxp/spxp-specs/blob/master/Quickstart.md" target="_blank" class="button k-button k-primary is-fat is-bold">
-                                            <h2 class="title is-light is-semibold has-text-centered has-text-grey-darker is-spaced">Quickstart</h2>
-                                        </a>
-                                    </div>
-                                    <div class="column is-hidden-mobile" style="text-align: right; vertical-align: middle; font-size: 2em; color:#fff;">
-                                        HOW&nbsp;&nbsp;<i class="fas fa-1x fa-arrow-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </p>
-
-                    </div>
-                    <!-- Hero image -->
-                    <div class="column is-7">
-                        <!-- presentation size: 700px,448px at 14px font size = 50em,32.1429em-->
-                        <div class="reveal-viewport" style="width: 100%; padding-top: 60%; box-sizing: border-box;">
-                        <!--<div class="reveal-viewport">-->
-                            <div class="reveal" style="position: absolute; top: 0; left: 0;">
-                                <div class="slides">
-                <section data-auto-animate>
-                    <p>Simple JSON files, referenced by a <em>Profile URI</em>:</p>
-                    <pre style="background-color: #272822; margin-bottom: 0px">curl https://example.com/spxp/alice</pre>
-                    <pre data-id="code-animation" style="margin-top: 0px"><code class="hljs" data-trim data-line-numbers>
-                        {
-                          "ver" : "0.3",
-                          "name" : "Crypto Alice",
-                          "shortInfo" : "I love cryptography.",
-                          "gender" : "female",
-                          "email" : "cryptoalice@example.com"
-                        }
-                    </code></pre>
-                </section>
-                <section data-auto-animate>
-                    <p>Profiles are identified by a unique <em>Profile Key</em>:</p>
-                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="7-12">
-                        {
-                          "ver" : "0.3",
-                          "name" : "Crypto Alice",
-                          "shortInfo" : "I love cryptography.",
-                          "gender" : "female",
-                          "email" : "cryptoalice@example.com",
-                          "publicKey" : {
-                            "kid" : "C8xSIBPKRTcXxFix",
-                            "kty" : "OKP",
-                            "crv" : "Ed25519",
-                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
-                          }
-                        }
-                    </code></pre>
-                </section>
-                <section data-auto-animate>
-                    <p>Authenticated by <em>Digital Signatures</em>:</p>
-                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="13-16">
-                        {
-                          "ver" : "0.3",
-                          "name" : "Crypto Alice",
-                          "shortInfo" : "I love cryptography.",
-                          "gender" : "female",
-                          "email" : "cryptoalice@example.com",
-                          "publicKey" : {
-                            "kid" : "C8xSIBPKRTcXxFix",
-                            "kty" : "OKP",
-                            "crv" : "Ed25519",
-                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
-                          },
-                          "signature" : {
-                            "key" : "C8xSIBPKRTcXxFix",
-                            "sig" : "WnRIWY8eoU5qPzWlgYjaT_j5x1MnQKpS2vD-8sC2ScnqEldHcLDnIEwRz1fOkGklq1ojNB4D2tRJVbEBrFB3AA"
-                          }
-                        }
-                    </code></pre>
-                </section>
-                <section data-auto-animate>
-                    <p>Can <em>verifyably</em> reference other profiles:</p>
-                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="7-15">
-                        {
-                          "ver" : "0.3",
-                          "name" : "Crypto Alice",
-                          "shortInfo" : "I love cryptography.",
-                          "gender" : "female",
-                          "email" : "cryptoalice@example.com",
-                          "hometown" : {
-                            "uri" : "https://example.com/spxp/emerald.city",
-                            "publicKey" : {
-                              "kid" : "DJlPdI5nMAYjDevc",
-                              "kty" : "OKP",
-                              "crv" : "Ed25519",
-                              "x" : "1B7B4OpoRBA6UvtewqF9cb_P1PiXVpc4f1THHfkzLmY"
-                            }
-                          },
-                          "publicKey" : {
-                            "kid" : "C8xSIBPKRTcXxFix",
-                            "kty" : "OKP",
-                            "crv" : "Ed25519",
-                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
-                          },
-                          "signature" : {
-                            "key" : "C8xSIBPKRTcXxFix",
-                            "sig" : "WnRIWY8eoU5qPzWlgYjaT_j5x1MnQKpS2vD-8sC2ScnqEldHcLDnIEwRz1fOkGklq1ojNB4D2tRJVbEBrFB3AA"
-                          }
-                        }
-                    </code></pre>
-                </section>
-                <section data-auto-animate>
-                    <p>Privacy by <em>JWE based encryption</em>:</p>
-                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="22-24">
-                        {
-                          "ver" : "0.3",
-                          "name" : "Crypto Alice",
-                          "shortInfo" : "I love cryptography.",
-                          "gender" : "female",
-                          "email" : "cryptoalice@example.com",
-                          "hometown" : {
-                            "uri" : "https://example.com/spxp/emerald.city",
-                            "publicKey" : {
-                              "kid" : "DJlPdI5nMAYjDevc",
-                              "kty" : "OKP",
-                              "crv" : "Ed25519",
-                              "x" : "1B7B4OpoRBA6UvtewqF9cb_P1PiXVpc4f1THHfkzLmY"
-                            }
-                          },
-                          "publicKey" : {
-                            "kid" : "C8xSIBPKRTcXxFix",
-                            "kty" : "OKP",
-                            "crv" : "Ed25519",
-                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
-                          },
-                          "private" : [
-                              "eyJraWQiOiJBQkNELjEyMzQiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..SfT0skkIjzru5ylj.eDnedk0RIWIk6m6YQwwwzeZg7q1GH87HW5wUqKJcWRCNZHgI5hCUmDATDzW_eeUsQp8mkkQ4fpqlrBmX5lwv3vsdmgL4r-18GVhxGhbq6GxtbR8YE2MPTxJUZ3D56QHld8ZkOV5pOu7h5BhO9f2zKNEB2j0xbNEqgr259_T983VEoqqp0Rrze1qgmshMQLkZsUrbHsnDaPsp28bhRb_zMInvhBNfa6M.zYtiVMmo-TC_BhJDGPwoHA"
-                          ],
-                          "signature" : {
-                            "key" : "C8xSIBPKRTcXxFix",
-                            "sig" : "WnRIWY8eoU5qPzWlgYjaT_j5x1MnQKpS2vD-8sC2ScnqEldHcLDnIEwRz1fOkGklq1ojNB4D2tRJVbEBrFB3AA"
-                          }
-                        }
-                    </code></pre>
-                </section>
-                <section data-auto-animate>
-                    <p>Extra data provided by <em>additional endpoints</em>:</p>
-                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="25-26">
-                        {
-                          "ver" : "0.3",
-                          "name" : "Crypto Alice",
-                          "shortInfo" : "I love cryptography.",
-                          "gender" : "female",
-                          "email" : "cryptoalice@example.com",
-                          "hometown" : {
-                            "uri" : "https://example.com/spxp/emerald.city",
-                            "publicKey" : {
-                              "kid" : "DJlPdI5nMAYjDevc",
-                              "kty" : "OKP",
-                              "crv" : "Ed25519",
-                              "x" : "1B7B4OpoRBA6UvtewqF9cb_P1PiXVpc4f1THHfkzLmY"
-                            }
-                          },
-                          "publicKey" : {
-                            "kid" : "C8xSIBPKRTcXxFix",
-                            "kty" : "OKP",
-                            "crv" : "Ed25519",
-                            "x" : "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
-                          },
-                          "private" : [
-                              "eyJraWQiOiJBQkNELjEyMzQiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..SfT0skkIjzru5ylj.eDnedk0RIWIk6m6YQwwwzeZg7q1GH87HW5wUqKJcWRCNZHgI5hCUmDATDzW_eeUsQp8mkkQ4fpqlrBmX5lwv3vsdmgL4r-18GVhxGhbq6GxtbR8YE2MPTxJUZ3D56QHld8ZkOV5pOu7h5BhO9f2zKNEB2j0xbNEqgr259_T983VEoqqp0Rrze1qgmshMQLkZsUrbHsnDaPsp28bhRb_zMInvhBNfa6M.zYtiVMmo-TC_BhJDGPwoHA"
-                          ],
-                          "friendsEndpoint" : "friends/alice",
-                          "postsEndpoint" : "posts?profile=alice",
-                          "signature" : {
-                            "key" : "C8xSIBPKRTcXxFix",
-                            "sig" : "WnRIWY8eoU5qPzWlgYjaT_j5x1MnQKpS2vD-8sC2ScnqEldHcLDnIEwRz1fOkGklq1ojNB4D2tRJVbEBrFB3AA"
-                          }
-                        }
-                    </code></pre>
-                </section>
-                <section data-auto-animate>
-                    <p>Time series of posts:</p>
-                    <pre style="background-color: #272822; margin-bottom: 0px">curl https://example.com/spxp/posts?profile=alice</pre>
-                    <pre data-id="code-animation" style="margin-top: 0px"><code class="hljs" data-trim data-line-numbers>
-                        {
-                          "data" : [
-                              {
-                                "seqts" : "2018-09-17T14:04:27.373",
-                                "createts" : "2018-09-16T12:23:18.751",
-                                "type" : "text",
-                                "message" : "Hello, world!",
-                                "signature" : {
-                                  "key" : "C8xSIBPKRTcXxFix",
-                                  "sig" : "bDOgcT4uxTKYMTuOJXDbAPc1UA2p-aGdxwplUWNStzyDRIRPu9UxaTU1IoZ1ELjBY5iRf4FEBPV09Uw9TOYuCA"
-                                }
-                              }, {
-                                "seqts" : "2018-09-15T12:35:47.735",
-                                "type" : "web",
-                                "message" : "Interesting read...",
-                                "link" : "https://example.com",
-                                "signature" : {
-                                  "key" : "C8xSIBPKRTcXxFix",
-                                  "sig" : "skQBzttDURV-N4kqK9fgyWw4Ddixsmld4nnilC_XUqSZhXfeNfw_4PrIlLwaFdHDTO-au4iaZM64oSWLP-z0BA"
-                                }
-                              }
-                            ],
-                            "more" : true
-                        }
-                    </code></pre>
-                </section>
-                <section data-auto-animate>
-                    <p>Clients follow profiles and present data based on user preferences:</p>
-                    <img style="background-color: rgb(39,40,34)" src="assets/img/illustrations/client-follow-profile.svg" >
-                </section>
-                <section data-auto-animate>
-                    <p>Based on rock-solid standards:</p>
-                    <ul>
-                        <li>HTTP (RFC7230 family)</li>
-                        <li>JSON (RFC7519)</li>
-                        <li>JWE (RFC7516)</li>
-                        <li>JWK (RFC7517)</li>
-                        <li>Curve 25519 (RFC7748, RFC8032, RFC8037)</li>
-                    </ul>
-                </section>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center pt-20 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Left: Text -->
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-spxp-accent/10 border border-spxp-accent/30 text-spxp-accent text-sm mb-6">
+                    <span class="w-2 h-2 rounded-full bg-spxp-green animate-pulse"></span>
+                    Open Protocol v0.4
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                    Social networking<br>
+                    <span class="gradient-text">without the bullshit</span>
+                </h1>
+                
+                <p class="text-lg text-gray-400 mb-8 max-w-lg">
+                    SPXP is a decentralized protocol for social profiles. 
+                    No algorithms. No central authority. No data harvesting.
+                    <strong class="text-white">You own your profile.</strong>
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#start" class="px-6 py-3 bg-spxp-accent hover:bg-indigo-600 rounded-lg font-medium transition">
+                        Get Started →
+                    </a>
+                    <a href="https://github.com/spxp/spxp-specs/blob/master/SPXP-Spec.md" target="_blank" class="px-6 py-3 border border-gray-700 hover:border-gray-500 rounded-lg font-medium transition">
+                        Read the Spec
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right: Terminal/Code -->
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot bg-red-500"></div>
+                    <div class="terminal-dot bg-yellow-500"></div>
+                    <div class="terminal-dot bg-green-500"></div>
+                    <span class="ml-4 text-xs text-gray-500">curl https://spxp.org/spxp</span>
+                </div>
+                <div class="p-4 text-sm overflow-x-auto">
+<pre class="language-json !bg-transparent !m-0 !p-0"><code>{
+  "ver": "0.3",
+  "name": "SPXP.org",
+  "shortInfo": "Social Profile Exchange Protocol",
+  "about": "A decentralized social network...",
+  "website": "https://spxp.org",
+  "profilePhoto": "spxp-profile-logo.png",
+  "publicKey": {
+    "kty": "OKP",
+    "crv": "Ed25519",
+    "x": "11qYAYKxCrfVS_7TyWQH..."
+  },
+  "postsEndpoint": "spxp-posts",
+  "friendsEndpoint": "spxp-friends"
+}</code></pre>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Hero footer -->
-        <div class="hero-foot">
-            <div class="container">
-                <div class="is-centered" style="text-align: center; vertical-align: middle; font-size: 2em; color:#fff; margin-bottom: 40px;">
-                    <i class="fas fa-1x fa-arrow-down"></i>
-                    &nbsp;&nbsp;WHY&nbsp;&nbsp;
-                    <i class="fas fa-1x fa-arrow-down"></i>
+<!-- Why SPXP Section -->
+<section id="why" class="py-24 border-t border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Why another protocol?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Current social networks are broken. They optimize for engagement, not for you.
+                SPXP puts control back where it belongs.
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="feature-card rounded-xl p-6">
+                <div class="text-3xl mb-4">🚫</div>
+                <h3 class="text-xl font-semibold mb-2">No Algorithm</h3>
+                <p class="text-gray-400 text-sm">
+                    Your client decides what to show. No engagement-optimized feeds. 
+                    No filter bubbles. No manipulation.
+                </p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="feature-card rounded-xl p-6">
+                <div class="text-3xl mb-4">🔐</div>
+                <h3 class="text-xl font-semibold mb-2">End-to-End Encryption</h3>
+                <p class="text-gray-400 text-sm">
+                    Private posts are encrypted with your keys. Servers can't read your content.
+                    Even metadata is protected.
+                </p>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="feature-card rounded-xl p-6">
+                <div class="text-3xl mb-4">🏠</div>
+                <h3 class="text-xl font-semibold mb-2">Self-Hosted</h3>
+                <p class="text-gray-400 text-sm">
+                    Host your profile anywhere. Your web server. Your Raspberry Pi. 
+                    Any hosting provider. Move anytime.
+                </p>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="feature-card rounded-xl p-6">
+                <div class="text-3xl mb-4">✍️</div>
+                <h3 class="text-xl font-semibold mb-2">Signed Content</h3>
+                <p class="text-gray-400 text-sm">
+                    Ed25519 signatures prove authenticity. Nobody can forge your posts 
+                    or tamper with your profile.
+                </p>
+            </div>
+            
+            <!-- Card 5 -->
+            <div class="feature-card rounded-xl p-6">
+                <div class="text-3xl mb-4">🌐</div>
+                <h3 class="text-xl font-semibold mb-2">Web Native</h3>
+                <p class="text-gray-400 text-sm">
+                    Built on HTTP + JSON + proven crypto standards.
+                    No blockchain. No tokens. Just the web.
+                </p>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="feature-card rounded-xl p-6">
+                <div class="text-3xl mb-4">🔓</div>
+                <h3 class="text-xl font-semibold mb-2">Apache Licensed</h3>
+                <p class="text-gray-400 text-sm">
+                    Open source. Open spec. Build your own client, server, or service.
+                    No permission needed.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section id="how" class="py-24 bg-gradient-to-b from-spxp-dark to-spxp-darker">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">How it works</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Profiles are JSON files served over HTTPS. Clients fetch and display them.
+                That's it. No magic. No complexity.
+            </p>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Steps -->
+            <div class="space-y-8">
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">1</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Create a profile</h3>
+                        <p class="text-gray-400 text-sm">Write a JSON file with your info. Add a keypair for signing.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">2</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Host it anywhere</h3>
+                        <p class="text-gray-400 text-sm">Upload to any web server. GitHub Pages, Netlify, your own box.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">3</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Share your Profile URI</h3>
+                        <p class="text-gray-400 text-sm">Your profile URL is your identity. Share it, link it, own it.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">4</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Connect with others</h3>
+                        <p class="text-gray-400 text-sm">Exchange keys to unlock private content. E2E encrypted connection handshake.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Diagram -->
+            <div class="code-block">
+                <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                    Architecture
+                </div>
+                <div class="p-6 font-mono text-sm">
+                    <pre class="text-gray-300">
+┌─────────────────────────────────────────┐
+│              SPXP Network               │
+│                                         │
+│   ┌──────────┐       ┌──────────┐      │
+│   │  Server  │       │  Server  │      │
+│   │  (Alice) │       │  (Bob)   │      │
+│   └────┬─────┘       └────┬─────┘      │
+│        │                  │            │
+│        │    HTTP/JSON     │            │
+│        ▼                  ▼            │
+│   ┌─────────────────────────────┐      │
+│   │         Client App          │      │
+│   │   (fetch, verify, display)  │      │
+│   └─────────────────────────────┘      │
+│                                         │
+│   • No central server                   │
+│   • Client controls the experience      │
+│   • Servers are just file hosts         │
+└─────────────────────────────────────────┘
+                    </pre>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- /Landing page Hero -->
+    </div>
+</section>
 
-    <!-- Icon Features section -->
-    <section id="start" class="section is-transparent is-relative">
-        <!-- Container -->
-        <div class="container">
-
-            <!-- Content wrapper -->
-            <div class="content-wrapper is-medium">
-                <div class="columns">
-                    <!-- Feature -->
-                    <div class="column is-4">
-                        <div class="feature" style="font-size: 3em; color:#fff;">
-                            <div data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                                <i class="fas fa-2x fa-dove"></i>
-                            </div>
-                            <h4 class="title is-6 is-tight is-light" style="font-size: 1em;">Freedom</h4>
-                            <p><ul style="font-size: 1.3rem; list-style-type: disc; list-style-position: inside; text-align: left;">
-                                <li>Freed timeline (no "algorithm" or "bubble")</li>
-                                <li>Any webserver can host profiles</li>
-                                <li>Choose your client/app to see profiles</li>
-                                <li>Clients are in control, not the network!</li>
-                            </ul></p>
-                        </div>
-                    </div>
-                    <!-- Feature -->
-                    <div class="column is-4">
-                        <div class="feature" style="font-size: 3em; color:#fff;">
-                            <div data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                                <i class="fas fa-2x fa-eye-slash"></i>
-                            </div>
-                            <h4 class="title is-6 is-tight is-light" style="font-size: 1em;">Privacy</h4>
-                            <p><ul style="font-size: 1.3rem; list-style-type: disc; list-style-position: inside; text-align: left;">
-                                <li>Own your content &amp; data</li>
-                                <li>Define who sees what</li>
-                                <li>Private posts end-to-end encrypted</li>
-                                <li>Metadata of private posts encrypted!</li>
-                            </ul></p>
-                        </div>
-                    </div>
-                    <!-- Feature -->
-                    <div class="column is-4">
-                        <div class="feature" style="font-size: 3em; color:#fff;">
-                            <div data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                                <i class="fas fa-2x fa-rocket"></i>
-                            </div>
-                            <h4 class="title is-6 is-tight is-light" style="font-size: 1em;">Scalability</h4>
-                            <p><ul style="font-size: 1.3rem; list-style-type: disc; list-style-position: inside; text-align: left;">
-                                <li>Design paragon: the World Wide Web</li>
-                                <li>Proven internet security standards</li>
-                                <li>Fosters client/server ecosystem</li>
-                                <li>Open source & easy to get started</li>
-                            </ul></p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- Content wrapper -->
+<!-- Get Started Section -->
+<section id="start" class="py-24 border-t border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Get started in 5 minutes</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                No signup. No account. Just create a file and host it.
+            </p>
         </div>
-        <!-- /Container -->
-    </section>
-    <!-- /Icon Features section -->
-
-    <!-- Side Features section -->
-    <section id="big-gradient" class="section is-transparent">
-        <!-- Container -->
-        <div class="container">
-
-
-            <!-- Divider -->
-            <div class="divider is-centered"></div>
-            <!-- Title & subtitle -->
-            <h2 class="title is-light is-semibold has-text-centered is-spaced">Own &quot;the algorithm&quot;</h2>
-            <h4 class="subtitle is-6 is-light has-text-centered is-compact" style="font-size: 1.3rem;">SPXP has the potential to make a real difference when it comes to &quot;the algorithm&quot;. It's the mechanism that suggests content to you and usually tries to make you stay inside a social network for as long as possible. The reasoning is simple: the longer you stay, the more ads you see. To achieve this goal today's &quot;algorithms&quot; tend to show you more and more content similar to what caught your attention in the past. The resulting effect is often that views and believes you already had are amplified as it's getting harder to view differing opinions. Many refer to this as a &quot;bubble&quot; that's surrounding you and distorting your perception of the outside world.</br>
-            The good news is, with SPXP, there is no &quot;one algorithm&quot;. Instead, we're convinced there's going to be a wide variety of clients (apps) that differ - amongst other things - in the way they suggest content to you. Imagine clients that allow you to adjust the parameters of content suggestion. Or if you cannot find a client that suits your needs, go ahead and write your own!</h4>
-
-            <!-- Content wrapper -->
-            <div class="content-wrapper is-large">
-                <div class="columns is-vcentered">
-
-                    <!-- Feature content -->
-                    <div class="column is-5 is-offset-1">
-                        <div class="side-feature-content">
-
-                            <h3 class="title is-4 is-light"><span>Privacy</span></h3>
-                            <div class="divider is-long"></div>
-                            <p class="is-light" style="font-size: 1.3rem;">The makers of SPXP believe that privacy is a fundamental human right and the protocol was designed from the ground up to provide end-to-end encryption for all of its aspects. Consequently, if you choose to, every piece of information that's either on storage or in transition through an SPXP server remains completely unreadable for the server as well as third parties.</p>
-                        </div>
-                    </div>
-
-                    <!-- Feature image -->
-                    <div class="column is-7">
-                        <img class="side-feature" src="assets/img/illustrations/privacy-app.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                    </div>
+        
+        <div class="max-w-3xl mx-auto space-y-6">
+            <!-- Step 1 -->
+            <div class="code-block">
+                <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700 flex justify-between items-center">
+                    <span>1. Create your profile (profile.json)</span>
+                    <button onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('code').textContent)" class="text-gray-500 hover:text-white">
+                        Copy
+                    </button>
                 </div>
-
-                <div class="columns is-vcentered">
-                    <!-- Feature image desktop -->
-                    <div class="column is-7 is-hidden-mobile">
-                        <img class="side-feature" src="assets/img/illustrations/e2e-encryption.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                    </div>
-
-                    <!-- Feature content -->
-                    <div class="column is-5">
-                        <div class="side-feature-content">
-
-                            <h3 class="title is-4 is-light"><span>Strong End-to-end cryptography</span></h3>
-                            <div class="divider is-long"></div>
-                            <p class="is-light" style="font-size: 1.3rem;">Under the hood, SPXP uses an asymmetric keypair to protect your profile. When you create a new profile on your mobile phone, the private key is automatically stored there. However, it is important to understand that your profile's integrity is bound to you (and noone else) posessing its private key. With this respect, an SPXP profile is very similar to a Bitcoin address. So make sure you store your private key in a secure place!</p>
-                        </div>
-                    </div>
-
-                    <!-- Feature image only for mobile -->
-                    <div class="column is-7 is-hidden-desktop is-hidden-tablet">
-                        <img class="side-feature" src="assets/img/illustrations/e2e-encryption.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                    </div>
-                </div>
-
-                <div class="columns is-vcentered">
-                    <!-- Feature content -->
-                    <div class="column is-5 is-offset-1">
-                        <div class="side-feature-content">
-
-                            <h3 class="title is-4 is-light"><span>Open Source - Apache Licensed</span></h3>
-                            <div class="divider is-long"></div>
-                            <p class="is-light" style="font-size: 1.3rem;">SPXP is developed in the open on GitHub. Everybody can see its source code and we welcome participation very much. Do you like to tinker around and manually create your own profile or do you have an improvement suggestion? Head over to GitHub and check out our organization.</p>
-                        </div>
-                    </div>
-
-                    <!-- Feature image -->
-                    <div class="column is-7">
-                        <img class="side-feature" src="assets/img/illustrations/ApacheLicensed.png" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                    </div>
-                </div>
-
-                <div class="columns is-vcentered">
-                    <!-- Feature image desktop -->
-                    <div class="column is-7 is-hidden-mobile">
-                        <img class="side-feature" src="assets/img/illustrations/protocol-not-server.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                    </div>
-
-                    <!-- Feature content -->
-                    <div class="column is-5">
-                        <div class="side-feature-content">
-
-                            <h3 class="title is-4 is-light"><span>It's a protocol, not a server!</span></h3>
-                            <div class="divider is-long"></div>
-                            <p class="is-light" style="font-size: 1.3rem;">The network topology of the big social networks of our time typically looks like a star - one big service provider talks to many many clients (e.g. mobile phones). SPXP couldn't be more different. It's a protocol that defines how servers and clients can talk to each other in a way that the resulting communication depicts what we commonly know as a social network. With this regards, it's topoligy is much more similar to a mesh (like the WWW).</p>
-                        </div>
-                    </div>
-
-                    <!-- Feature image only for mobile -->
-                    <div class="column is-7 is-hidden-desktop is-hidden-tablet">
-                        <img class="side-feature" src="assets/img/illustrations/protocol-not-server.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                    </div>
-                </div>
-
-                <div class="columns is-vcentered">
-                    <!-- Feature content -->
-                    <div class="column is-5 is-offset-1">
-                        <div class="side-feature-content">
-
-                            <h3 class="title is-4 is-light"><span>Choose your client (and host)!</span></h3>
-                            <div class="divider is-long"></div>
-                            <p class="is-light" style="font-size: 1.3rem;">Because it's a protocol, there's not the one internet address you need to go to or the one app you need to use. Instead, if you're interested and have some technical skills, you can host profiles yourself or write your own app to view them. This allows for a wide variety of offerings and business models.</p>
-                            <p class="is-light" style="font-size: 1.3rem;">Currently, the following solutions are known to implement the SPXP protocol:</p>
-                        </div>
-                    </div>
-
-                    <!-- Feature image -->
-                    <div class="column is-7">
-                        <img class="side-feature" src="assets/img/illustrations/chose-your-app.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                    </div>
-                </div>
-
+<pre class="language-json !m-0"><code>{
+  "ver": "0.3",
+  "name": "Your Name",
+  "shortInfo": "Developer, builder of things",
+  "website": "https://yoursite.com",
+  "profilePhoto": "avatar.jpg"
+}</code></pre>
             </div>
-            <!-- /Content wrapper -->
-
-
-        </div>
-        <!-- /Container -->
-    </section>
-    <!-- /Side Features section -->
-
-    <!-- Links Section -->
-    <section class="section is-medium is-darkest">
-        <!-- Container -->
-        <div class="container">
-
-            <!-- Divider -->
-            <div class="divider is-centered"></div>
-            <!-- Title -->
-            <h2 class="title is-light is-semibold has-text-centered is-spaced">
-                Links
-            </h2>
-            <h4 class="subtitle is-6 is-light has-text-centered is-compact">
-                Links to SPXP resources you might be interested in.
-            </h4>
-
-            <!-- Content wrapper -->
-            <div class="content-wrapper is-large">
-                <div class="columns is-vcentered">
-
-                <div class="columns is-vcentered">
-                    <!-- Feature content -->
-                    <div class="column is-10 is-offset-1">
-                        <div class="side-feature-content">
-
-                            <p><ul style="font-size: 1.3rem; list-style-type: disc; text-align: left; color: #fff; opacity: 0.8;">
-                                <li style="margin-bottom: 1.5rem;"><a href="https://github.com/spxp/spxp-specs/blob/master/Quickstart.md" target="_blank">Quickstart guide</a><br/>The quickstart guide shows you how to create a profile, upload it to a web server and access it using the HeyFolks app.</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://github.com/spxp/spxp-specs/blob/master/info/SPXP-in-a-nutshell.md" target="_blank">SPXP in a nutshell</a><br/>A high level introduction to the SPXP protocol and its properties</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://github.com/spxp/spxp-specs/blob/master/info/Comparison.md" target="_blank">Comparison with other protocols</a><br/>Compares SPXP to ActivityPub, BlueSky and Nostr on a high level</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://github.com/spxp/spxp-specs/blob/master/info/FeatureIdeaCollection.md" target="_blank">Collection of ideas for features that might be implemented in the future</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://github.com/spxp/spxp-specs/blob/master/info/New_Public-submission.md" target="_blank">New_ Public submission</a><br/>We submitted the SPXP protocol to <a href="https://newpublic.org" target="_blank">New_ Public</a>. Here you can see our answers to New_ Public's 14 Signals.</li>
-                            </ul></p>
-                        </div>
-                    </div>
+            
+            <!-- Step 2 -->
+            <div class="code-block">
+                <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                    2. Upload to any web server
                 </div>
+<pre class="language-bash !m-0"><code># Example: GitHub Pages, Netlify, or your own server
+scp profile.json avatar.jpg you@yourserver.com:/var/www/spxp/
 
+# That's it. Your profile is now at:
+# https://yourserver.com/spxp/profile.json</code></pre>
             </div>
-            <!-- /Content wrapper -->
-
-        </div>
-        <!-- /Container -->
-    </section>
-    <!-- / Links Implementations Section -->
-
-    <!-- Existing Implementations Section -->
-    <section class="section is-medium is-darkest">
-        <!-- Container -->
-        <div class="container">
-
-            <!-- Divider -->
-            <div class="divider is-centered"></div>
-            <!-- Title -->
-            <h2 class="title is-light is-semibold has-text-centered is-spaced">
-                Implementations
-            </h2>
-            <h4 class="subtitle is-6 is-light has-text-centered is-compact">
-                Chose from this growing ecosystem to get started.
-            </h4>
-
-            <!-- Content wrapper -->
-            <div class="content-wrapper is-large">
-                <div class="columns is-vcentered">
-
-                <div class="columns is-vcentered">
-                    <!-- Feature content -->
-                    <div class="column is-10 is-offset-1">
-                        <div class="side-feature-content">
-
-                            <p><ul style="font-size: 1.3rem; list-style-type: disc; text-align: left; color: #fff; opacity: 0.8;">
-                                <li style="margin-bottom: 1.5rem;"><a href="https://www.heyfolks.app" target="_blank">HeyFolks App</a><br/>A smartphone app and SPXP client</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://www.spxp.space" target="_blank">SPXP.space</a><br/>A SPXP profile hoster</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://bridge.spxp.org" target="_blank">ActivityPub bridge</a><br/>Allows SPXP clients to view e.g. Mastodon profiles</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://wordpress.org/plugins/hfa-spxp-support/" target="_blank">WordPress plugin</a><br/>Automatically posts on an SPXP profile when a new WordPress article was published</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-tools" target="_blank">Crypto tools</a><br/>A Java reference implementation for SPXP cryptographic operations</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="https://github.com/spxp-space/spxp-cli" target="_blank">Bash commandline client</a><br/>A simple Bash CLI to manage SPXP profiles</li>
-                                <li style="margin-bottom: 1.5rem;"><a href="http://testbed.spxp.org/" target="_blank">Testbed profiles</a><br/>A Technology Compatibility Kit for new client implementations</li>
-                            </ul></p>
-                        </div>
-                    </div>
+            
+            <!-- Step 3 -->
+            <div class="code-block">
+                <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                    3. View it in a client
                 </div>
+<pre class="language-bash !m-0"><code># Open in HeyFolks app, or just curl it:
+curl https://yourserver.com/spxp/profile.json
 
+# Want signing & encryption? Check the full quickstart guide.</code></pre>
             </div>
-            <!-- /Content wrapper -->
-
+            
+            <div class="text-center pt-6">
+                <a href="https://github.com/spxp/spxp-specs/blob/master/Quickstart.md" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-spxp-accent hover:bg-indigo-600 rounded-lg font-medium transition">
+                    Full Quickstart Guide
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+            </div>
         </div>
-        <!-- /Container -->
-    </section>
-    <!-- / Existing Implementations Section -->
+    </div>
+</section>
 
-</div>
+<!-- Ecosystem Section -->
+<section id="ecosystem" class="py-24 bg-gradient-to-b from-spxp-darker to-spxp-dark">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ecosystem</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Tools, apps, and services to get you started.
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Apps -->
+            <a href="https://heyfolks.app" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">📱</div>
+                    <h3 class="font-semibold">HeyFolks App</h3>
+                </div>
+                <p class="text-gray-400 text-sm">iOS & Android client for browsing SPXP profiles.</p>
+            </a>
+            
+            <a href="https://spxp.space" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">☁️</div>
+                    <h3 class="font-semibold">SPXP.space</h3>
+                </div>
+                <p class="text-gray-400 text-sm">Managed hosting for your SPXP profile.</p>
+            </a>
+            
+            <a href="https://bridge.spxp.org" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">🌉</div>
+                    <h3 class="font-semibold">SPXP Bridge</h3>
+                </div>
+                <p class="text-gray-400 text-sm">View Mastodon, Bluesky, Nostr profiles via SPXP.</p>
+            </a>
+            
+            <a href="https://wordpress.org/plugins/hfa-spxp-support/" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">📝</div>
+                    <h3 class="font-semibold">WordPress Plugin</h3>
+                </div>
+                <p class="text-gray-400 text-sm">Auto-publish blog posts to your SPXP profile.</p>
+            </a>
+            
+            <a href="https://github.com/spxp-space/spxp-cli" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">⌨️</div>
+                    <h3 class="font-semibold">spxp-cli</h3>
+                </div>
+                <p class="text-gray-400 text-sm">Bash CLI to manage profiles from your terminal.</p>
+            </a>
+            
+            <a href="https://github.com/spxp/spxp-crypto" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">🔧</div>
+                    <h3 class="font-semibold">Crypto Tools</h3>
+                </div>
+                <p class="text-gray-400 text-sm">Java SDK for signing, encryption, and key management.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Protocol Comparison Section -->
+<section id="compare" class="py-24 border-t border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Protocol Comparison</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                How SPXP compares to other decentralized social protocols.
+            </p>
+        </div>
+        
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-gray-800">
+                        <th class="text-left py-4 px-4 font-semibold">Feature</th>
+                        <th class="text-center py-4 px-4 font-semibold text-spxp-accent">SPXP</th>
+                        <th class="text-center py-4 px-4 font-semibold text-gray-400">ActivityPub</th>
+                        <th class="text-center py-4 px-4 font-semibold text-gray-400">Nostr</th>
+                        <th class="text-center py-4 px-4 font-semibold text-gray-400">AT Protocol</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-400">
+                    <tr class="border-b border-gray-800/50">
+                        <td class="py-4 px-4">E2E encrypted private posts</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗</td>
+                        <td class="text-center py-4 px-4 text-yellow-400">Partial</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗</td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50">
+                        <td class="py-4 px-4">Encrypted metadata</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗</td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50">
+                        <td class="py-4 px-4">No central relay/server required</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗ (needs relays)</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗ (needs PDS)</td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50">
+                        <td class="py-4 px-4">Profile portability</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓ (key-based)</td>
+                        <td class="text-center py-4 px-4 text-yellow-400">Limited</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50">
+                        <td class="py-4 px-4">Browse without account</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-4">Static file hosting sufficient</td>
+                        <td class="text-center py-4 px-4 text-spxp-green">✓</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗</td>
+                        <td class="text-center py-4 px-4 text-red-400">✗</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="text-center mt-8">
+            <a href="https://github.com/spxp/spxp-specs/blob/master/info/Comparison.md" target="_blank" class="text-spxp-accent hover:underline text-sm">
+                Read the full comparison →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 border-t border-gray-800/50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to build?</h2>
+        <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+            Join the developers building the next generation of social networking.
+            No permission needed. Just start.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://github.com/spxp/spxp-specs" target="_blank" class="px-6 py-3 bg-spxp-accent hover:bg-indigo-600 rounded-lg font-medium transition">
+                Protocol Specs
+            </a>
+            <a href="https://github.com/spxp/spxp-specs/blob/master/Quickstart.md" target="_blank" class="px-6 py-3 border border-gray-700 hover:border-gray-500 rounded-lg font-medium transition">
+                Quickstart Guide
+            </a>
+            <a href="http://testbed.spxp.org/" target="_blank" class="px-6 py-3 border border-gray-700 hover:border-gray-500 rounded-lg font-medium transition">
+                Testbed Profiles
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 border-t border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2 text-gray-400">
+                <span class="text-xl">🔐</span>
+                <span>SPXP – Social Profile Exchange Protocol</span>
+            </div>
+            
+            <div class="flex items-center gap-6 text-sm text-gray-500">
+                <a href="https://github.com/spxp" target="_blank" class="hover:text-white transition">GitHub</a>
+                <a href="https://www.youtube.com/@SocialProfileExchangeProtocol" target="_blank" class="hover:text-white transition">YouTube</a>
+                <a href="https://github.com/spxp/spxp-specs/blob/master/LICENSE" target="_blank" class="hover:text-white transition">Apache 2.0</a>
+            </div>
+        </div>
+    </div>
+</footer>
