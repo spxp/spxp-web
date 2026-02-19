@@ -1,20 +1,69 @@
-# SPXP.org website
-The website hosted on spxp.org
+# SPXP.org Website
 
-This website is built with:
-- The [Krypton](https://github.com/cssninjaStudio/krypton) website template by [CSS Ninjas](https://cssninja.io/) licensed under [MIT](https://github.com/cssninjaStudio/krypton/blob/master/LICENSE)
-- Using [RevealJS](https://github.com/hakimel/reveal.js) licensed under [MIT](https://github.com/hakimel/reveal.js/blob/master/LICENSE)
-- Icons 089-mobile.svg, 101-database.svg and partially 187-list.svg from [IconMoon](https://icomoon.io/) licensed under [CC BY 4.0](https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt)
+The official website for the [Social Profile Exchange Protocol](https://spxp.org).
 
-### Building and Development
-You need node, npm and gulp. Then:
+## Tech Stack
+
+- **HTML Templating:** [Panini](https://github.com/foundation/panini) (Handlebars-based)
+- **CSS Framework:** [Tailwind CSS](https://tailwindcss.com/) (via CDN)
+- **Fonts:** [Inter](https://fonts.google.com/specimen/Inter) & [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) (Google Fonts)
+- **Syntax Highlighting:** [Prism.js](https://prismjs.com/) (via CDN)
+- **Build Tool:** [Gulp](https://gulpjs.com/)
+
+## Development
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/spxp/spxp-web.git
+cd spxp-web
+
+# Install dependencies
+npm install
+
+# Start development server (with live reload)
+npm run dev
 ```
-$ npm install
-$ gulp dev
-```
-This will start a local dev server on port 3000 and open the webpage in a browser.
 
-There are a lot more fragments in the original website template than have been used
-on this page so far. If you plan to extend this website and you are missing some
-design elements or just want to explore what is there, please take a look at the
-original demo in the [Krypton](https://github.com/cssninjaStudio/krypton) template
+This opens `http://localhost:3000` in your browser with live reload on changes.
+
+### Build
+
+```bash
+# Build for production
+npm run build
+```
+
+Output is written to `dist/`.
+
+## Project Structure
+
+```
+spxp-web/
+├── src/
+│   ├── layouts/        # Page layouts (Panini)
+│   │   └── modern.html # Main layout with Tailwind config
+│   └── pages/          # Page content
+│       └── index.html  # Homepage
+├── profile/            # SPXP profile files (copied to dist/)
+│   ├── spxp            # Profile JSON
+│   ├── spxp-posts      # Posts endpoint
+│   └── spxp-profile-logo.png
+├── dist/               # Build output (git-ignored)
+├── gulpfile.js         # Build configuration
+└── package.json
+```
+
+## Deployment
+
+Pushes to `master` automatically deploy to spxp.org via GitHub Actions (SFTP).
+
+## License
+
+[Apache License 2.0](LICENSE)

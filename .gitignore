@@ -1,4 +1,10 @@
-### general
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# OS files
 .DS_Store
 .Spotlight-V100
 .Trashes
@@ -7,10 +13,13 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-### project specific
-.sass-cache/
-*.css.map
-*.js.map
-node_modules/
-dist/
-accessibility-reports/
+# Editor
+*.swp
+*.swo
+.idea/
+.vscode/
+*.sublime-*
+
+# Logs
+*.log
+npm-debug.log*
