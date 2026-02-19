@@ -16,7 +16,7 @@
   "devDependencies": {
     "browser-sync": "^3.0.2",
     "del": "^6.1.1",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.1",
     "gulp-pretty-html": "^2.0.10",
     "panini": "^1.7.2"
   },
