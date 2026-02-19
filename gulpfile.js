@@ -1,68 +1,11 @@
 'use strict';
-const {src, dest, watch, series, parallel } = require('gulp');
-const log = require('fancy-log');
-const colors = require('ansi-colors');
+const { src, dest, watch, series } = require('gulp');
 const browserSync = require('browser-sync').create();
-const gulpSass = require('gulp-sass');
-const dartSass = require('sass');
-const sass = gulpSass(dartSass);
-const rename = require('gulp-rename');
-const concat = require('gulp-concat');
 const del = require('del');
 const panini = require('panini');
-const uglify = require('gulp-uglify-es').default;
-const sourcemaps = require('gulp-sourcemaps');
-// const removeCode = require('gulp-remove-code');
-// const removeLog = require('gulp-remove-logging');
 const prettyHtml = require('gulp-pretty-html');
-const htmlreplace = require('gulp-html-replace');
-const newer = require('gulp-newer');
-const autoprefixer = require('gulp-autoprefixer');
-const babel = require('gulp-babel');
-const nodepath = 'node_modules/';
-const assetspath = 'assets/';
 
-// File paths
-const files = {
-  scssPath: 'app/scss/**/*.scss',
-  jsPath: 'app/js/**/*.js'
-}
-
-// ------------ SETUP TASKS -------------
-// Copy Bulma filed into Bulma development folder
-function setupBulma() {
-  console.log('---------------COPYING BULMA FILES---------------');
-  return src([nodepath + 'bulma/*.sass', nodepath + 'bulma/**/*.sass'])
-    .pipe(dest('src/assets/sass/'));
-}
-
-// ------------ DEVELOPMENT TASKS -------------
-
-// COMPILE BULMA SASS INTO CSS
-function compileSASS() {
-  console.log('---------------COMPILING BULMA SASS---------------');
-  return src(['src/assets/sass/bulma.sass'])
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }).on('error', sass.logError))
-    .pipe(autoprefixer())
-    .pipe(dest('dist/assets/css'))
-    .pipe(browserSync.stream());
-}
-
-// COMPILE SCSS INTO CSS
-function compileSCSS() {
-  console.log('---------------COMPILING SCSS---------------');
-  return src(['src/assets/scss/core.scss'])
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }).on('error', sass.logError))
-    .pipe(autoprefixer())
-    .pipe(dest('dist/assets/css'))
-    .pipe(browserSync.stream());
-}
-
-// USING PANINI, TEMPLATE, PAGE AND PARTIAL FILES ARE COMBINED TO FORM HTML MARKUP
+// COMPILE HTML WITH PANINI
 function compileHTML() {
   console.log('---------------COMPILING HTML WITH PANINI---------------');
   panini.refresh();
@@ -78,148 +21,11 @@ function compileHTML() {
     .pipe(browserSync.stream());
 }
 
-// COPY CUSTOM JS
-function compileJS() {
-  console.log('---------------COMPILE CUSTOM JS---------------');
-  return src([
-      'src/assets/js/functions.js',
-      'src/assets/js/timer.js',
-      'src/assets/js/timeline.js',
-      'src/assets/js/roadmap.js',
-      'src/assets/js/main.js',
-    ])
-    .pipe(babel())
-    .pipe(dest('dist/assets/js/'))
-    .pipe(browserSync.stream());
-}
-
-// RESET PANINI'S CACHE OF LAYOUTS AND PARTIALS
-function resetPages(done) {
-  console.log('---------------CLEARING PANINI CACHE---------------');
-  panini.refresh();
-  done();
-}
-
-// WATCH FILES
-function watchFiles() {
-  watch('src/**/*.html', compileHTML);
-  watch(['src/assets/scss/**/*', 'src/assets/scss/*'] , compileSCSS);
-  watch('src/assets/js/*.js', compileJS);
-  watch('src/assets/img/**/*', copyImages);
-}
-
-
-// BROWSER SYNC
-function browserSyncInit(done) {
-  console.log('---------------BROWSER SYNC---------------');
-  browserSync.init({
-    server: './dist'
-  });
-  return done();
-}
-
-// ------------ OPTIMIZATION TASKS -------------
-
-// COPIES AND MINIFY IMAGE TO DIST
-function copyImages() {
-  console.log('---------------OPTIMIZING IMAGES---------------');
-  return src('src/assets/img/**/*.+(png|jpg|jpeg|gif|svg)')
-    .pipe(newer('dist/assets/img/'))
-    .pipe(dest('dist/assets/img/'))
-    .pipe(browserSync.stream());
-}
-
-
-// PLACES FONT FILES IN THE DIST FOLDER
-function copyFont() {
-  console.log('---------------COPYING FONTS INTO DIST FOLDER---------------');
-  return src([
-      'src/assets/font/**/*',
-    ])
-    .pipe(dest('dist/assets/fonts'))
-    .pipe(browserSync.stream());
-}
-
-// PLACES DATA FILES IN THE DIST FOLDER
-function copyData() {
-  console.log('---------------COPYING DATA INTO DIST FOLDER---------------');
-  return src([
-    'src/data/**/*',
-  ])
-    .pipe(dest('dist/assets/data'))
-    .pipe(browserSync.stream());
-}
-
-// PLACES REVEAL FILES IN THE DIST FOLDER
-function copyReveal() {
-  console.log('---------------COPYING REVEAL INTO DIST FOLDER---------------');
-  return src([
-    'src/assets/reveal-dist/**/*',
-  ])
-    .pipe(dest('dist/assets/reveal'))
-    .pipe(browserSync.stream());
-}
-
-// PLACES SPXP PROFILE FILES IN THE DIST FOLDER
+// COPY SPXP PROFILE FILES TO DIST
 function copySPXPProfile() {
   console.log('---------------COPYING SPXP PROFILE INTO DIST FOLDER---------------');
-  return src([
-    'profile/**/*',
-  ])
+  return src(['profile/**/*'])
     .pipe(dest('dist'))
-    .pipe(browserSync.stream());
-}
-
-// CONCATENATE JS PLUGINS
-function concatPlugins() {
-  console.log('---------------CONCATENATE JS PLUGINS---------------');
-  return src([
-    nodepath + 'jquery/dist/jquery.min.js',
-    nodepath + 'feather-icons/dist/feather.min.js',
-    nodepath + 'aos/dist/aos.js',
-    //Additional static js assets
-    'src/assets/vendor/js/**/*.js',
-  ])
-    .pipe(sourcemaps.init())
-    .pipe(concat('app.js'))
-    .pipe(sourcemaps.write('./'))
-    .pipe(dest('dist/assets/js'))
-    .pipe(browserSync.stream());
-}
-
-// CONCATENATE CSS PLUGINS
-function concatCssPlugins() {
-  console.log('---------------CONCATENATE CSS PLUGINS---------------');
-  return src([
-    nodepath + 'aos/dist/aos.css',
-    //Additional static css assets
-    'src/assets/vendor/css/**/*.css',
-  ])
-    .pipe(sourcemaps.init())
-    .pipe(concat('app.css'))
-    .pipe(sourcemaps.write('./'))
-    .pipe(dest('dist/assets/css'))
-    .pipe(browserSync.stream());
-}
-
-// COPY JS VENDOR FILES
-function jsVendor() {
-  console.log('---------------COPY JAVASCRIPT VENDOR FILES INTO DIST---------------');
-  return src([
-      'src/assets/vendor/js/*',
-    ])
-    .pipe(dest('dist/assets/vendor/js'))
-    .pipe(browserSync.stream());
-}
-
-// COPY CSS VENDOR FILES
-function cssVendor() {
-  console.log('---------------COPY CSS VENDOR FILES INTO DIST---------------');
-  return src([
-      'src/assets/vendor/css/*',
-
-    ])
-    .pipe(dest('dist/assets/vendor/css'))
     .pipe(browserSync.stream());
 }
 
@@ -242,14 +48,26 @@ function cleanDist(done) {
   return done();
 }
 
-//SETUP
-exports.setup = series(setupBulma);
+// WATCH FILES
+function watchFiles() {
+  watch('src/**/*.html', series(compileHTML, prettyHTML));
+  watch('profile/**/*', copySPXPProfile);
+}
 
-// DEV
-exports.dev = series(cleanDist, copyFont, copyData, copyReveal, copySPXPProfile, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
+// BROWSER SYNC
+function browserSyncInit(done) {
+  console.log('---------------BROWSER SYNC---------------');
+  browserSync.init({
+    server: './dist'
+  });
+  return done();
+}
 
-// BUILD
-exports.build = series(cleanDist, copyFont, copyData, copyReveal, copySPXPProfile, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS);
+// DEV - local development with live reload
+exports.dev = series(cleanDist, copySPXPProfile, compileHTML, prettyHTML, browserSyncInit, watchFiles);
+
+// BUILD - production build
+exports.build = series(cleanDist, copySPXPProfile, compileHTML, prettyHTML);
 
 // Default task
 exports.default = exports.dev;
