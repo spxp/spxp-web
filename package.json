@@ -39,7 +39,7 @@
     "aos": "^2.3.4",
     "bulma": "^0.9.4",
     "feather-icons": "^4.29.1",
-    "jquery": "^3.7.1"
+    "jquery": "^4.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
