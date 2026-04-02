@@ -1,0 +1,527 @@
+---
+layout: modern
+pageTitle: "How SPXP Works – Protocol Deep Dive"
+pageDescription: "A technical walkthrough of the SPXP protocol: profiles, keys, signatures, encryption, posts, and the standards behind it."
+pageCanonical: "https://spxp.org/how-it-works/"
+---
+
+{{> nav}}
+
+<!-- Hero Section -->
+<section class="min-h-[50vh] flex items-center pt-24 pb-16 border-b border-gray-800/50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-spxp-accent/10 border border-spxp-accent/30 text-spxp-accent text-sm mb-6">
+            <span class="w-2 h-2 rounded-full bg-spxp-green animate-pulse"></span>
+            Protocol Deep Dive
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            How SPXP <span class="gradient-text">Works</span>
+        </h1>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            A step-by-step walkthrough of the protocol. From a simple JSON file to a fully encrypted, signed social profile.
+        </p>
+    </div>
+</section>
+
+<!-- Protocol Walkthrough -->
+<section class="py-24 border-b border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Protocol Walkthrough</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Eight building blocks, each adding a layer. Start simple, go deep.
+            </p>
+        </div>
+
+        <div class="space-y-16">
+
+            <!-- Step 1 -->
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold text-xl">1</div>
+                        <h3 class="text-2xl font-bold">Basic Profile JSON</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        At its core, an SPXP profile is a simple JSON file served via HTTP. Any web server will do. There's no special software required — just a static file host and a URL, called the <strong class="text-white">Profile URI</strong>.
+                    </p>
+                    <p class="text-gray-400 mt-3">
+                        You can fetch any SPXP profile with <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">curl</code>. It's just an HTTP GET request.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                        curl https://example.com/spxp/alice
+                    </div>
+<pre class="language-json !m-0"><code>{
+  "ver": "0.3",
+  "name": "Crypto Alice",
+  "shortInfo": "I love cryptography.",
+  "gender": "female",
+  "email": "cryptoalice@example.com"
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold text-xl">2</div>
+                        <h3 class="text-2xl font-bold">Profile Key</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        Profiles are identified by a unique <strong class="text-white">Profile Key</strong> — an Ed25519 public key embedded in the profile JSON. This key is what makes your identity portable and verifiable.
+                    </p>
+                    <p class="text-gray-400 mt-3">
+                        The key uses the <strong class="text-white">JWK (JSON Web Key)</strong> format. The <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">kid</code> is a unique identifier, <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">crv: "Ed25519"</code> specifies the curve, and <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">x</code> is the base64url-encoded public key bytes.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                        Profile with public key (JWK format)
+                    </div>
+<pre class="language-json !m-0"><code>{
+  "ver": "0.3",
+  "name": "Crypto Alice",
+  "shortInfo": "I love cryptography.",
+  "publicKey": {
+    "kid": "C8xSIBPKRTcXxFqnvVe4TCVUpuibuFFEqhE98Hfc9Vk",
+    "kty": "OKP",
+    "crv": "Ed25519",
+    "x": "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
+  }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold text-xl">3</div>
+                        <h3 class="text-2xl font-bold">Digital Signatures</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        The profile is <strong class="text-white">authenticated by a digital signature</strong>. The profile owner signs the content with their private key. Clients can verify this signature using the public key embedded in the profile.
+                    </p>
+                    <p class="text-gray-400 mt-3">
+                        This means nobody can forge your profile or tamper with its content. If the signature doesn't verify, the client knows the data is compromised.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                        Profile with Ed25519 signature
+                    </div>
+<pre class="language-json !m-0"><code>{
+  "ver": "0.3",
+  "name": "Crypto Alice",
+  "shortInfo": "I love cryptography.",
+  "publicKey": {
+    "kid": "C8xSIBPKRTcXxFqnvVe4TCVUpuibuFFEqhE98Hfc9Vk",
+    "kty": "OKP",
+    "crv": "Ed25519",
+    "x": "skpRppgAopeYo9MWRdExl26rGA_z701tMoiuJ-jIjU8"
+  },
+  "signature": {
+    "key": "C8xSIBPKRTcXxFqnvVe4TCVUpuibuFFEqhE98Hfc9Vk",
+    "sig": "sRBHqhqGBnTWLbGzHLCNrVGKB9RIjVEfMXrLbS..."
+  }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold text-xl">4</div>
+                        <h3 class="text-2xl font-bold">Verifiable References</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        Profiles can <strong class="text-white">verifiably reference other profiles</strong>. For example, linking to your hometown or employer. The reference includes both a URI and the expected public key of the referenced profile.
+                    </p>
+                    <p class="text-gray-400 mt-3">
+                        A client can fetch the referenced profile, verify that its key matches the embedded <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">publicKey</code>, and confirm the reference is authentic. This builds a cryptographically verifiable web of trust.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                        Verifiable hometown reference
+                    </div>
+<pre class="language-json !m-0"><code>{
+  "ver": "0.3",
+  "name": "Crypto Alice",
+  "hometown": {
+    "uri": "https://example.com/spxp/Munich",
+    "publicKey": {
+      "kid": "ZKL...abc",
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "abc123..."
+    }
+  },
+  "signature": { ... }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold text-xl">5</div>
+                        <h3 class="text-2xl font-bold">JWE Encryption</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        For private content, SPXP uses <strong class="text-white">JWE (JSON Web Encryption)</strong>. The <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">private</code> array contains JWE tokens — encrypted blobs that only authorized recipients can decrypt.
+                    </p>
+                    <p class="text-gray-400 mt-3">
+                        The server stores and serves these encrypted tokens without ever being able to read them. Even the fact that specific content exists can be hidden from the server.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                        Profile with JWE-encrypted private section
+                    </div>
+<pre class="language-json !m-0"><code>{
+  "ver": "0.3",
+  "name": "Crypto Alice",
+  "private": [
+    "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0...",
+    "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..."
+  ],
+  "signature": { ... }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold text-xl">6</div>
+                        <h3 class="text-2xl font-bold">Additional Endpoints</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        A profile can link to additional endpoints. The <strong class="text-white">friends endpoint</strong> provides a paginated list of friend profiles (also encrypted with JWE). The <strong class="text-white">posts endpoint</strong> provides a time series of posts.
+                    </p>
+                    <p class="text-gray-400 mt-3">
+                        These endpoints can be on the same server or on entirely different servers. The architecture is flexible by design.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                        Profile with endpoint links
+                    </div>
+<pre class="language-json !m-0"><code>{
+  "ver": "0.3",
+  "name": "Crypto Alice",
+  "publicKey": { ... },
+  "friendsEndpoint": "https://example.com/spxp/alice/friends",
+  "postsEndpoint": "https://example.com/spxp/alice/posts",
+  "signature": { ... }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold text-xl">7</div>
+                        <h3 class="text-2xl font-bold">Posts Time Series</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        The posts endpoint returns a <strong class="text-white">time-ordered series of posts</strong>. Each post has a sequence timestamp (<code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">seqts</code>), a type, content, and its own signature.
+                    </p>
+                    <p class="text-gray-400 mt-3">
+                        Posts can be text, links, images, and more. Each is individually signed, so tampering with any post is cryptographically detectable. Private posts in the feed are encrypted with JWE.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                        curl https://example.com/spxp/alice/posts
+                    </div>
+<pre class="language-json !m-0"><code>{
+  "data": [
+    {
+      "seqts": "2018-09-17T14:04:27.373",
+      "type": "text",
+      "message": "Hello, world!",
+      "signature": {
+        "key": "C8xSIBPKRTcXxFqnvVe4TCVUpuibuFFEqhE98Hfc9Vk",
+        "sig": "sRBHq..."
+      }
+    },
+    {
+      "seqts": "2018-09-15T12:35:47.735",
+      "type": "web",
+      "message": "Interesting read...",
+      "link": "https://example.com/article",
+      "signature": { ... }
+    }
+  ],
+  "more": true
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold text-xl">8</div>
+                        <h3 class="text-2xl font-bold">Built on Standards</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        SPXP doesn't invent custom cryptography. It uses <strong class="text-white">proven, battle-tested internet standards</strong> with decades of scrutiny. This means the security properties are well-understood and the implementations are widely available.
+                    </p>
+                    <p class="text-gray-400 mt-3">
+                        "Don't roll your own crypto" is a cardinal rule in security engineering. SPXP follows it.
+                    </p>
+                </div>
+                <div class="feature-card rounded-xl p-6">
+                    <h4 class="font-semibold mb-4 text-gray-300">Standards used in SPXP</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-spxp-accent">HTTP</span>
+                            <span class="text-gray-500">RFC 7230 family — Transport</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-spxp-accent">JSON</span>
+                            <span class="text-gray-500">RFC 8259 — Data format</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-spxp-accent">JWE</span>
+                            <span class="text-gray-500">RFC 7516 — Encryption</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-spxp-accent">JWK</span>
+                            <span class="text-gray-500">RFC 7517 — Key format</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-spxp-accent">Ed25519</span>
+                            <span class="text-gray-500">RFC 8032 — Signatures</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-spxp-accent">Curve25519</span>
+                            <span class="text-gray-500">RFC 7748, 8037 — Key exchange</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Architecture Section -->
+<section class="py-24 bg-gradient-to-b from-spxp-dark to-spxp-darker border-b border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Architecture</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                SPXP's topology is more like the World Wide Web than a traditional social network.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div class="code-block">
+                <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                    SPXP Network Topology
+                </div>
+                <div class="p-6 font-mono text-sm overflow-x-auto">
+                    <pre class="text-gray-300">
++-------------------------------------------+
+|              SPXP Network                 |
+|                                           |
+|   +----------+       +----------+         |
+|   |  Server  |       |  Server  |         |
+|   | (Alice)  |       |  (Bob)   |         |
+|   +----+-----+       +----+-----+         |
+|        |                  |               |
+|        |    HTTP/JSON     |               |
+|        v                  v               |
+|   +-----------------------------+         |
+|   |         Client App          |         |
+|   |  (fetch, verify, display)   |         |
+|   +-----------------------------+         |
+|                                           |
+|   * No central server                     |
+|   * Client controls the experience        |
+|   * Servers are just file hosts           |
++-------------------------------------------+
+                    </pre>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="feature-card rounded-xl p-6">
+                    <h4 class="font-semibold text-spxp-accent mb-3">🔴 Star topology (Big Tech)</h4>
+                    <p class="text-gray-400 text-sm">
+                        All clients connect to one central server. The platform controls all data, all feeds, all moderation. A single outage or policy change affects everyone. Your data lives on their servers, at their discretion.
+                    </p>
+                </div>
+                <div class="feature-card rounded-xl p-6">
+                    <h4 class="font-semibold text-spxp-green mb-3">🟢 Mesh topology (SPXP)</h4>
+                    <p class="text-gray-400 text-sm">
+                        Each profile lives on its own server. Clients fetch profiles directly over HTTP. There's no single point of failure and no single point of control. Like the WWW: resilient, distributed, and open.
+                    </p>
+                </div>
+                <div class="feature-card rounded-xl p-6">
+                    <h4 class="font-semibold mb-3">Client is king</h4>
+                    <p class="text-gray-400 text-sm">
+                        The protocol defines how profiles and posts are structured. The client decides how to present them. Feed ranking, notifications, UI/UX — all in the hands of the app developer and, ultimately, the user.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cryptography Section -->
+<section class="py-24 border-b border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Cryptography</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                SPXP uses well-established standards. No custom crypto, no surprises.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="feature-card rounded-xl p-6">
+                <h3 class="text-xl font-semibold mb-3">Ed25519 — Signatures</h3>
+                <p class="text-gray-400 text-sm mb-3">
+                    Ed25519 (RFC 8032) is a modern, fast, and secure signature scheme based on the Edwards curve over the prime field defined by 2²⁵⁵ − 19. It's used by TLS, SSH, and many other security-critical protocols.
+                </p>
+                <p class="text-gray-400 text-sm">
+                    Every profile and every post is signed with Ed25519. This ensures authenticity — clients can verify that the content hasn't been tampered with.
+                </p>
+            </div>
+
+            <div class="feature-card rounded-xl p-6">
+                <h3 class="text-xl font-semibold mb-3">JWE — Encryption</h3>
+                <p class="text-gray-400 text-sm mb-3">
+                    JWE (JSON Web Encryption, RFC 7516) is the IETF standard for representing encrypted content using JSON. It supports multiple algorithms and is widely used in OAuth 2.0 and OpenID Connect.
+                </p>
+                <p class="text-gray-400 text-sm">
+                    SPXP uses JWE to encrypt private posts and sections of the friend list. The server stores opaque encrypted blobs and can serve them without knowing their content.
+                </p>
+            </div>
+
+            <div class="feature-card rounded-xl p-6">
+                <h3 class="text-xl font-semibold mb-3">Curve25519 — Key Exchange</h3>
+                <p class="text-gray-400 text-sm mb-3">
+                    Curve25519 (RFC 7748) is a Diffie-Hellman key exchange function. X25519 (the DH function using Curve25519) is used for encrypted connections between profile owners.
+                </p>
+                <p class="text-gray-400 text-sm">
+                    When two users connect privately, X25519 is used to establish a shared secret that can be used to derive encryption keys. This is the "E2E" part of end-to-end encryption.
+                </p>
+            </div>
+
+            <div class="feature-card rounded-xl p-6">
+                <h3 class="text-xl font-semibold mb-3">Why no custom crypto?</h3>
+                <p class="text-gray-400 text-sm mb-3">
+                    "Don't roll your own crypto" is a fundamental rule in security engineering. Custom cryptographic schemes haven't been peer-reviewed. They may look strong but have subtle flaws that attackers can exploit.
+                </p>
+                <p class="text-gray-400 text-sm">
+                    By using RFC-standardized algorithms, SPXP benefits from decades of cryptanalysis. Any weakness would have been found by the global security research community already.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Standards Table -->
+<section class="py-24 bg-gradient-to-b from-spxp-darker to-spxp-dark border-b border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Standards Reference</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Every standard used in SPXP is an IETF RFC with a public specification.
+            </p>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-gray-800">
+                        <th class="text-left py-4 px-4 font-semibold text-gray-300">Standard</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-300">RFC</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-300">Used For</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-300">Link</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-400">
+                    <tr class="border-b border-gray-800/50 hover:bg-gray-800/20">
+                        <td class="py-4 px-4 font-mono text-spxp-accent">HTTP</td>
+                        <td class="py-4 px-4">RFC 7230</td>
+                        <td class="py-4 px-4">Transport protocol</td>
+                        <td class="py-4 px-4"><a href="https://tools.ietf.org/html/rfc7230" target="_blank" class="text-spxp-accent hover:underline text-xs">tools.ietf.org →</a></td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50 hover:bg-gray-800/20">
+                        <td class="py-4 px-4 font-mono text-spxp-accent">JSON</td>
+                        <td class="py-4 px-4">RFC 8259</td>
+                        <td class="py-4 px-4">Data format</td>
+                        <td class="py-4 px-4"><a href="https://tools.ietf.org/html/rfc8259" target="_blank" class="text-spxp-accent hover:underline text-xs">tools.ietf.org →</a></td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50 hover:bg-gray-800/20">
+                        <td class="py-4 px-4 font-mono text-spxp-accent">JWE</td>
+                        <td class="py-4 px-4">RFC 7516</td>
+                        <td class="py-4 px-4">Encryption (private posts)</td>
+                        <td class="py-4 px-4"><a href="https://tools.ietf.org/html/rfc7516" target="_blank" class="text-spxp-accent hover:underline text-xs">tools.ietf.org →</a></td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50 hover:bg-gray-800/20">
+                        <td class="py-4 px-4 font-mono text-spxp-accent">JWK</td>
+                        <td class="py-4 px-4">RFC 7517</td>
+                        <td class="py-4 px-4">Key representation</td>
+                        <td class="py-4 px-4"><a href="https://tools.ietf.org/html/rfc7517" target="_blank" class="text-spxp-accent hover:underline text-xs">tools.ietf.org →</a></td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50 hover:bg-gray-800/20">
+                        <td class="py-4 px-4 font-mono text-spxp-accent">Ed25519</td>
+                        <td class="py-4 px-4">RFC 8032</td>
+                        <td class="py-4 px-4">Digital signatures</td>
+                        <td class="py-4 px-4"><a href="https://tools.ietf.org/html/rfc8032" target="_blank" class="text-spxp-accent hover:underline text-xs">tools.ietf.org →</a></td>
+                    </tr>
+                    <tr class="border-b border-gray-800/50 hover:bg-gray-800/20">
+                        <td class="py-4 px-4 font-mono text-spxp-accent">X25519</td>
+                        <td class="py-4 px-4">RFC 7748</td>
+                        <td class="py-4 px-4">Key exchange (E2E)</td>
+                        <td class="py-4 px-4"><a href="https://tools.ietf.org/html/rfc7748" target="_blank" class="text-spxp-accent hover:underline text-xs">tools.ietf.org →</a></td>
+                    </tr>
+                    <tr class="hover:bg-gray-800/20">
+                        <td class="py-4 px-4 font-mono text-spxp-accent">OKP JWK</td>
+                        <td class="py-4 px-4">RFC 8037</td>
+                        <td class="py-4 px-4">OKP key representation</td>
+                        <td class="py-4 px-4"><a href="https://tools.ietf.org/html/rfc8037" target="_blank" class="text-spxp-accent hover:underline text-xs">tools.ietf.org →</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to build?</h2>
+        <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+            The full protocol specification and a quickstart guide are available on GitHub.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://github.com/spxp/spxp-specs/blob/master/Quickstart.md" target="_blank" class="px-6 py-3 bg-spxp-accent hover:bg-indigo-600 rounded-lg font-medium transition">
+                Quickstart Guide
+            </a>
+            <a href="https://github.com/spxp/spxp-specs/blob/master/SPXP-Spec.md" target="_blank" class="px-6 py-3 border border-gray-700 hover:border-gray-500 rounded-lg font-medium transition">
+                Full Protocol Spec
+            </a>
+            <a href="/ecosystem/" class="px-6 py-3 border border-gray-700 hover:border-gray-500 rounded-lg font-medium transition">
+                Explore the Ecosystem
+            </a>
+        </div>
+    </div>
+</section>
+
+{{> footer}}
