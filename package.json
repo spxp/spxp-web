@@ -14,11 +14,15 @@
     "url": "https://github.com/spxp/spxp-web"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "autoprefixer": "^10.4.27",
     "browser-sync": "^3.0.2",
     "del": "^6.1.1",
     "gulp": "^5.0.1",
     "gulp-pretty-html": "^2.0.10",
-    "panini": "^1.7.2"
+    "panini": "^1.7.2",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
   },
   "engines": {
     "node": ">=18.0.0"

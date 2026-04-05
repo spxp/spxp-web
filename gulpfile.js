@@ -4,6 +4,22 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const panini = require('panini');
 const prettyHtml = require('gulp-pretty-html');
+const { exec } = require('child_process');
+const path = require('path');
+
+// BUILD TAILWIND CSS
+function buildTailwind(done) {
+  console.log('---------------BUILDING TAILWIND CSS---------------');
+  exec(
+    path.join(__dirname, 'node_modules/.bin/tailwindcss') +
+      ' -i ./src/css/tailwind.css -o ./dist/css/tailwind.css --minify',
+    (err, stdout, stderr) => {
+      if (err) { console.error(stderr); return done(err); }
+      browserSync.reload();
+      done();
+    }
+  );
+}
 
 // COMPILE HTML WITH PANINI
 function compileHTML() {
@@ -48,11 +64,7 @@ function cleanDist(done) {
   return done();
 }
 
-// WATCH FILES
-function watchFiles() {
-  watch('src/**/*.html', series(compileHTML, prettyHTML));
-  watch('profile/**/*', copySPXPProfile);
-}
+
 
 // BROWSER SYNC
 function browserSyncInit(done) {
@@ -63,11 +75,18 @@ function browserSyncInit(done) {
   return done();
 }
 
+// WATCH FILES (including Tailwind sources)
+function watchFiles() {
+  watch('src/**/*.html', series(compileHTML, prettyHTML, buildTailwind));
+  watch('src/css/**/*.css', buildTailwind);
+  watch('profile/**/*', copySPXPProfile);
+}
+
 // DEV - local development with live reload
-exports.dev = series(cleanDist, copySPXPProfile, compileHTML, prettyHTML, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copySPXPProfile, compileHTML, prettyHTML, buildTailwind, browserSyncInit, watchFiles);
 
 // BUILD - production build
-exports.build = series(cleanDist, copySPXPProfile, compileHTML, prettyHTML);
+exports.build = series(cleanDist, copySPXPProfile, compileHTML, prettyHTML, buildTailwind);
 
 // Default task
 exports.default = exports.dev;
