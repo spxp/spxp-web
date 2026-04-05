@@ -1,0 +1,524 @@
+---
+layout: modern
+pageTitle: "Quickstart Guide – Get Started with SPXP in 5 Minutes"
+pageDescription: "Create your first SPXP social profile, host it anywhere, and connect with others. A step-by-step guide for developers."
+pageCanonical: "https://spxp.org/quickstart/"
+---
+
+{{> nav}}
+
+<!-- Hero Section -->
+<section class="min-h-[50vh] flex items-center pt-24 pb-16 border-b border-gray-800/50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-spxp-accent/10 border border-spxp-accent/30 text-spxp-accent text-sm mb-6">
+            <span class="w-2 h-2 rounded-full bg-spxp-green animate-pulse"></span>
+            Quickstart Guide
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Get started with <span class="gradient-text">SPXP</span>
+        </h1>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            From zero to a working SPXP profile in 5 minutes. No signup, no account, no special software.
+        </p>
+    </div>
+</section>
+
+<!-- Section 1: See it live -->
+<section class="py-24 border-b border-gray-800/50">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">1</div>
+                <h2 class="text-3xl font-bold">See it live</h2>
+            </div>
+            <p class="text-gray-400 ml-14">
+                SPXP profiles are just JSON files served over HTTPS. No magic — just the web. Try it right now:
+            </p>
+        </div>
+
+        <!-- Terminal: curl the profile -->
+        <div class="terminal mb-6">
+            <div class="terminal-header">
+                <div class="terminal-dot bg-red-500"></div>
+                <div class="terminal-dot bg-yellow-500"></div>
+                <div class="terminal-dot bg-green-500"></div>
+                <span class="ml-4 text-xs text-gray-500">curl https://spxp.org/spxp</span>
+            </div>
+            <div class="code-block relative">
+                <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700 flex justify-between items-center">
+                    <span>Response</span>
+                    <button onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('code').textContent)" class="text-gray-500 hover:text-white transition text-xs">Copy</button>
+                </div>
+<pre class="language-json !m-0"><code id="profile-json">{
+    "ver": "0.3",
+    "name": "SPXP.org",
+    "shortInfo": "Social Profile Exchange Protocol",
+    "about": "A protocol for a decentralised social network, focusing on privacy, security and individual sovereignty.",
+    "website": "https://spxp.org",
+    "profilePhoto": "spxp-profile-logo.png",
+    "postsEndpoint": "spxp-posts"
+}</code></pre>
+            </div>
+        </div>
+
+        <p class="text-gray-400 mb-4">
+            That's it. A social profile is a JSON file served over HTTPS. You can open this URL in your browser right now:
+            <a href="https://spxp.org/spxp" target="_blank" class="text-spxp-accent hover:underline font-mono">https://spxp.org/spxp</a>
+        </p>
+
+        <p class="text-gray-400 mb-8">
+            Notice the <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">postsEndpoint</code> field? That links to a time series of posts — also just JSON:
+        </p>
+
+        <!-- Terminal: curl the posts -->
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot bg-red-500"></div>
+                <div class="terminal-dot bg-yellow-500"></div>
+                <div class="terminal-dot bg-green-500"></div>
+                <span class="ml-4 text-xs text-gray-500">curl https://spxp.org/spxp-posts</span>
+            </div>
+            <div class="code-block">
+                <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700">
+                    <span>Response (excerpt)</span>
+                </div>
+<pre class="language-json !m-0"><code>{
+    "data": [
+        {
+            "seqts": "2024-11-01T09:00:00.000",
+            "type": "text",
+            "message": "Welcome to SPXP.org! This profile demonstrates the protocol."
+        },
+        {
+            "seqts": "2024-10-15T14:30:00.000",
+            "type": "web",
+            "message": "Check out the full specification",
+            "link": "https://github.com/spxp/spxp-specs"
+        }
+    ],
+    "more": true
+}</code></pre>
+            </div>
+        </div>
+
+        <p class="text-gray-400 mt-6">
+            The <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">postsEndpoint</code> links to a time-ordered list of posts. Clients paginate through them with the <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">more</code> flag. Every piece of data is just a standard HTTP request away.
+        </p>
+    </div>
+</section>
+
+<!-- Section 2: Browse with an app -->
+<section class="py-24 border-b border-gray-800/50 bg-gradient-to-b from-spxp-dark to-spxp-darker">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">2</div>
+                <h2 class="text-3xl font-bold">Browse with an app</h2>
+            </div>
+            <p class="text-gray-400 ml-14">
+                <a href="https://heyfolks.app" target="_blank" class="text-spxp-accent hover:underline font-semibold">HeyFolks</a> is the official SPXP client for iOS and Android. It browses profiles, displays posts, and manages your social graph — all without a central server.
+            </p>
+        </div>
+
+        <!-- App screenshots -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="flex flex-col items-center">
+                <img src="https://raw.githubusercontent.com/spxp/spxp-specs/master/assets/AppProfilesFollowing.png"
+                     alt="HeyFolks – Following Profiles"
+                     class="rounded-xl shadow-lg border border-gray-800 max-h-[500px] object-contain w-full">
+                <p class="text-gray-500 text-xs mt-3 text-center">Following list</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <img src="https://raw.githubusercontent.com/spxp/spxp-specs/master/assets/AppSamplePosts.png"
+                     alt="HeyFolks – Sample Posts"
+                     class="rounded-xl shadow-lg border border-gray-800 max-h-[500px] object-contain w-full">
+                <p class="text-gray-500 text-xs mt-3 text-center">Posts feed</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <img src="https://raw.githubusercontent.com/spxp/spxp-specs/master/assets/AppSampleFriends.png"
+                     alt="HeyFolks – Sample Friends"
+                     class="rounded-xl shadow-lg border border-gray-800 max-h-[500px] object-contain w-full">
+                <p class="text-gray-500 text-xs mt-3 text-center">Friends list</p>
+            </div>
+        </div>
+
+        <div class="space-y-4 text-gray-400">
+            <p>
+                The app suggests profiles to follow from a curated directory. <strong class="text-white">Following is client-side only</strong> — profiles you follow won't know about it. No notifications, no follower counts, no social pressure.
+            </p>
+            <div class="feature-card rounded-xl p-4 flex gap-3">
+                <span class="text-xl flex-shrink-0">💡</span>
+                <p class="text-sm">
+                    <strong class="text-white">Developer tip:</strong> Enable <em>"Profile developer controls"</em> in HeyFolks settings. This adds a manual Refresh button so you can immediately see changes during development without waiting for the cache to expire.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="https://heyfolks.app" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-spxp-accent hover:bg-indigo-600 rounded-lg font-medium transition">
+                Get HeyFolks App
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Explore the Bridge -->
+<section class="py-24 border-b border-gray-800/50">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">3</div>
+                <h2 class="text-3xl font-bold">Explore the Bridge</h2>
+            </div>
+            <p class="text-gray-400 ml-14">
+                <a href="https://bridge.spxp.org" target="_blank" class="text-spxp-accent hover:underline font-semibold">SPXP Bridge</a> converts profiles from other protocols (ActivityPub, AT Protocol, Nostr) into SPXP format on the fly. This means you can follow any Mastodon, Bluesky, or Nostr account from within HeyFolks.
+            </p>
+        </div>
+
+        <div class="code-block mb-6">
+            <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700 flex justify-between items-center">
+                <span>Bridge URI patterns</span>
+                <button onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('code').textContent)" class="text-gray-500 hover:text-white transition text-xs">Copy</button>
+            </div>
+<pre class="language-bash !m-0"><code># ActivityPub (Mastodon and compatible)
+https://bridge.spxp.org/ap/@user@instance.social
+
+# AT Protocol (Bluesky)
+https://bridge.spxp.org/at/@user.bsky.social
+
+# Nostr
+https://bridge.spxp.org/nostr/&lt;public-key&gt;</code></pre>
+        </div>
+
+        <p class="text-gray-400 mb-4">
+            For example, to follow the EFF's Mastodon account in HeyFolks, add this profile URI:
+        </p>
+
+        <div class="code-block mb-6">
+            <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700 flex justify-between items-center">
+                <span>EFF on Mastodon via Bridge</span>
+                <button onclick="navigator.clipboard.writeText('https://bridge.spxp.org/ap/@eff@mastodon.social')" class="text-gray-500 hover:text-white transition text-xs">Copy</button>
+            </div>
+<pre class="language-bash !m-0"><code>https://bridge.spxp.org/ap/@eff@mastodon.social</code></pre>
+        </div>
+
+        <p class="text-gray-400">
+            Paste that URL into HeyFolks' "Add profile" dialog and you'll see EFF's posts in your SPXP feed.
+            The bridge page has more details on supported features and limitations.
+        </p>
+
+        <div class="mt-6">
+            <a href="https://bridge.spxp.org" target="_blank" class="text-spxp-accent hover:underline text-sm">
+                Explore SPXP Bridge →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Create your own profile -->
+<section class="py-24 border-b border-gray-800/50 bg-gradient-to-b from-spxp-darker to-spxp-dark">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">4</div>
+                <h2 class="text-3xl font-bold">Create your own profile</h2>
+            </div>
+            <p class="text-gray-400 ml-14">
+                Ready to publish your own profile? You just need a text editor and a web server. Let's go.
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Step 1 -->
+            <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 font-mono font-bold text-sm border border-gray-700">1</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-xl mb-2">Create a minimal profile file</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        This is the minimum valid SPXP profile. Save it as <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">profile.json</code>.
+                    </p>
+                    <div class="code-block">
+                        <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700 flex justify-between items-center">
+                            <span>profile.json</span>
+                            <button onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('code').textContent)" class="text-gray-500 hover:text-white transition text-xs">Copy</button>
+                        </div>
+<pre class="language-json !m-0"><code>{
+    "ver": "0.3",
+    "name": "Jane Doe",
+    "shortInfo": "Developer, builder of things"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 font-mono font-bold text-sm border border-gray-700">2</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-xl mb-2">Upload it to any web server</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Any static hosting will work: GitHub Pages, Netlify, Vercel, your own VPS — whatever you have. Upload the file and note the URL.
+                    </p>
+                    <div class="code-block">
+                        <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700 flex justify-between items-center">
+                            <span>Upload to your server</span>
+                            <button onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('code').textContent)" class="text-gray-500 hover:text-white transition text-xs">Copy</button>
+                        </div>
+<pre class="language-bash !m-0"><code># Upload to your server
+scp profile.json you@yourserver.com:/var/www/spxp/
+
+# Or use GitHub Pages, Netlify, any static host
+# Your profile is now at:
+# https://yourserver.com/spxp/profile.json</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 font-mono font-bold text-sm border border-gray-700">3</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-xl mb-2">Open it in HeyFolks</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        In the HeyFolks app, tap the blue <strong class="text-white">"+"</strong> button in the profiles list, enter your profile URL, and your profile appears — as long as the JSON is valid.
+                    </p>
+                    <div class="feature-card rounded-xl p-4 flex gap-3">
+                        <span class="text-xl flex-shrink-0">⚠️</span>
+                        <p class="text-sm text-gray-400">
+                            <strong class="text-white">CORS headers:</strong> Make sure your server sends proper <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">Access-Control-Allow-Origin: *</code> headers if you want browser-based clients to access your profile. Most static hosts do this automatically; for nginx or Apache, you may need to configure it explicitly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5: Add posts -->
+<section class="py-24 border-b border-gray-800/50">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">5</div>
+                <h2 class="text-3xl font-bold">Add posts</h2>
+            </div>
+            <p class="text-gray-400 ml-14">
+                A profile without posts is pretty quiet. Let's add some content.
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Step 1 -->
+            <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 font-mono font-bold text-sm border border-gray-700">1</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-xl mb-2">Create a posts file</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Save this as <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">posts.json</code>. The <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">seqts</code> is a sequence timestamp (ISO 8601) used for ordering; <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">type</code> defines the post format (text, web, image, …); <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">more: false</code> means there are no older posts to paginate.
+                    </p>
+                    <div class="code-block">
+                        <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700 flex justify-between items-center">
+                            <span>posts.json</span>
+                            <button onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('code').textContent)" class="text-gray-500 hover:text-white transition text-xs">Copy</button>
+                        </div>
+<pre class="language-json !m-0"><code>{
+    "data": [
+        {
+            "seqts": "2026-04-01T12:00:00.000",
+            "type": "text",
+            "message": "Hello, world! This is my first SPXP post."
+        }
+    ],
+    "more": false
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 font-mono font-bold text-sm border border-gray-700">2</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-xl mb-2">Reference it in your profile</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Update <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">profile.json</code> to add the <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">postsEndpoint</code>. This can be a relative URL (resolved against the profile URL) or an absolute URL.
+                    </p>
+                    <div class="code-block">
+                        <div class="bg-gray-800/50 px-4 py-2 text-xs text-gray-500 border-b border-gray-700 flex justify-between items-center">
+                            <span>profile.json (updated)</span>
+                            <button onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('code').textContent)" class="text-gray-500 hover:text-white transition text-xs">Copy</button>
+                        </div>
+<pre class="language-json !m-0"><code>{
+    "ver": "0.3",
+    "name": "Jane Doe",
+    "shortInfo": "Developer, builder of things",
+    "postsEndpoint": "posts.json"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 font-mono font-bold text-sm border border-gray-700">3</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-xl mb-2">Upload both files, refresh in HeyFolks</h3>
+                    <p class="text-gray-400 text-sm">
+                        Upload both <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">profile.json</code> and <code class="font-mono text-spxp-accent bg-gray-800 px-1 rounded">posts.json</code> to the same directory on your server. Hit Refresh in HeyFolks (remember to enable developer controls) and you'll see your first post. 🚀
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 6: Use a hosting provider -->
+<section class="py-24 border-b border-gray-800/50 bg-gradient-to-b from-spxp-dark to-spxp-darker">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">6</div>
+                <h2 class="text-3xl font-bold">Use a hosting provider</h2>
+            </div>
+            <p class="text-gray-400 ml-14">
+                Not into self-hosting? SPXP hosting providers take care of the server, signing, and key management — while keeping your private key on your device.
+            </p>
+        </div>
+
+        <div class="space-y-6">
+            <!-- How to set up -->
+            <div class="feature-card rounded-xl p-6">
+                <h3 class="font-semibold text-xl mb-4">Set up via HeyFolks</h3>
+                <ol class="space-y-3 text-gray-400 text-sm list-none">
+                    <li class="flex gap-3">
+                        <span class="text-spxp-accent font-mono font-bold">1.</span>
+                        Open HeyFolks and tap the rightmost tab → <strong class="text-white">"Setup Profile"</strong>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-spxp-accent font-mono font-bold">2.</span>
+                        Choose a hosting provider such as <a href="https://spxp.space" target="_blank" class="text-spxp-accent hover:underline">SPXP.space</a>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-spxp-accent font-mono font-bold">3.</span>
+                        The app generates your keypair <strong class="text-white">locally</strong> — your private key never leaves your device
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-spxp-accent font-mono font-bold">4.</span>
+                        Your public key is published in your profile. All your posts are signed before uploading.
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Key point: not locked in -->
+            <div class="feature-card rounded-xl p-6 border-spxp-green/30" style="border-color: rgba(34, 197, 94, 0.3);">
+                <div class="flex gap-3 items-start">
+                    <span class="text-2xl flex-shrink-0">🔑</span>
+                    <div>
+                        <h4 class="font-semibold text-spxp-green mb-2">You're not locked in</h4>
+                        <p class="text-gray-400 text-sm">
+                            Your identity is your keypair, not your hosting provider. You can migrate to a different provider — or your own server — at any time. Because your posts are cryptographically signed with your private key, they remain verifiably yours even after moving. Followers just need to update your profile URL.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Migration video -->
+            <div class="feature-card rounded-xl p-6">
+                <div class="flex gap-3 items-start">
+                    <span class="text-2xl flex-shrink-0">🎬</span>
+                    <div>
+                        <h4 class="font-semibold mb-2">See it in action</h4>
+                        <p class="text-gray-400 text-sm mb-3">
+                            Watch this demo video showing a live profile migration between hosting providers. The signatures prove authenticity throughout — no content is lost or invalidated.
+                        </p>
+                        <a href="https://www.youtube.com/watch?v=kDv0rW8uEwA" target="_blank" class="inline-flex items-center gap-2 text-spxp-accent hover:underline text-sm">
+                            Migration demo on YouTube
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 7: Go deeper -->
+<section class="py-24">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-spxp-accent/20 flex items-center justify-center text-spxp-accent font-mono font-bold">7</div>
+                <h2 class="text-3xl font-bold">Go deeper</h2>
+            </div>
+            <p class="text-gray-400 ml-14">
+                You've got the basics. Here's where to go next.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Protocol Spec -->
+            <a href="https://github.com/spxp/spxp-specs/blob/master/SPXP-Spec.md" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">📄</div>
+                    <h3 class="font-semibold">Protocol Spec</h3>
+                </div>
+                <p class="text-gray-400 text-sm">The full SPXP specification on GitHub. Everything that's valid, and why.</p>
+            </a>
+
+            <!-- How It Works -->
+            <a href="/how-it-works/" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">⚙️</div>
+                    <h3 class="font-semibold">How It Works</h3>
+                </div>
+                <p class="text-gray-400 text-sm">Step-by-step protocol walkthrough with code examples — keys, signatures, encryption.</p>
+            </a>
+
+            <!-- Why SPXP -->
+            <a href="/why/" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">💡</div>
+                    <h3 class="font-semibold">Why SPXP</h3>
+                </div>
+                <p class="text-gray-400 text-sm">The philosophy and motivation behind SPXP. Why this, why now.</p>
+            </a>
+
+            <!-- Crypto Tools -->
+            <a href="https://github.com/spxp/spxp-crypto/blob/master/spxp-crypto-tools/ExploreTestbedProfiles.md" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">🔧</div>
+                    <h3 class="font-semibold">Crypto Tools</h3>
+                </div>
+                <p class="text-gray-400 text-sm">Explore and decrypt testbed profiles using the Java crypto tools. Great for learning the encryption layer.</p>
+            </a>
+
+            <!-- Manual signing -->
+            <a href="https://github.com/spxp/spxp-crypto/blob/master/spxp-crypto-tools/ManualProfileCreation.md" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">✍️</div>
+                    <h3 class="font-semibold">Manual Signing</h3>
+                </div>
+                <p class="text-gray-400 text-sm">Learn to sign and encrypt profiles manually with the CLI. Understand the crypto layer hands-on.</p>
+            </a>
+
+            <!-- Testbed Profiles -->
+            <a href="http://testbed.spxp.org/" target="_blank" class="feature-card rounded-xl p-6 block hover:bg-gray-800/30">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-2xl">🧪</div>
+                    <h3 class="font-semibold">Testbed Profiles</h3>
+                </div>
+                <p class="text-gray-400 text-sm">A collection of test profiles covering different SPXP features. Perfect for testing your client implementation.</p>
+            </a>
+        </div>
+
+        <div class="mt-12 text-center">
+            <p class="text-gray-500 text-sm mb-4">Questions? Something missing?</p>
+            <a href="https://github.com/spxp/spxp-specs/issues" target="_blank" class="text-spxp-accent hover:underline text-sm">
+                Open an issue on GitHub →
+            </a>
+        </div>
+    </div>
+</section>
+
+{{> footer}}
