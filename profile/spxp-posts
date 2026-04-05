@@ -1,6 +1,39 @@
 {
     "data": [
         {
+            "seqts": "2026-04-05T12:00:00.000",
+            "type": "text",
+            "message": "The spxp.org website has a new home: a dedicated quickstart guide at spxp.org/quickstart. From zero to a working SPXP profile in 5 minutes \u2014 no signup, no account, no special software. A social profile is a JSON file served over HTTPS. That is really all there is to it."
+        },
+        {
+            "seqts": "2026-02-20T12:00:00.000",
+            "type": "text",
+            "message": "After years of focusing on the protocol itself, spxp.org finally has a proper new home. The website has been completely redesigned with a modern look, clear explanations of why SPXP exists, how it works, and what ecosystem has grown around it. Check it out!"
+        },
+        {
+            "seqts": "2023-11-11T12:00:00.000",
+            "link": "https://github.com/spxp/spxp-specs/blob/master/SPXP-in-a-nutshell.md",
+            "type": "web",
+            "message": "Sometimes you just need the short version. We published \"SPXP in a nutshell\" \u2014 a concise overview of what SPXP is and how it works, without reading the full spec. Perfect starting point if you want to understand the protocol quickly."
+        },
+        {
+            "seqts": "2023-11-11T14:00:00.000",
+            "link": "https://github.com/spxp/spxp-specs/blob/master/info/New_Public-submission.md",
+            "type": "web",
+            "message": "We submitted SPXP to the New_ Public initiative \u2014 a project supporting better, healthier digital public spaces. The submission required answering 14 structured questions about the protocol's design and social vision: how we handle privacy, authenticity, sovereignty, and communication. It took a lot of work to write up, but it is probably the most comprehensive description of what SPXP is trying to achieve beyond just the technical spec. Worth a read!"
+        },
+        {
+            "seqts": "2023-03-05T12:00:00.000",
+            "type": "text",
+            "message": "CR003 has been merged into the spec: Comments and Reactions are now a defined part of the SPXP protocol. We also took the opportunity to completely rework the README and Quickstart documentation to make it easier to get started."
+        },
+        {
+            "seqts": "2023-01-15T12:00:00.000",
+            "link": "https://medium.com/@s.kopf/mastodon-is-a-zero-privacy-network-here-is-what-you-need-to-know-86aeed685e41",
+            "type": "web",
+            "message": "Stefan wrote a detailed analysis on Medium about privacy in the Fediverse: \"Mastodon is a zero-privacy network \u2014 here is what you need to know.\" It explains why ActivityPub's architecture makes real privacy nearly impossible, and why SPXP takes a fundamentally different approach with end-to-end encryption by design."
+        },
+        {
             "seqts": "2022-10-22T12:00:00.000",
             "type": "text",
             "message": "Turned out that supporting other ActivityPub software is a lot harder than we initially expected. There are suttle but signficant differences between these software projects requiring us to test and adopt the code for almost all projects."
