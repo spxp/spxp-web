@@ -1,3 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "../../src/**/*.html";
+
+@theme {
+  --color-spxp-dark: #0a0a0f;
+  --color-spxp-darker: #050508;
+  --color-spxp-accent: #6366f1;
+  --color-spxp-green: #22c55e;
+  --color-spxp-muted: #6b7280;
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
