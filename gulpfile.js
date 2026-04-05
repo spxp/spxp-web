@@ -22,6 +22,9 @@ function buildTailwind(done) {
 }
 
 // COMPILE HTML WITH PANINI
+// index.html stays at root; all other pages go into subfolders as index.html
+const rename = require('gulp-rename');
+
 function compileHTML() {
   console.log('---------------COMPILING HTML WITH PANINI---------------');
   panini.refresh();
@@ -32,6 +35,13 @@ function compileHTML() {
       partials: 'src/partials/',
       helpers: 'src/helpers/',
       data: 'src/data/'
+    }))
+    .pipe(rename(function(file) {
+      // Keep index.html at root, move others to subdir/index.html
+      if (file.basename !== 'index') {
+        file.dirname = file.basename;
+        file.basename = 'index';
+      }
     }))
     .pipe(dest('dist'))
     .pipe(browserSync.stream());
@@ -55,7 +65,7 @@ function copyStatic() {
 // PRETTIFY HTML FILES
 function prettyHTML() {
   console.log('---------------HTML PRETTIFY---------------');
-  return src('dist/*.html')
+  return src('dist/**/*.html')
     .pipe(prettyHtml({
       indent_size: 4,
       indent_char: ' ',
