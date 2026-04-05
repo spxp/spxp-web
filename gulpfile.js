@@ -45,6 +45,13 @@ function copySPXPProfile() {
     .pipe(browserSync.stream());
 }
 
+// COPY STATIC FILES (htaccess, robots, etc.)
+function copyStatic() {
+  console.log('---------------COPYING STATIC FILES INTO DIST FOLDER---------------');
+  return src(['src/.htaccess'], { dot: true })
+    .pipe(dest('dist'));
+}
+
 // PRETTIFY HTML FILES
 function prettyHTML() {
   console.log('---------------HTML PRETTIFY---------------');
@@ -83,10 +90,10 @@ function watchFiles() {
 }
 
 // DEV - local development with live reload
-exports.dev = series(cleanDist, copySPXPProfile, compileHTML, prettyHTML, buildTailwind, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copySPXPProfile, copyStatic, compileHTML, prettyHTML, buildTailwind, browserSyncInit, watchFiles);
 
 // BUILD - production build
-exports.build = series(cleanDist, copySPXPProfile, compileHTML, prettyHTML, buildTailwind);
+exports.build = series(cleanDist, copySPXPProfile, copyStatic, compileHTML, prettyHTML, buildTailwind);
 
 // Default task
 exports.default = exports.dev;
