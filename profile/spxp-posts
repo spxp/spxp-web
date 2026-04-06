@@ -1,196 +1,211 @@
 {
     "data": [
         {
-            "seqts": "2026-04-05T12:00:00.000",
+            "seqts": "2026-04-05T12:00:00.000Z",
             "type": "text",
             "message": "The spxp.org website has a new home: a dedicated quickstart guide at spxp.org/quickstart. From zero to a working SPXP profile in 5 minutes \u2014 no signup, no account, no special software. A social profile is a JSON file served over HTTPS. That is really all there is to it."
         },
         {
-            "seqts": "2026-02-20T12:00:00.000",
+            "seqts": "2026-02-20T12:00:00.000Z",
             "type": "text",
             "message": "After years of focusing on the protocol itself, spxp.org finally has a proper new home. The website has been completely redesigned with a modern look, clear explanations of why SPXP exists, how it works, and what ecosystem has grown around it. Check it out!"
         },
         {
-            "seqts": "2023-11-11T12:00:00.000",
+            "seqts": "2025-06-14T12:00:00.000Z",
+            "type": "text",
+            "message": "We are working on CR-004: Post Replay Protection. The goal is to prevent a malicious actor from re-publishing old signed posts out of context. The proposed mechanism adds a scope to each signed post, binding it to the profile and position it was originally published at. This closes a subtle but important gap in the protocol's authenticity guarantees."
+        },
+        {
+            "seqts": "2024-09-02T12:00:00.000Z",
+            "type": "text",
+            "message": "Version 0.4 of SPXP is taking shape. Three change requests have been accepted into the spec: profile relocation (CR-001), publishing to connected profiles (CR-002), and comments and reactions (CR-003). Together these address the most frequently requested features since the initial release. We are now working on the remaining open items before cutting a stable 0.4 release."
+        },
+        {
+            "seqts": "2024-01-20T12:00:00.000Z",
+            "type": "text",
+            "message": "A question we get a lot: how does SPXP compare to AT Protocol (Bluesky) or Nostr? All three try to solve decentralised social networking, but with very different tradeoffs. SPXP is the only one that puts end-to-end encryption front and centre \u2014 the server is deliberately kept blind to private content. We are working on a writeup that goes into the details."
+        },
+        {
+            "seqts": "2023-11-11T12:00:00.000Z",
             "link": "https://github.com/spxp/spxp-specs/blob/master/SPXP-in-a-nutshell.md",
             "type": "web",
             "message": "Sometimes you just need the short version. We published \"SPXP in a nutshell\" \u2014 a concise overview of what SPXP is and how it works, without reading the full spec. Perfect starting point if you want to understand the protocol quickly."
         },
         {
-            "seqts": "2023-11-11T14:00:00.000",
+            "seqts": "2023-11-11T14:00:00.000Z",
             "link": "https://github.com/spxp/spxp-specs/blob/master/info/New_Public-submission.md",
             "type": "web",
             "message": "We submitted SPXP to the New_ Public initiative \u2014 a project supporting better, healthier digital public spaces. The submission required answering 14 structured questions about the protocol's design and social vision: how we handle privacy, authenticity, sovereignty, and communication. It took a lot of work to write up, but it is probably the most comprehensive description of what SPXP is trying to achieve beyond just the technical spec. Worth a read!"
         },
         {
-            "seqts": "2023-03-05T12:00:00.000",
+            "seqts": "2023-03-05T12:00:00.000Z",
             "type": "text",
             "message": "CR003 has been merged into the spec: Comments and Reactions are now a defined part of the SPXP protocol. We also took the opportunity to completely rework the README and Quickstart documentation to make it easier to get started."
         },
         {
-            "seqts": "2023-01-15T12:00:00.000",
+            "seqts": "2023-01-15T12:00:00.000Z",
             "link": "https://medium.com/@s.kopf/mastodon-is-a-zero-privacy-network-here-is-what-you-need-to-know-86aeed685e41",
             "type": "web",
             "message": "Stefan wrote a detailed analysis on Medium about privacy in the Fediverse: \"Mastodon is a zero-privacy network \u2014 here is what you need to know.\" It explains why ActivityPub's architecture makes real privacy nearly impossible, and why SPXP takes a fundamentally different approach with end-to-end encryption by design."
         },
         {
-            "seqts": "2022-10-22T12:00:00.000",
+            "seqts": "2022-10-22T12:00:00.000Z",
             "type": "text",
-            "message": "Turned out that supporting other ActivityPub software is a lot harder than we initially expected. There are suttle but signficant differences between these software projects requiring us to test and adopt the code for almost all projects."
+            "message": "Turned out that supporting other ActivityPub software is a lot harder than we initially expected. There are subtle but significant differences between these software projects requiring us to test and adopt the code for almost all projects."
         },
         {
-            "seqts": "2022-10-17T12:00:00.000",
+            "seqts": "2022-10-17T12:00:00.000Z",
             "type": "text",
             "message": "Making good progress on the definition of services. There is already a proof of concept implemented for iOS. We now need to counter check against Android as well to make sure we have a true cross platform approach."
         },
         {
-            "seqts": "2022-09-22T12:00:00.000",
+            "seqts": "2022-09-22T12:00:00.000Z",
             "type": "text",
             "message": "We started this protocol under the premise that there is much more potential in social networks than is harvested by todays advertisement driven business models.\nToday, we take our first step in exploring this potential with our work on services.\nIn a nutshell, a service will be a website running in an in-app browser which will have access to additional JavaScript APIs."
         },
         {
-            "seqts": "2022-07-23T12:00:00.000",
+            "seqts": "2022-07-23T12:00:00.000Z",
             "type": "text",
             "message": "The ActivityPub bridge is now able to fully handle Mastodon instances. It's time now to look at other AP software like Pleroma, Pixelfed or Misskey."
         },
         {
-            "seqts": "2022-05-19T12:00:00.000",
+            "seqts": "2022-05-19T12:00:00.000Z",
             "link": "https://bridge.spxp.org",
             "type": "web",
             "message": "We're super proud to announce that v0.1 of the ActivityPub bridge got released today. It's available at https://bridge.spxp.org. To view the SPXP profile of - say - a Mastodon account, just add the following prefix to the Mastodon account: \"https://bridge.spxp.org/ap/\" and open the resulting URL in your browser or with the HeyFolks App."
         },
         {
-            "seqts": "2022-05-11T12:00:00.000",
+            "seqts": "2022-05-11T12:00:00.000Z",
             "type": "text",
             "message": "Happy to report that we're making good progress with the ActivityPub bridge. We can read profiles so far and are currently working on adding profiles a profile is following to the \"friends\" endpoint in SPXP."
         },
         {
-            "seqts": "2022-05-09T12:00:00.000",
+            "seqts": "2022-05-09T12:00:00.000Z",
             "type": "text",
             "message": "The bridge to ActivityPub is now supporting Posts as well."
         },
         {
-            "seqts": "2022-05-08T12:00:00.000",
+            "seqts": "2022-05-08T12:00:00.000Z",
             "type": "text",
             "message": "We are constantly running into rate limits, even if the bridge is only used by a single client. Adding a cache to the bridge now to reduce the pressure this bridge puts on ActivityPub instances."
         },
         {
-            "seqts": "2022-05-06T12:00:00.000",
+            "seqts": "2022-05-06T12:00:00.000Z",
             "type": "text",
             "message": "Just pushed the initial version of the Bridge to GitHub. Very basic yet, but it can already translate profiles."
         },
         {
-            "seqts": "2022-04-29T12:00:00.000",
+            "seqts": "2022-04-29T12:00:00.000Z",
             "type": "text",
             "message": "Turned out that ActivityPub is not really friendly to map to an object oriented language. But we made the basics work, and can already read Mastodon profiles."
         },
         {
-            "seqts": "2022-04-23T12:00:00.000",
+            "seqts": "2022-04-23T12:00:00.000Z",
             "type": "text",
             "message": "After playing with some ActivityPub libraries for Java, I realised that we will need to implement our own for this bridge."
         },
         {
-            "seqts": "2022-04-09T12:00:00.000",
+            "seqts": "2022-04-09T12:00:00.000Z",
             "type": "text",
             "message": "Since I first looked at ActivityPub, I was considering a bridge between both protocols. Will start looking at this in more detail now."
         },
         {
-            "seqts": "2022-04-08T12:00:00.000",
+            "seqts": "2022-04-08T12:00:00.000Z",
             "link": "https://www.youtube.com/watch?v=kDv0rW8uEwA",
             "type": "web",
             "message": "You can find an introduction to the HeyFolks App on YouTube now!\nThe video shows how to follow others, setup a profile setup, publishing posts, connecting profiles, migrating profiles to another provider, and an example for a business case."
         },
         {
-            "seqts": "2022-04-07T12:00:00.000",
+            "seqts": "2022-04-07T12:00:00.000Z",
             "link": "https://www.youtube.com/watch?v=C0S0Oa4G1M4",
             "type": "web",
             "message": "We published a technical introduction to SPXP on YouTube!\nAmongst others, it covers the following topics: e2e encryption, key wrapping, connecting profiles, signing certificates, libs & dev tools, the WordPress plugin, as well as the bash CLI."
         },
         {
-            "seqts": "2021-12-11T12:00:00.000",
+            "seqts": "2021-12-11T12:00:00.000Z",
             "type": "text",
             "message": "Running some last tests with the new protocol features. You will soon see PRs on GH for relocations, publishing, comments and reactions!"
         },
         {
-            "seqts": "2021-12-02T12:00:00.000",
+            "seqts": "2021-12-02T12:00:00.000Z",
             "type": "text",
             "message": "Now that we have a mechanism in place to contribute posts to peer profiles, we can build upon this process to allow comments and reactions. This is the most requested feature missing in SPXP."
         },
         {
-            "seqts": "2021-11-13T12:00:00.000",
+            "seqts": "2021-11-13T12:00:00.000Z",
             "type": "text",
             "message": "After we found a viable solution for profile relocations, we now started the work on the publishing endpoint. Version 0.3 of the protocol already specifies signing certificates and allows posts to be authored by a different profile. But this version of the spec did not define how these are exchanged during the connection process and how the peer profile can contribute these posts to the profile server."
         },
         {
-            "seqts": "2021-10-16T12:00:00.000",
+            "seqts": "2021-10-16T12:00:00.000Z",
             "type": "text",
             "message": "We picked up work again on the features that did not make it in version 0.3. First candidate: Profile Relocations.\nAlthough users can pick any service provider of their choice, or even host profiles themselves, there is still the risk of a lock-in effect. You can observe this with email addresses for example. Once you started using a mail account, it is almost impossible to switch to a different provider. We started this protocol with full profile portability in mind. This is the reason why this protocol choses the profile key over the profile URI. We are now going to present a mechanism how profiles can seamlessly move from one profile URI to another without disruption."
         },
         {
-            "seqts": "2021-04-17T21:30:00.000",
+            "seqts": "2021-04-17T21:30:00.000Z",
             "link": "https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk",
             "type": "web",
             "message": "Today has been release day!\n\nWe officially release version 0.3 of the spxp-crypto libraries, including native builds of the commandline tools for Linux, Windows and Mac (/spxp-crypto-tools). This makes it a lot easier - and more performant - to create and manage SPXP profiles on the command line.\n\nAdditionally, we made the testbed generator available under the Apache license as well (/spxp-crypto-tools/ExploreTestbedProfiles.md)!"
         },
         {
-            "seqts": "2020-12-29T11:12:00.000",
+            "seqts": "2020-12-29T11:12:00.000Z",
             "type": "text",
             "message": "We continue to make all resources available by opening up our GitHub repo containing the spxp.org website to the public."
         },
         {
-            "seqts": "2020-12-14T10:30:00.000",
+            "seqts": "2020-12-14T10:30:00.000Z",
             "link": "https://spxp.org",
             "type": "web",
             "message": "Our new website is finally live!"
         },
         {
-            "seqts": "2020-12-11T17:00:00.000",
+            "seqts": "2020-12-11T17:00:00.000Z",
             "link": "https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk-V02",
             "type": "web",
             "message": "One day after the official spec, we also make the Java reference implementation of the cryptographic operations in the protocol available under the Apache license as well. You can find the source in it's own repo in our GitHub org: https://github.com/spxp/spxp-crypto/tree/master/spxp-crypto-sdk-V02"
         },
         {
-            "seqts": "2020-12-10T19:00:00.000",
+            "seqts": "2020-12-10T19:00:00.000Z",
             "type": "text",
             "message": "Finally! We just made our GitHub repo public and revealed version 0.3 of SPXP to the world! \\o/"
         },
         {
-            "seqts": "2020-12-08T21:30:00.000",
+            "seqts": "2020-12-08T21:30:00.000Z",
             "type": "text",
             "message": "Preparing the SPXP spec to go live soon. Proof reading, correcting typos, polishing, ..."
         },
         {
-            "seqts": "2020-12-01T20:12:00.000",
+            "seqts": "2020-12-01T20:12:00.000Z",
             "type": "text",
             "message": "Decided today to remove DNS bound profile keys from the first public version of the spec. This requires more thought and investigation."
         },
         {
-            "seqts": "2020-10-04T19:20:00.000",
+            "seqts": "2020-10-04T19:20:00.000Z",
             "type": "text",
             "message": "Started a new \"Service Provider Extension\" spec today."
         },
         {
-            "seqts": "2020-09-06T17:15:00.000",
+            "seqts": "2020-09-06T17:15:00.000Z",
             "type": "text",
             "message": "Started the work on the \"Profile Management Extension\" spec today."
         },
         {
-            "seqts": "2020-09-04T17:15:00.000",
+            "seqts": "2020-09-04T17:15:00.000Z",
             "type": "text",
             "message": "Continue to focus on the stable core parts of the protocol and removed the publishing endpoint as well. We will add it back in a later version of the protocol, probably in version 0.4"
         },
         {
-            "seqts": "2020-06-13T12:30:00.000",
+            "seqts": "2020-06-13T12:30:00.000Z",
             "type": "text",
             "message": "Decided to focus on a \"Minimum Viable Protocol\" and started to remove non-essential parts. This will enable us to release a stable version sooner. Removed comments from version 0.3 as this will require additional research and work."
         },
         {
-            "seqts": "2020-03-29T18:30:00.000",
+            "seqts": "2020-03-29T18:30:00.000Z",
             "type": "text",
             "message": "Started the work on protocol version 0.3 now on GitHub to allow for better collaboration."
         },
         {
-            "seqts": "2020-02-20T20:10:00.000",
+            "seqts": "2020-02-20T20:10:00.000Z",
             "type": "text",
             "message": "After discussing this idea for a while and playing around with some concepts, we just registered an org on GitHub to work on this new protocol. In the spirit of SPXP, we will try to keep you updated on our work with an SPXP compliant profile! ;-)"
         }
