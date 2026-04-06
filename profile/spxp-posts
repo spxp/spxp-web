@@ -3,7 +3,7 @@
         {
             "seqts": "2026-04-05T12:00:00.000Z",
             "type": "text",
-            "message": "The spxp.org website has a new home: a dedicated quickstart guide at spxp.org/quickstart. From zero to a working SPXP profile in 5 minutes \u2014 no signup, no account, no special software. A social profile is a JSON file served over HTTPS. That is really all there is to it."
+            "message": "The spxp.org website has a new home: a dedicated quickstart guide at spxp.org/quickstart. From zero to a working SPXP profile in 5 minutes — no signup, no account, no special software. A social profile is a JSON file served over HTTPS. That is really all there is to it."
         },
         {
             "seqts": "2026-02-20T12:00:00.000Z",
@@ -12,41 +12,45 @@
         },
         {
             "seqts": "2025-06-14T12:00:00.000Z",
-            "type": "text",
+            "link": "https://github.com/spxp/spxp-specs/blob/master/ChangeRequests/CR-004_PostReplayProtection.md",
+            "type": "web",
             "message": "We are working on CR-004: Post Replay Protection. The goal is to prevent a malicious actor from re-publishing old signed posts out of context. The proposed mechanism adds a scope to each signed post, binding it to the profile and position it was originally published at. This closes a subtle but important gap in the protocol's authenticity guarantees."
         },
         {
             "seqts": "2024-09-02T12:00:00.000Z",
-            "type": "text",
+            "link": "https://github.com/spxp/spxp-specs/blob/master/ChangeRequests/README.md",
+            "type": "web",
             "message": "Version 0.4 of SPXP is taking shape. Three change requests have been accepted into the spec: profile relocation (CR-001), publishing to connected profiles (CR-002), and comments and reactions (CR-003). Together these address the most frequently requested features since the initial release. We are now working on the remaining open items before cutting a stable 0.4 release."
         },
         {
             "seqts": "2024-01-20T12:00:00.000Z",
-            "type": "text",
-            "message": "A question we get a lot: how does SPXP compare to AT Protocol (Bluesky) or Nostr? All three try to solve decentralised social networking, but with very different tradeoffs. SPXP is the only one that puts end-to-end encryption front and centre \u2014 the server is deliberately kept blind to private content. We are working on a writeup that goes into the details."
+            "type": "web",
+            "message": "A question we get a lot: how does SPXP compare to AT Protocol (Bluesky) or Nostr? All three try to solve decentralised social networking, but with very different tradeoffs. SPXP is the only one that puts end-to-end encryption front and centre — the server is deliberately kept blind to private content. We wrote up a detailed comparison.",
+            "link": "https://github.com/spxp/spxp-specs/blob/master/info/Comparison.md"
         },
         {
             "seqts": "2023-11-11T12:00:00.000Z",
             "link": "https://github.com/spxp/spxp-specs/blob/master/SPXP-in-a-nutshell.md",
             "type": "web",
-            "message": "Sometimes you just need the short version. We published \"SPXP in a nutshell\" \u2014 a concise overview of what SPXP is and how it works, without reading the full spec. Perfect starting point if you want to understand the protocol quickly."
+            "message": "Sometimes you just need the short version. We published \"SPXP in a nutshell\" — a concise overview of what SPXP is and how it works, without reading the full spec. Perfect starting point if you want to understand the protocol quickly."
         },
         {
             "seqts": "2023-11-11T14:00:00.000Z",
             "link": "https://github.com/spxp/spxp-specs/blob/master/info/New_Public-submission.md",
             "type": "web",
-            "message": "We submitted SPXP to the New_ Public initiative \u2014 a project supporting better, healthier digital public spaces. The submission required answering 14 structured questions about the protocol's design and social vision: how we handle privacy, authenticity, sovereignty, and communication. It took a lot of work to write up, but it is probably the most comprehensive description of what SPXP is trying to achieve beyond just the technical spec. Worth a read!"
+            "message": "We submitted SPXP to the New_ Public initiative — a project supporting better, healthier digital public spaces. The submission required answering 14 structured questions about the protocol's design and social vision: how we handle privacy, authenticity, sovereignty, and communication. It took a lot of work to write up, but it is probably the most comprehensive description of what SPXP is trying to achieve beyond just the technical spec. Worth a read!"
         },
         {
             "seqts": "2023-03-05T12:00:00.000Z",
-            "type": "text",
+            "link": "https://github.com/spxp/spxp-specs/blob/master/ChangeRequests/CR-003_CommentsAndReactions.md",
+            "type": "web",
             "message": "CR003 has been merged into the spec: Comments and Reactions are now a defined part of the SPXP protocol. We also took the opportunity to completely rework the README and Quickstart documentation to make it easier to get started."
         },
         {
             "seqts": "2023-01-15T12:00:00.000Z",
             "link": "https://medium.com/@s.kopf/mastodon-is-a-zero-privacy-network-here-is-what-you-need-to-know-86aeed685e41",
             "type": "web",
-            "message": "Stefan wrote a detailed analysis on Medium about privacy in the Fediverse: \"Mastodon is a zero-privacy network \u2014 here is what you need to know.\" It explains why ActivityPub's architecture makes real privacy nearly impossible, and why SPXP takes a fundamentally different approach with end-to-end encryption by design."
+            "message": "Stefan wrote a detailed analysis on Medium about privacy in the Fediverse: \"Mastodon is a zero-privacy network — here is what you need to know.\" It explains why ActivityPub's architecture makes real privacy nearly impossible, and why SPXP takes a fundamentally different approach with end-to-end encryption by design."
         },
         {
             "seqts": "2022-10-22T12:00:00.000Z",
@@ -60,7 +64,8 @@
         },
         {
             "seqts": "2022-09-22T12:00:00.000Z",
-            "type": "text",
+            "link": "https://www.youtube.com/watch?v=kDv0rW8uEwA&t=712s",
+            "type": "web",
             "message": "We started this protocol under the premise that there is much more potential in social networks than is harvested by todays advertisement driven business models.\nToday, we take our first step in exploring this potential with our work on services.\nIn a nutshell, a service will be a website running in an in-app browser which will have access to additional JavaScript APIs."
         },
         {
@@ -166,7 +171,8 @@
         },
         {
             "seqts": "2020-12-10T19:00:00.000Z",
-            "type": "text",
+            "link": "https://github.com/spxp/spxp-specs",
+            "type": "web",
             "message": "Finally! We just made our GitHub repo public and revealed version 0.3 of SPXP to the world! \\o/"
         },
         {
