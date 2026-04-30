@@ -62,6 +62,14 @@ function copyStatic() {
     .pipe(dest('dist'));
 }
 
+// COPY SELF-HOSTED FONTS TO DIST
+function copyFonts() {
+  console.log('---------------COPYING FONTS INTO DIST FOLDER---------------');
+  return src(['src/assets/fonts/**/*'])
+    .pipe(dest('dist/assets/fonts'))
+    .pipe(browserSync.stream());
+}
+
 // PRETTIFY HTML FILES
 function prettyHTML() {
   console.log('---------------HTML PRETTIFY---------------');
@@ -100,10 +108,10 @@ function watchFiles() {
 }
 
 // DEV - local development with live reload
-exports.dev = series(cleanDist, copySPXPProfile, copyStatic, compileHTML, prettyHTML, buildTailwind, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, compileHTML, prettyHTML, buildTailwind, browserSyncInit, watchFiles);
 
 // BUILD - production build
-exports.build = series(cleanDist, copySPXPProfile, copyStatic, compileHTML, prettyHTML, buildTailwind);
+exports.build = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, compileHTML, prettyHTML, buildTailwind);
 
 // Default task
 exports.default = exports.dev;
