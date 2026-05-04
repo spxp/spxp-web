@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.4",
-    "autoprefixer": "^10.4.27",
+    "autoprefixer": "^10.5.0",
     "browser-sync": "^3.0.2",
     "del": "^6.1.1",
     "gulp": "^5.0.1",
