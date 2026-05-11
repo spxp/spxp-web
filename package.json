@@ -14,7 +14,7 @@
     "url": "https://github.com/spxp/spxp-web"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.2.4",
+    "@tailwindcss/cli": "^4.3.0",
     "autoprefixer": "^10.5.0",
     "browser-sync": "^3.0.2",
     "del": "^6.1.1",
