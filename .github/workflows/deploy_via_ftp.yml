@@ -20,8 +20,9 @@ jobs:
           
       - name: Build project
         run: |
-          npm install
+          npm ci
           npx gulp build
+          npm run check
              
       - name: Upload to webserver
         uses: Creepios/sftp-action@v1.0.3
