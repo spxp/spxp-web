@@ -2,6 +2,9 @@ name: Deploy on push to master
 on:
   push:
     branches: [ master ]
+permissions:
+  contents: read
+
 jobs:
   web-deploy:
     name: Build and deploy

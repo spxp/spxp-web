@@ -3,15 +3,15 @@ const { src, dest, watch, series } = require('gulp');
 const browserSync = require('browser-sync').create();
 const fs = require('fs');
 const panini = require('panini');
-const { exec } = require('child_process');
+const { execFile } = require('child_process');
 const path = require('path');
 
 // BUILD TAILWIND CSS
 function buildTailwind(done) {
   console.log('---------------BUILDING TAILWIND CSS---------------');
-  exec(
-    path.join(__dirname, 'node_modules/.bin/tailwindcss') +
-      ' -i ./src/css/tailwind.css -o ./dist/css/tailwind.css --minify',
+  execFile(
+    path.join(__dirname, 'node_modules/.bin/tailwindcss'),
+    ['-i', './src/css/tailwind.css', '-o', './dist/css/tailwind.css', '--minify'],
     (err, stdout, stderr) => {
       if (err) { console.error(stderr); return done(err); }
       browserSync.reload();
@@ -69,6 +69,18 @@ function copyFonts() {
     .pipe(browserSync.stream());
 }
 
+// COPY SELF-HOSTED PRISM.JS (no third-party CDN, GDPR)
+function copyPrism() {
+  console.log('---------------COPYING PRISM INTO DIST FOLDER---------------');
+  return src([
+    'node_modules/prismjs/prism.js',
+    'node_modules/prismjs/components/prism-json.min.js',
+    'node_modules/prismjs/components/prism-bash.min.js',
+    'node_modules/prismjs/themes/prism-tomorrow.min.css'
+  ])
+    .pipe(dest('dist/assets/prism'));
+}
+
 // DELETE DIST FOLDER
 function cleanDist(done) {
   console.log('---------------REMOVING OLD FILES FROM DIST---------------');
@@ -95,10 +107,10 @@ function watchFiles() {
 }
 
 // DEV - local development with live reload
-exports.dev = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, compileHTML, buildTailwind, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, copyPrism, compileHTML, buildTailwind, browserSyncInit, watchFiles);
 
 // BUILD - production build
-exports.build = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, compileHTML, buildTailwind);
+exports.build = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, copyPrism, compileHTML, buildTailwind);
 
 // Default task
 exports.default = exports.dev;
