@@ -49,7 +49,7 @@ function compileHTML() {
 // COPY SPXP PROFILE FILES TO DIST
 function copySPXPProfile() {
   console.log('---------------COPYING SPXP PROFILE INTO DIST FOLDER---------------');
-  return src(['profile/**/*'])
+  return src(['profile/**/*'], { encoding: false })
     .pipe(dest('dist'))
     .pipe(browserSync.stream());
 }
@@ -64,7 +64,7 @@ function copyStatic() {
 // COPY SELF-HOSTED FONTS TO DIST
 function copyFonts() {
   console.log('---------------COPYING FONTS INTO DIST FOLDER---------------');
-  return src(['src/assets/fonts/**/*'])
+  return src(['src/assets/fonts/**/*'], { encoding: false })
     .pipe(dest('dist/assets/fonts'))
     .pipe(browserSync.stream());
 }
@@ -72,7 +72,7 @@ function copyFonts() {
 // COPY SELF-HOSTED IMAGES TO DIST
 function copyImages() {
   console.log('---------------COPYING IMAGES INTO DIST FOLDER---------------');
-  return src(['src/assets/images/**/*'])
+  return src(['src/assets/images/**/*'], { encoding: false })
     .pipe(dest('dist/assets/images'));
 }
 

@@ -93,6 +93,25 @@ for (const name of ['spxp', 'spxp-posts']) {
   }
 }
 
+// Binary assets must be byte-identical to their sources. Gulp 5 reads files as
+// UTF-8 unless `encoding: false` is set, which silently corrupts fonts/images.
+const BINARY_SOURCES = [
+  ['profile', ''],
+  ['src/assets/fonts', 'assets/fonts'],
+  ['src/assets/images', 'assets/images'],
+];
+const BINARY_EXT = /\.(png|jpe?g|gif|ico|woff2?|ttf)$/i;
+for (const [srcDir, distDir] of BINARY_SOURCES) {
+  const abs = path.join(__dirname, '..', srcDir);
+  if (!fs.existsSync(abs)) continue;
+  for (const f of walk(abs).filter((f) => BINARY_EXT.test(f))) {
+    const out = path.join(DIST, distDir, path.relative(abs, f));
+    if (!fs.existsSync(out) || !fs.readFileSync(f).equals(fs.readFileSync(out))) {
+      errors.push(`${path.relative(DIST, out)}: missing or differs from ${srcDir}/${path.relative(abs, f)}`);
+    }
+  }
+}
+
 if (errors.length) {
   console.error(`dist check failed (${errors.length}):\n` + errors.map((e) => '  - ' + e).join('\n'));
   process.exit(1);
