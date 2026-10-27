@@ -1,7 +1,7 @@
 'use strict';
 const { src, dest, watch, series } = require('gulp');
 const browserSync = require('browser-sync').create();
-const del = require('del');
+const fs = require('fs');
 const panini = require('panini');
 const { exec } = require('child_process');
 const path = require('path');
@@ -72,7 +72,7 @@ function copyFonts() {
 // DELETE DIST FOLDER
 function cleanDist(done) {
   console.log('---------------REMOVING OLD FILES FROM DIST---------------');
-  del.sync('dist');
+  fs.rmSync('dist', { recursive: true, force: true });
   return done();
 }
 
