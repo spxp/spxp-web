@@ -3,7 +3,6 @@ const { src, dest, watch, series } = require('gulp');
 const browserSync = require('browser-sync').create();
 const del = require('del');
 const panini = require('panini');
-const prettyHtml = require('gulp-pretty-html');
 const { exec } = require('child_process');
 const path = require('path');
 
@@ -70,18 +69,6 @@ function copyFonts() {
     .pipe(browserSync.stream());
 }
 
-// PRETTIFY HTML FILES
-function prettyHTML() {
-  console.log('---------------HTML PRETTIFY---------------');
-  return src('dist/**/*.html')
-    .pipe(prettyHtml({
-      indent_size: 4,
-      indent_char: ' ',
-      unformatted: ['code', 'pre', 'em', 'strong', 'span', 'i', 'b', 'br']
-    }))
-    .pipe(dest('dist'));
-}
-
 // DELETE DIST FOLDER
 function cleanDist(done) {
   console.log('---------------REMOVING OLD FILES FROM DIST---------------');
@@ -102,16 +89,16 @@ function browserSyncInit(done) {
 
 // WATCH FILES (including Tailwind sources)
 function watchFiles() {
-  watch('src/**/*.html', series(compileHTML, prettyHTML, buildTailwind));
+  watch('src/**/*.html', series(compileHTML, buildTailwind));
   watch('src/css/**/*.css', buildTailwind);
   watch('profile/**/*', copySPXPProfile);
 }
 
 // DEV - local development with live reload
-exports.dev = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, compileHTML, prettyHTML, buildTailwind, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, compileHTML, buildTailwind, browserSyncInit, watchFiles);
 
 // BUILD - production build
-exports.build = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, compileHTML, prettyHTML, buildTailwind);
+exports.build = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, compileHTML, buildTailwind);
 
 // Default task
 exports.default = exports.dev;
