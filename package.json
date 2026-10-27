@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp build"
+    "build": "gulp build",
+    "check": "node scripts/check-dist.js"
   },
   "author": "SPXP Team",
   "license": "Apache-2.0",

@@ -16,6 +16,7 @@ The official website for the [Social Profile Exchange Protocol](https://spxp.org
 npm install
 npm run dev    # localhost:3000 with live reload
 npm run build  # → dist/
+npm run check  # sanity checks on dist/ (run after build; also runs in CI)
 ```
 
 ## Project Structure
@@ -33,6 +34,7 @@ src/
     nav.html              # Top navigation
     footer.html           # Footer
   css/tailwind.css        # Tailwind entry point + @font-face declarations
+  assets/images/          # Self-hosted images (no third-party hosts)
   assets/fonts/           # Self-hosted woff2 font files (latin subset)
     inter-latin.woff2
     jetbrains-mono-latin.woff2

@@ -69,6 +69,13 @@ function copyFonts() {
     .pipe(browserSync.stream());
 }
 
+// COPY SELF-HOSTED IMAGES TO DIST
+function copyImages() {
+  console.log('---------------COPYING IMAGES INTO DIST FOLDER---------------');
+  return src(['src/assets/images/**/*'])
+    .pipe(dest('dist/assets/images'));
+}
+
 // COPY SELF-HOSTED PRISM.JS (no third-party CDN, GDPR)
 function copyPrism() {
   console.log('---------------COPYING PRISM INTO DIST FOLDER---------------');
@@ -107,10 +114,10 @@ function watchFiles() {
 }
 
 // DEV - local development with live reload
-exports.dev = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, copyPrism, compileHTML, buildTailwind, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, copyImages, copyPrism, compileHTML, buildTailwind, browserSyncInit, watchFiles);
 
 // BUILD - production build
-exports.build = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, copyPrism, compileHTML, buildTailwind);
+exports.build = series(cleanDist, copySPXPProfile, copyStatic, copyFonts, copyImages, copyPrism, compileHTML, buildTailwind);
 
 // Default task
 exports.default = exports.dev;
