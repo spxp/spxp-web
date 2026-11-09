@@ -23,7 +23,7 @@
     "panini": "^1.7.2",
     "postcss": "^8.5.32",
     "prismjs": "^1.30.0",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.4"
   },
   "engines": {
     "node": ">=18.0.0"
